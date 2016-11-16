@@ -29,7 +29,7 @@ var WaitForSoundcloud = function() {
         SC.initialize({
             client_id: "03a1e1175d17faaa55945f7a7f007363",
             client_secret: "c4f36a07382bab9f91da20918099c9de",
-            redirect_uri: "http://artistnetwork16.azurewebsites.net/callback.html"
+            redirect_uri: "http://plexis.org/callback.html"
         });
 
         var surl;
