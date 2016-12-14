@@ -27,9 +27,9 @@ var WaitForSoundcloud = function() {
         }
 
         SC.initialize({
-            client_id: "03a1e1175d17faaa55945f7a7f007363",
-            client_secret: "c4f36a07382bab9f91da20918099c9de",
-            redirect_uri: "http://plexis.org.preview.services/callback.html"
+            client_id: "wZZFmM2NGZvhXHC70xzZApPmTomRjQE8",
+            client_secret: "tIg0pOJt0TTrlXQDX7AeUfwWDhqNNeoh",
+            redirect_uri: "http://plexis.org/callback.html"
         });
 
         var surl;
