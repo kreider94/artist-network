@@ -131,7 +131,7 @@ function ShowData(user) {
     //positionElements();
 
     var jsonstr = JSON.stringify(newData);
-    document.getElementById('container').innerHTML = jsonstr[i];
+    document.getElementById('container').innerHTML = jsonstr[1];
 
     generatePosElements(newData);
 
