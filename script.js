@@ -130,7 +130,8 @@ function ShowData(user) {
     removeIfTooMany(newData);
     //positionElements();
 
-    console.log(JSON.stringify(newData));
+    var jsonstr = JSON.stringify(newData);
+    document.getElementById('container').innerHTML = jsonstr[i];
 
     generatePosElements(newData);
 
