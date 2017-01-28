@@ -130,7 +130,8 @@ function ShowData(user) {
     removeIfTooMany(newData);
     //positionElements();
 
-    
+    window.print(JSON.stringify(newData));
+
     generatePosElements(newData);
 
 function splitAndPosition(){
