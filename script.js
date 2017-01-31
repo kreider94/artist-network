@@ -135,6 +135,7 @@ function ShowData(user) {
 
     generatePosElements(newData);
 
+/**
 function splitAndPosition(){
 
 var active = false;
@@ -148,6 +149,7 @@ function splitAll(){
     active = true;
 };
  getSound();
+
 
 function positionElem(){
 
@@ -173,5 +175,5 @@ splitAndPosition();
 
 }
 
-
+**/
 
