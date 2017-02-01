@@ -1,15 +1,15 @@
-    var small = [];
-    var med = [];
-    var large = [];
-    var smallXtra = [];
-    var medXtra = [];
-    var largeXtra = [];
+var small = [];
+var med = [];
+var large = [];
+var smallXtra = [];
+var medXtra = [];
+var largeXtra = [];
 
 function generatePosElements(array) {
 
     for (var j = 0; j < array.length; j++) {
-        img= document.createElement('img');
-        img.src= 'http://www.freeiconspng.com/uploads/play-button-icon-png-0.png';
+        img = document.createElement('img');
+        img.src = 'http://www.freeiconspng.com/uploads/play-button-icon-png-0.png';
         img.id = 'img' + j;
         img.value = 'play';
         div = document.createElement('pos');
@@ -20,10 +20,10 @@ function generatePosElements(array) {
         span.id = "span";
         span.innerHTML = (array[j].username).toUpperCase();
 
-var spanWidth = 80;
+        var spanWidth = 80;
         overlay = document.createElement('overlay');
         overlay.className = 'overlay';
-        
+
         play = document.createElement('play');
         play.className = 'play';
         if (array[j].ranking === 0) {
@@ -33,44 +33,44 @@ var spanWidth = 80;
             span.style.cssText = 'fontSize: 9px;';
         } else if (array[j].ranking === 1) {
             div.style.cssText = 'width:93px;' + 'height:93px;' + 'background: url("' + array[j].avatar_url + '"' + ') repeat center;';
-spanWidth = 93;
-           med.push(div);
+            spanWidth = 93;
+            med.push(div);
             span.style.cssText = 'fontSize: 10px';
         }
         else {
             div.style.cssText = 'height:105px;' + 'width:105px;' + 'background: url("' + array[j].avatar_url + '"' + ') repeat center;';
-spanWidth =  105;
-large.push(div);
+            spanWidth = 105;
+            large.push(div);
         }
-span.style = 'width: ' + spanWidth + "px";
+        span.style = 'width: ' + spanWidth + "px";
 
         //append all elements to each other
         div.appendChild(span);
         play.appendChild(img);
         overlay.appendChild(play);
         div.appendChild(overlay);
-        
+
         document.getElementById('container').appendChild(div);
     }
 }
 
-    //split up arrays
-    function splitArrays(arr, arrXtra, rad, width){ 
+//split up arrays
+function splitArrays(arr, arrXtra, rad, width) {
 
-       var C = (Math.PI) * (rad*2);
-       var divSize = width;
-       var amountFit = C/divSize;
+    var C = (Math.PI) * (rad * 2);
+    var divSize = width;
+    var amountFit = C / divSize;
 
-       if(amountFit < arr.length){ 
-       var start = Math.round(amountFit/2);  
-       for(var i = start; i < arr.length; i++){
-          var elem = arr[i];
-arr.splice(i,1);           
-arrXtra.push(elem);           
+    if (amountFit < arr.length) {
+        var start = Math.round(amountFit / 2);
+        for (var i = start; i < arr.length; i++) {
+            var elem = arr[i];
+            arr.splice(i, 1);
+            arrXtra.push(elem);
 
-       }
-       }
-    };
+        }
+    }
+}
 
 function getSpans() {
     posElem = document.getElementsByClassName('pos');
@@ -95,26 +95,31 @@ function getSound() {
 
                 posElem[i].addEventListener("click", function (event) {
 
-                   $("#artist-box").css({display: "block", position:"absolute", top:event.pageY-80, left: event.pageX-100});
-                   document.getElementById("artist-name").innerHTML = newData[i].username;
-                   $("#artist-artwork").css({background: "url(" + newData[i].avatar_url + ")"}); 
-                   SC.stream('/tracks/' + track).then(function (player) {
-                            stream = player;
-                            stream.play();
-                            document.getElementById("track-title").innerHTML = tracks[0].title;
-                            document.getElementById('close').onclick = function(){
-                            document.getElementById('artist-box').style.display= "none";
-                           }; 
-                   });
+                    $("#artist-box").css({
+                        display: "block",
+                        position: "absolute",
+                        top: event.pageY - 80,
+                        left: event.pageX - 100
+                    });
+                    document.getElementById("artist-name").innerHTML = newData[i].username;
+                    $("#artist-artwork").css({background: "url(" + newData[i].avatar_url + ")"});
+                    SC.stream('/tracks/' + track).then(function (player) {
+                        stream = player;
+                        stream.play();
+                        document.getElementById("track-title").innerHTML = tracks[0].title;
+                        document.getElementById('close').onclick = function () {
+                            document.getElementById('artist-box').style.display = "none";
+                        };
+                    });
                 });
-/**
-                        SC.stream('/tracks/' + track).then(function (player) {
+                /**
+                 SC.stream('/tracks/' + track).then(function (player) {
                             document.getElementById("img" + i).src= "http://cdn3.iconfinder.com/data/icons/buttons/512/Icon_4-512.png"; 
                             stream = player;
                             stream.play();
 document.getElementById("img" + i).src = "http://www.freeiconspng.com/uploads/play-button-icon-png-0.png";
 **/
-           });
+            });
         })(i);
 
     }
@@ -169,31 +174,30 @@ function positionElements() {
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
+}
 function posE(arr, rad, toggle, pwidth) {
 
-var container = document.getElementById('container'),width = container.offsetWidth, 
-        height = container.offsetHeight,angle = 0;
-       var step = (2*Math.PI) / arr.length;
-        var divSize = pwidth;
+    var container = document.getElementById('container'), width = container.offsetWidth,
+        height = container.offsetHeight, angle = 0;
+    var step = (2 * Math.PI) / arr.length;
+    var divSize = pwidth;
 
-for(var i=0; i<arr.length;i++){
+    for (var i = 0; i < arr.length; i++) {
 
-var area;
-console.log(divSize);
-var radius;
+        var area;
+        console.log(divSize);
+        var radius;
 
-    do{   
-        radius = (radius == rad ? toggle : rad);
+        do {
+            radius = (radius == rad ? toggle : rad);
 
-        var posx = Math.round(width/2 + radius * Math.cos(angle) - divSize/2);
-        var posy = Math.round(height/2 + radius * Math.sin(angle) - divSize/2);
+            var posx = Math.round(width / 2 + radius * Math.cos(angle) - divSize / 2);
+            var posy = Math.round(height / 2 + radius * Math.sin(angle) - divSize / 2);
 
-        area =  {x: posx, y: posy, width: divSize, height: divSize};
-        
-       }while(checkOverlap(area));
-        
+            area = {x: posx, y: posy, width: divSize, height: divSize};
+
+        } while (checkOverlap(area));
+
         console.log(rad);
 
         positions.push(area);
@@ -202,11 +206,11 @@ var radius;
         arr[i].style.top = posy + "px";
 
         angle += step;
-    };
-};
+    }
+}
 
 /**
-function getPos(){
+ function getPos(){
 
     var container = $('#container'),width = container.width(), 
         height = container.height(),angle = 0;
@@ -309,4 +313,4 @@ getMedPos();
 getSmallPos();
 };
 
-**/
+ **/

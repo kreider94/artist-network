@@ -15,14 +15,14 @@ var newUser;
 var multiples = [];
 var hidden = false;
 
-var WaitForSoundcloud = function() {
+var WaitForSoundcloud = function () {
 
     if (typeof SC == "undefined") {
         setTimeout(WaitForSoundcloud, 500);
     } else {
         var wait = true;
 
-        function setWait(){
+        function setWait() {
             wait = false;
         }
 
@@ -76,19 +76,17 @@ var WaitForSoundcloud = function() {
             document.getElementById("tracks").innerHTML = me.track_count;
 
             if (wait) {
-                setTimeout(waitForIt(),100);
-            } else {
-                ShowData(mainuser);
+                setTimeout(ShowData(mainuser), 100);
             }
 
-        document.getElementById('login-sc').style.visibility = 'hidden';
-                   hidden = !hidden;
-        if(hidden) {
-            document.getElementById('togglee').style.visibility = 'hidden';
-        } else {
-            document.getElementById('togglee').style.visibility = 'visible';
-        }
-    
+            document.getElementById('login-sc').style.visibility = 'hidden';
+            hidden = !hidden;
+            if (hidden) {
+                document.getElementById('togglee').style.visibility = 'hidden';
+            } else {
+                document.getElementById('togglee').style.visibility = 'visible';
+            }
+
 
         });
     }
@@ -128,52 +126,60 @@ function ShowData(user) {
     removeLowReposts(newData);
     increaseRanking(newData);
     removeIfTooMany(newData);
-    //positionElements();
+    positionElements();
 
     var jsonstr = JSON.stringify(newData);
-    document.getElementById('container').innerHTML = jsonstr[1];
+    console.log(jsonstr);
 
     generatePosElements(newData);
 
-/**
-function splitAndPosition(){
+    function splitAndPosition() {
 
-var active = false;
+//var active = false;
 
-function splitAll(){
-    
-    splitArrays(small, smallXtra, 500, 80);
-    splitArrays(med, medXtra, 400, 93);
-    splitArrays(large, largeXtra, 100,105);
+        function splitAll() {
 
-    active = true;
-};
- getSound();
+            splitArrays(small, smallXtra, 500, 80);
+            splitArrays(med, medXtra, 400, 93);
+            splitArrays(large, largeXtra, 100, 105);
 
+            // active = true;
+        };
+// getSound();
+        /**
+    <div id="container">
+            <div id="crosshair-x"></div>
+            <div id="crosshair-y"></div>
 
-function positionElem(){
+            <div id="artinfo" width="300px" height="150px" style="position:"
 
-if(active = false){
-setTimeout(positionElem, 200);
-}else{
-posE(small, 620, 620,80);
-posE(smallXtra, 440,540, 80);
-posE(med, 380, 500, 93);
-posE(medXtra, 750, 750, 93);
-posE(large, 110,110, 105);
-posE(largeXtra, 200,300,105);
-console.log(smallXtra.length);
-console.log(medXtra.length);
-}
-}
-splitAll();
-positionElem();
-}
-
-
-splitAndPosition();
-
-}
-
+            </div>
 **/
+
+        function positionElem() {
+
+            if (active = false) {
+                setTimeout(positionElem, 200);
+            } else {
+                posE(small, 620, 620, 80);
+                posE(smallXtra, 440, 540, 80);
+                posE(med, 380, 500, 93);
+                posE(medXtra, 750, 750, 93);
+                posE(large, 110, 110, 105);
+                posE(largeXtra, 200, 300, 105);
+                console.log(smallXtra.length);
+                console.log(medXtra.length);
+            }
+        }
+
+        splitAll();
+        positionElem();
+    }
+
+
+    splitAndPosition();
+
+}
+
+
 
