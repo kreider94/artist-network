@@ -50,7 +50,7 @@ function generatePosElements(array) {
         overlay.appendChild(play);
         div.appendChild(overlay);
 
-        document.getElementById('container').appendChild(div);
+        document.getElementById('svg').appendChild(div);
     }
 }
 
@@ -177,8 +177,8 @@ function getRandomInt(min, max) {
 }
 function posE(arr, rad, toggle, pwidth) {
 
-    var container = document.getElementById('container'), width = container.offsetWidth,
-        height = container.offsetHeight, angle = 0;
+    var svg = document.getElementsByTagName('svg'), width = svg.offsetWidth,
+        height = svg.offsetHeight, angle = 0;
     var step = (2 * Math.PI) / arr.length;
     var divSize = pwidth;
 

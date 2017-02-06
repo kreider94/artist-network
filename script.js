@@ -51,7 +51,7 @@ var WaitForSoundcloud = function () {
                     }
                 });
 
-                SC.get("/users/" + me.id + "/followings", {limit: 200, linked_partitioning: 1}).then(function (users) {
+                SC.get("/users/" + me.id + "/followings", {limit: 200, linked_partitioning: 1}).then(function(users) {
                     for (var u = 0; u < users.collection.length; u++) {
                         followingList.push(users.collection[u]);
                     }
@@ -131,7 +131,7 @@ function ShowData(user) {
     var jsonstr = JSON.stringify(newData);
     console.log(jsonstr);
 
-    generatePosElements(newData);
+    //generatePosElements(newData);
 
     function splitAndPosition() {
 
@@ -151,11 +151,8 @@ function ShowData(user) {
             <div id="crosshair-x"></div>
             <div id="crosshair-y"></div>
 
-            <div id="artinfo" width="300px" height="150px" style="position:"
-
-            </div>
+            <div id="artinfo" width="300px" height="150px" style="position:center"></div>
 **/
-
         function positionElem() {
 
             if (active = false) {
