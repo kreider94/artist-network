@@ -25,15 +25,3 @@ app.get('/index.html', function (req, res) {
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + "/index.html"));
 });
-
-
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err;
-    }
-    http.createServer(function(request, response) {
-        response.writeHeader(200, {"Content-Type": "text/html"});
-        response.write(html);
-        response.end();
-    }).listen(8000);
-});
