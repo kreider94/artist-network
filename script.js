@@ -27,9 +27,9 @@ var WaitForSoundcloud = function () {
         }
 
         SC.initialize({
-            client_id: "m3kCd053xVXYtaEYQZ2e87SWSSuYnunA",
-            client_secret: "Ur0s170Mz0aorJO700TOSY7qwdTWbv6i",
-            redirect_uri: "http://plexis.org/callback.html"
+            client_id: "235BeLHSHTyBwKe6AfUVBZT6kBleLCYY",
+            client_secret: "AwXJaNToU9Oq5fG65fuOkaJVxhIreAxI",
+            redirect_uri: "http://localhost/artist-network/callback.html"
         });
 
         var surl;
@@ -114,6 +114,32 @@ function removeElementsByClass(className) {
     }
 }
 
+
+function DownloadJSON2CSV(objArray)
+{
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+
+        for (var index in array[i]) {
+            line += array[i][index] + ',';
+        }
+
+        // Here is an example where you would wrap the values in double quotes
+        // for (var index in array[i]) {
+        //    line += '"' + array[i][index] + '",';
+        // }
+
+        line.slice(0,line.Length-1);
+
+        str += line + '\r\n';
+    }
+    window.open( "data:text/csv;charset=utf-8," + escape(str))
+}
+
 function ShowData(user) {
 
     likesToUsers(likes);
@@ -126,10 +152,14 @@ function ShowData(user) {
     removeLowReposts(newData);
     increaseRanking(newData);
     removeIfTooMany(newData);
-    positionElements();
+    //positionElements();
+
 
     var jsonstr = JSON.stringify(newData);
     console.log(jsonstr);
+    DownloadJSON2CSV(jsonstr);
+
+
 
     //generatePosElements(newData);
 
