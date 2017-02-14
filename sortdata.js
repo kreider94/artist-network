@@ -1,17 +1,19 @@
-function likesToUsers(arr) {
+var cityArr = [];
+
+
+function likesToUsers(arr, likesUsr) {
     for (var i = 0; i < arr.length; i++) {
-        likesUsers.push(arr[i].user);
+        likesUsr.push(arr[i].user);
     }
 }
-
 
 function getFinalData(a, b) {
     mainData = a.concat(b);
 }
 
-function setRanking() {
-    for (var i = 0; i < mainData.length; i++) {
-        mainData[i].ranking = 0;
+function setRanking(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].ranking = 0;
     }
 }
 
@@ -27,24 +29,24 @@ function sortOn(property) {
     };
 }
 
-function unique(arr) {
+function unique(arr, returnArr) {
     var origLen = arr.length,
         found, x, y;
 
     for (x = 0; x < origLen; x++) {
         found = undefined;
-        for (y = 0; y < newData.length; y++) {
-            if (arr[x].username === newData[y].username) {
-                newData[y].ranking++;
+        for (y = 0; y < returnArr.length; y++) {
+            if (arr[x].username === returnArr[y].username) {
+                returnArr[y].ranking++;
                 found = true;
                 break;
             }
         }
         if (!found) {
-            newData.push(arr[x]);
+            returnArr.push(arr[x]);
         }
     }
-    return newData;
+    return returnArr;
 }
 
 function increaseRanking(arr){
@@ -55,6 +57,12 @@ function increaseRanking(arr){
     }
 }
 
+function getUserCity(arr){
+    for(var i = 0; i < arr.length; i++){
+        cityArr.push(arr[i].city);
+        console.log(cityArr[i]);
+    }
+}
 
 //remove users with low following count
 function removeLowFollowers(array) {

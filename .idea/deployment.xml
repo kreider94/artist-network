@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" uploadOnCheckin="f18cc818-127c-44b3-93a1-2c68804d380e">
-    <option name="myUploadOnCheckinName" value="Hostinger" />
+  <component name="PublishConfigData" autoUpload="Always">
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

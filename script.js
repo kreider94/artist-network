@@ -14,6 +14,11 @@ var userDP;
 var newUser;
 var multiples = [];
 var hidden = false;
+var commonTracks = [];
+var newArtists = [];
+var indlikes = [];
+var indfollowings = [];
+var indlikesUsers = [];
 
 var WaitForSoundcloud = function () {
 
@@ -86,8 +91,6 @@ var WaitForSoundcloud = function () {
             } else {
                 document.getElementById('togglee').style.visibility = 'visible';
             }
-
-
         });
     }
 };
@@ -114,9 +117,7 @@ function removeElementsByClass(className) {
     }
 }
 
-
-function DownloadJSON2CSV(objArray)
-{
+function DownloadJSON2CSV(objArray) {
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
 
     var str = '';
@@ -140,28 +141,54 @@ function DownloadJSON2CSV(objArray)
     window.open( "data:text/csv;charset=utf-8," + escape(str))
 }
 
+function getExtraData(arr) {
+
+    for (var i = 0; i < arr.length; i++) {
+
+        var user = arr[i];
+
+        var indlikes = [];
+        var indfollowings = [];
+        var indlikesUsers = [];
+        var newArtists = [];
+        newArtists = user.artists;
+        user.artists = [];
+        var tempData = [];
+
+        getNewTracks(user, function (tracks){
+            getNewFollowings(user, function (followings){
+                newLikesToUsers(tracks, function(likesUsers){
+                    getNewFinalData(likesUsers, followings, function(final){
+                        newUnique(final,function(uniques){
+                            newRemoveIfTooMany(uniques, function(final60){
+                                    return user.artists = final60;
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+        }
+}
+
+
+
 function ShowData(user) {
 
-    likesToUsers(likes);
-    getFinalData(likesUsers, followingList);
-    setRanking();
+    likesToUsers(likes, likesUsers);
+    getFinalData(likesUsers, followingList, newData);
+    setRanking(newData);
     mainData.sort(sortOn("username"));
-    unique(mainData);
+    unique(mainData, newData);
     removeLowFollowers(newData);
     removeLowTrackCount(newData);
     removeLowReposts(newData);
     increaseRanking(newData);
     removeIfTooMany(newData);
-    //positionElements();
 
+}
 
-    var jsonstr = JSON.stringify(newData);
-    console.log(jsonstr);
-    DownloadJSON2CSV(jsonstr);
-
-
-
-    //generatePosElements(newData);
+/**
 
     function splitAndPosition() {
 
@@ -182,7 +209,7 @@ function ShowData(user) {
             <div id="crosshair-y"></div>
 
             <div id="artinfo" width="300px" height="150px" style="position:center"></div>
-**/
+
         function positionElem() {
 
             if (active = false) {
@@ -206,7 +233,7 @@ function ShowData(user) {
 
     splitAndPosition();
 
-}
 
+**/
 
 
