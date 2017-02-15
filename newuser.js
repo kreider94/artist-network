@@ -75,7 +75,6 @@ function newUnique(arr, callback) {
 function newRemoveIfTooMany(arr, callback){
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
-
     while(arr.length > 60){
         arr.splice(1,1);
     }

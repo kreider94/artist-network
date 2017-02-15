@@ -151,8 +151,8 @@ function getExtraData(arr) {
         var indfollowings = [];
         var indlikesUsers = [];
         var newArtists = [];
-        newArtists = user.artists;
         user.artists = [];
+        newArtists = user.artists;
         var tempData = [];
 
         getNewTracks(user, function (tracks){
@@ -161,16 +161,28 @@ function getExtraData(arr) {
                     getNewFinalData(likesUsers, followings, function(final){
                         newUnique(final,function(uniques){
                             newRemoveIfTooMany(uniques, function(final60){
-                                    return user.artists = final60;
-                                    });
+                                concat(final60, newData, function(result){
+                                    return result;
                                 });
                             });
                         });
                     });
                 });
-        }
-}
+            });
+        });
+    }
 
+    function concat(arr,final,callback){
+        var data=[];
+        for(var k=0; k<final.length; k++) {
+            for(var p=0; p<arr.length; p++) {
+                data = (final[k].artists[p] = arr[p]);
+            }
+        }
+        callback(data);
+    }
+
+}
 
 
 function ShowData(user) {
