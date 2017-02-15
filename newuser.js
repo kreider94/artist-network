@@ -46,7 +46,7 @@ function newLikesToUsers(arr, callback) {
 }
 
 function getNewFinalData(a, b, callback) {
-    data=[];
+    var data=[];
     data = a.concat(b);
     callback(data);
 }
@@ -60,7 +60,6 @@ function newUnique(arr, callback) {
         found = undefined;
         for (y = 0; y < data.length; y++) {
             if (arr[x].username === data[y].username) {
-                data[y].ranking++;
                 found = true;
                 break;
             }
@@ -79,6 +78,15 @@ function newRemoveIfTooMany(arr, callback){
         arr.splice(1,1);
     }
     callback(arr);
+}
+
+function concat(arr, final, callback) {
+    var data = [];
+
+    for (var p = 0; p < arr.length; p++) {
+        data = (final.artists[p] = arr[p]);
+    }
+    callback(data);
 }
 
 function getNewUserData(index, ShowData) {

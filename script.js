@@ -1,24 +1,15 @@
 var mainuser;
-var title = [];
 var mainData = [];
-var newData = [];
-var out = [];
+var usersList = [];
 var likes = [];
 var followingList = [];
 var likesUsers = [];
 var positions = [];
 var divArray = [];
-var myListeners = [];
 var posElem = [];
 var userDP;
 var newUser;
-var multiples = [];
 var hidden = false;
-var commonTracks = [];
-var newArtists = [];
-var indlikes = [];
-var indfollowings = [];
-var indlikesUsers = [];
 
 var WaitForSoundcloud = function () {
 
@@ -117,51 +108,27 @@ function removeElementsByClass(className) {
     }
 }
 
-function DownloadJSON2CSV(objArray) {
-    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
-
-    var str = '';
-
-    for (var i = 0; i < array.length; i++) {
-        var line = '';
-
-        for (var index in array[i]) {
-            line += array[i][index] + ',';
-        }
-
-        // Here is an example where you would wrap the values in double quotes
-        // for (var index in array[i]) {
-        //    line += '"' + array[i][index] + '",';
-        // }
-
-        line.slice(0,line.Length-1);
-
-        str += line + '\r\n';
-    }
-    window.open( "data:text/csv;charset=utf-8," + escape(str))
-}
 
 function getExtraData(arr) {
 
     for (var i = 0; i < arr.length; i++) {
 
-        var user = arr[i];
+        const user = arr[i];
 
         var indlikes = [];
         var indfollowings = [];
         var indlikesUsers = [];
         var newArtists = [];
         user.artists = [];
-        newArtists = user.artists;
         var tempData = [];
 
-        getNewTracks(user, function (tracks){
-            getNewFollowings(user, function (followings){
-                newLikesToUsers(tracks, function(likesUsers){
-                    getNewFinalData(likesUsers, followings, function(final){
-                        newUnique(final,function(uniques){
-                            newRemoveIfTooMany(uniques, function(final60){
-                                concat(final60, newData, function(result){
+        getNewTracks(user, function (tracks) {
+            getNewFollowings(user, function (followings) {
+                newLikesToUsers(tracks, function (likesUsers) {
+                    getNewFinalData(likesUsers, followings, function (final) {
+                        newUnique(final, function (uniques) {
+                            newRemoveIfTooMany(uniques, function (final60) {
+                                concat(final60, user, function (result) {
                                     return result;
                                 });
                             });
@@ -171,8 +138,8 @@ function getExtraData(arr) {
             });
         });
     }
-
-    function concat(arr,final,callback){
+    /**
+     function concat(arr,final,callback){
         var data=[];
         for(var k=0; k<final.length; k++) {
             for(var p=0; p<arr.length; p++) {
@@ -181,22 +148,22 @@ function getExtraData(arr) {
         }
         callback(data);
     }
-
+     **/
 }
 
 
 function ShowData(user) {
 
     likesToUsers(likes, likesUsers);
-    getFinalData(likesUsers, followingList, newData);
-    setRanking(newData);
+    getFinalData(likesUsers, followingList, usersList);
+    setRanking(usersList);
     mainData.sort(sortOn("username"));
-    unique(mainData, newData);
-    removeLowFollowers(newData);
-    removeLowTrackCount(newData);
-    removeLowReposts(newData);
-    increaseRanking(newData);
-    removeIfTooMany(newData);
+    unique(mainData, usersList);
+    removeLowFollowers(usersList);
+    removeLowTrackCount(usersList);
+    removeLowReposts(usersList);
+    increaseRanking(usersList);
+    removeIfTooMany(usersList);
 
 }
 

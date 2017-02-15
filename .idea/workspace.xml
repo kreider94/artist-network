@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea3995f-8cef-4d6f-8743-985943c847c1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/package.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newuser.js" afterPath="$PROJECT_DIR$/newuser.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.js" afterPath="$PROJECT_DIR$/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortdata.js" afterPath="$PROJECT_DIR$/sortdata.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,20 +28,11 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="168" column="23" lean-forward="true" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
+            <state relative-caret-position="-615">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
-                <element signature="n#!!block;n#openNav#0" expanded="false" />
-                <element signature="e#3311#3403#0" expanded="false" />
-                <element signature="n#!!block;n#closeNav#0" expanded="false" />
-                <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-                <element signature="e#3739#3803#0" expanded="false" />
-                <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-                <element signature="e#3987#4364#0" expanded="false" />
-                <element signature="e#4049#4103#0" expanded="false" />
-                <element signature="e#4113#4183#0" expanded="false" />
-                <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-                <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+                <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+                <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -55,8 +41,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="240">
+              <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -65,7 +51,7 @@
       <file leaf-file-name="sortdata.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sortdata.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
+            <state relative-caret-position="1261">
               <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
               <folding />
             </state>
@@ -75,7 +61,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
+            <state relative-caret-position="15">
               <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -99,8 +85,8 @@
       <file leaf-file-name="newuser.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newuser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+            <state relative-caret-position="211">
+              <caret line="86" column="43" lean-forward="true" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -148,8 +134,8 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/sortdata.js" />
-        <option value="$PROJECT_DIR$/newuser.js" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/newuser.js" />
         <option value="$PROJECT_DIR$/script.js" />
       </list>
     </option>
@@ -328,8 +314,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Node.js.app.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.script.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.newuser.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.newuser.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.script.js" />
         <item index="3" class="java.lang.String" itemvalue="Node.js.sortdata.js" />
         <item index="4" class="java.lang.String" itemvalue="Node.js.positions.js" />
       </list>
@@ -354,7 +340,7 @@
       <workItem from="1485860844211" duration="39677000" />
       <workItem from="1487003688715" duration="20996000" />
       <workItem from="1487026809357" duration="19691000" />
-      <workItem from="1487095716578" duration="9596000" />
+      <workItem from="1487095716578" duration="21700000" />
     </task>
     <task id="LOCAL-00001" summary="Change redirect URI">
       <created>1485450942418</created>
@@ -524,11 +510,25 @@
       <option name="project" value="LOCAL" />
       <updated>1486567171330</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Getting all current users following and likes list and combining them and pushing them to 'artist' array within the user object.&#10;Problem is can't push array to 'artists' field at all.">
+      <created>1487106554573</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1487106554573</updated>
+    </task>
+    <task id="LOCAL-00026" summary="User objects now able to be added to user.artists array.&#10;Problem is results are wrong.">
+      <created>1487162404956</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1487162404956</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103512000" />
+    <option name="totallyTimeSpent" value="115616000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -576,7 +576,9 @@
     <MESSAGE value="create app server in node js with express" />
     <MESSAGE value="converted user data array to json file&#10;saved json file as csv" />
     <MESSAGE value="Getting array of genre from all users tracks and declaring genre.&#10;Problem is with many artists not having a genre" />
-    <option name="LAST_COMMIT_MESSAGE" value="Getting array of genre from all users tracks and declaring genre.&#10;Problem is with many artists not having a genre" />
+    <MESSAGE value="Getting all current users following and likes list and combining them and pushing them to 'artist' array within the user object.&#10;Problem is can't push array to 'artists' field at all." />
+    <MESSAGE value="User objects now able to be added to user.artists array.&#10;Problem is results are wrong." />
+    <option name="LAST_COMMIT_MESSAGE" value="User objects now able to be added to user.artists array.&#10;Problem is results are wrong." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -590,17 +592,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -654,17 +647,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -734,17 +718,8 @@
         <state relative-caret-position="2370">
           <caret line="158" column="27" lean-forward="true" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -822,17 +797,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -878,17 +844,8 @@
         <state relative-caret-position="465">
           <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -982,7 +939,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
+        <state relative-caret-position="15">
           <caret line="45" column="31" lean-forward="false" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
           <folding>
             <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1000,46 +957,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sortdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1261">
+          <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/newuser.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="76" column="33" lean-forward="true" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+        <state relative-caret-position="211">
+          <caret line="86" column="43" lean-forward="true" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sortdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+        <state relative-caret-position="240">
+          <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="168" column="23" lean-forward="true" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
+        <state relative-caret-position="-615">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#openNav#0" expanded="false" />
-            <element signature="e#3311#3403#0" expanded="false" />
-            <element signature="n#!!block;n#closeNav#0" expanded="false" />
-            <element signature="n#!!block;n#removeElementsByClass#0" expanded="false" />
-            <element signature="e#3739#3803#0" expanded="false" />
-            <element signature="n#!!block;n#DownloadJSON2CSV#0" expanded="false" />
-            <element signature="e#3987#4364#0" expanded="false" />
-            <element signature="e#4049#4103#0" expanded="false" />
-            <element signature="e#4113#4183#0" expanded="false" />
-            <marker date="1487106409000" expanded="false" signature="6339:6401" ph="{...}" />
-            <marker date="1487106409000" expanded="false" signature="6407:6782" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5849:5911" ph="{...}" />
+            <marker date="1487166629000" expanded="false" signature="5917:6292" ph="{...}" />
           </folding>
         </state>
       </provider>
