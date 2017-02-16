@@ -1,33 +1,16 @@
-function getNewUser(index, array) {
-    var newUser = array[index];
-    alert(newUser);
-    return newUser;
-}
+var httpUrlForTransaction = 'http://localhost:7474/db/data/transaction/commit';
 
-function clearArrays() {
-    likesUsers = [];
-    likes = [];
-    followingList = [];
-    positions = [];
-    divArray = [];
-    posElem = [];
-    mainData = [];
-    newData = [];
-}
-
-
-function getNewTracks(newUser, callback){
+function getTracks(newUser, callback){
     var data=[];
     SC.get("/users/" + newUser.id + "/favorites").then(function (tracks) {
         for (var i = 0; i < tracks.length; i++) {
             data.push(tracks[i]);
         }
         callback(data);
-        // return indlikes;
     });
 }
 
-function getNewFollowings(newUser, callback){
+function getFollowings(newUser, callback){
     var data =[];
     SC.get("/users/" + newUser.id + "/followings",{limit: 200, linked_partitioning: 1}).then(function (users) {
         for (var u = 0; u < users.collection.length; u++) {
@@ -37,12 +20,18 @@ function getNewFollowings(newUser, callback){
     });
 }
 
-function newLikesToUsers(arr, callback) {
+function likesToUsers(arr, callback) {
     var data = [];
     for (var i = 0; i < arr.length; i++) {
         data.push(arr[i].user);
     }
     callback(data);
+}
+
+function getFinalData(a, b, callback) {
+  var data = [];
+    data = a.concat(b).sort(sortOn("username"));
+  callback(data);
 }
 
 function getNewFinalData(a, b, callback) {
@@ -51,7 +40,7 @@ function getNewFinalData(a, b, callback) {
     callback(data);
 }
 
-function newUnique(arr, callback) {
+function unique(arr, callback) {
     var origLen = arr.length,
         found, x, y;
 
@@ -71,7 +60,7 @@ function newUnique(arr, callback) {
     callback(data);
 }
 
-function newRemoveIfTooMany(arr, callback){
+function removeIfTooMany(arr, callback){
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
     while(arr.length > 60){
@@ -89,6 +78,13 @@ function concat(arr, final, callback) {
     callback(data);
 }
 
+function assignArray(b, callback){
+  for(var i = 0; i < b.length; i++){
+    usersList[i] = b[i];
+  }
+  callback(usersList);
+}
+
 function runCreateNode(user){
 
     db.insertNode({
@@ -103,22 +99,33 @@ function runCreateNode(user){
 
 function generateQuery(arr, callback){
     var query = []
+
     console.log(arr[i].id);
+
     for(var i=0; i < arr.length; i++){
-      query[i] = "CREATE User (user:User {id:" + arr[i].id + "," + " username: " + arr[i].username + "})";
+      query[i] = "CREATE (u:User {id:" + arr[i].id + "}) RETURN u";
+      console.log(query[i]);
     }
+
     callback(query);
 }
 
-function runCypherQueryMatch(arr, callback) {
+function runCypherQueryMatch(arr, params,callback) {
 
-  for(var i =0; i < arr.length; i++){
+  var cb = function(err,data) {
+    console.log(JSON.stringify(arr))
+  }
+
+  for(var i = 0; i < arr.length; i++){
+        var query = arr[i];
+        var params = {limit: 60};
         request.post({
                 uri: httpUrlForTransaction,
-                json: {statements: [{statement: arr[i]}]}
+                json: {statements: [{statement: query, parameters:params}]}
             },
-            function (err, res, body) {
-                callback(err, body);
+            function (err, res) {
+                cb(err, res.body);
+                console.log(res.body);
             })
           }
 }

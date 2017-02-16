@@ -108,15 +108,17 @@ function getExtraData(arr) {
 
         user.artists = [];
 
-        getNewTracks(user, function (tracks) {
-            getNewFollowings(user, function (followings) {
-                newLikesToUsers(tracks, function (likesUsers) {
+        var params = {limit: 60};
+
+        getTracks(user, function (tracks) {
+            getFollowings(user, function (followings) {
+                likesToUsers(tracks, function (likesUsers) {
                     getNewFinalData(likesUsers, followings, function (final) {
-                        newUnique(final, function (uniques) {
-                            newRemoveIfTooMany(uniques, function (final60) {
+                        unique(final, function (uniques) {
+                            removeIfTooMany(uniques, function (final60) {
                                 concat(final60, user, function (result) {
-                                  generateQuery(result,function(query){
-                                    runCypherQueryMatch(query, function (result){
+                                  generateQuery(result, function(query){
+                                    runCypherQueryMatch(query, params, function (result){
                                       return result;
                                     });
                                   });
@@ -134,6 +136,25 @@ function getExtraData(arr) {
 
 function ShowData(user) {
 
+          likesToUsers(likes, function (likesUsers) {
+              getFinalData(likesUsers, followingList, function (final) {
+                  unique(final, function (uniques) {
+                    removeLowFollowing(uniques, function(lowfol){
+                      removeLowTrackCount(lowfol, function(lowtrack){
+                        removeIfTooMany(lowtrack, function (final60) {
+                          assignArray(final60, function(finaldata){
+                            getExtraData(finaldata);
+                            });
+                          });
+                        })
+                      })
+                    });
+                  });
+                });
+
+}
+
+/**
     likesToUsers(likes, likesUsers);
     getFinalData(likesUsers, followingList, usersList);
     setRanking(usersList);
@@ -144,5 +165,4 @@ function ShowData(user) {
     removeLowReposts(usersList);
     increaseRanking(usersList);
     removeIfTooMany(usersList);
-
-}
+**/

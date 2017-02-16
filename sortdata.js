@@ -7,14 +7,18 @@ function likesToUsers(arr, likesUsr) {
     }
 }
 
-function getFinalData(a, b) {
-    mainData = a.concat(b);
+function getFinalData(a, b, callback) {
+  var data = [];
+    data = a.concat(b).sort(sortOn("username"));
+  callback(data);
 }
 
-function setRanking(arr) {
+function setRanking(arr, callback) {
+  var data = [];
     for (var i = 0; i < arr.length; i++) {
-        arr[i].ranking = 0;
+         data = (arr[i].ranking = 0);
     }
+    callback(data);
 }
 
 function sortOn(property) {
@@ -46,7 +50,7 @@ function unique(arr, returnArr) {
             returnArr.push(arr[x]);
         }
     }
-    return returnArr;
+    returnArr;
 }
 
 function increaseRanking(arr){
@@ -57,52 +61,54 @@ function increaseRanking(arr){
     }
 }
 
-function getUserCity(arr){
-    for(var i = 0; i < arr.length; i++){
-        cityArr.push(arr[i].city);
-        console.log(cityArr[i]);
-    }
-}
-
 //remove users with low following count
-function removeLowFollowers(array) {
+function removeLowFollowers(array, callback) {
+  var data = [];
     for (var i = 0; i < array.length; i++) {
         if (array[i].followers_count < array[i].followings_count || array[i].followers_count === 0) {
-            array.splice(i, 1);
+             data = (array.splice(i, 1));
         }
     }
+    callback(data);
 }
 
-function removeLowFollowing(array){
+function removeLowFollowing(array, callback){
     for (var i = 0; i < array.length; i++) {
        if(array[i].followings_count < 10){
-            arr.splice(i,1);
+             array.splice(i,1);
        }
     }
+    callback(array);
 }
 
 //decrease if ranking is 0
-function removeLowReposts(array) {
+function removeLowReposts(array, callback) {
+  var data = [];
     for (var i = 0; i < array.length; i++) {
         if (array[i].reposts_count === 0) {
-            array.splice(i, 1);
+            data = (array.splice(i, 1));
         }
     }
+    callback(data);
 }
 
-function removeLowTrackCount(array) {
+function removeLowTrackCount(array, callback) {
     for (var i = 0; i < array.length; i++) {
         if (array[i].track_count < 15) {
             array.splice(i, 1);
         }
     }
+    callback(array);
 }
 
-function removeIfTooMany(arr){
+function removeIfTooMany(arr, callback){
+  var data = [];
     arr.sort(sortOn("ranking"));
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
-    while(usersList.length > 60){
-        arr.splice(1,1);
+    while(arr.length > 60){
+        data = (arr.splice(1,1));
     }
+    callback(data);
+
 }

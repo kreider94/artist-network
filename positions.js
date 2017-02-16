@@ -114,7 +114,7 @@ function getSound() {
                 });
                 /**
                  SC.stream('/tracks/' + track).then(function (player) {
-                            document.getElementById("img" + i).src= "http://cdn3.iconfinder.com/data/icons/buttons/512/Icon_4-512.png"; 
+                            document.getElementById("img" + i).src= "http://cdn3.iconfinder.com/data/icons/buttons/512/Icon_4-512.png";
                             stream = player;
                             stream.play();
 document.getElementById("img" + i).src = "http://www.freeiconspng.com/uploads/play-button-icon-png-0.png";
@@ -208,109 +208,3 @@ function posE(arr, rad, toggle, pwidth) {
         angle += step;
     }
 }
-
-/**
- function getPos(){
-
-    var container = $('#container'),width = container.width(), 
-        height = container.height(),angle = 0;
-
-
-function getSmallPos(){
-$.each(small, function() {
-
-var step = (2*Math.PI) / small.length;
-var area;
-var x,y;
-var radius;
-
-      do{
-        radius = (radius == 600 ? 700 : 600);
-        
-        x = Math.round(width/2 + radius * Math.cos(angle) - 80/2);
-        y = Math.round(height/2 + radius * Math.sin(angle) - 80/2);
-
-        area =  {x: x, y: y, width: 80, height: 80};
-        
-        }while(checkOverlap(area));
-        
-        console.log(radius);
-
-        positions.push(area);
-
-        $(this).css({
-            left: x + 'px',
-            top: y + 'px'
-        });
-        
-        angle += step;
-    });
-};
-
-function getMedPos(){
-$.each(med, function() {
-
-var step;
-var area;
-var x,y;
-var radius;
-var timesTwo = med.length*2;
-
-      do{
-        radius = (radius == 300 ? 500 : 300);
-        step = (step == ((2*Math.PI) / med.length) ? ((2*Math.PI)/timesTwo) : ((2*Math.PI) / med.length));
-        x = Math.round(width/2 + radius * Math.cos(angle) - 93/2);
-        y = Math.round(height/2 + radius * Math.sin(angle) - 93/2);
-
-        area =  {x: x, y: y, width: 93, height: 93};
-        
-        }while(checkOverlap(area));
-        
-        console.log(radius);
-
-        positions.push(area);
-
-        $(this).css({
-            left: x + 'px',
-            top: y + 'px'
-        });
-        angle += step;
-    });
-};
-
-function getLargePos(){
-$.each(large, function() {
-
-var step = (2*Math.PI) / large.length;
-var area;
-var x,y;
-var radius;
-
-      do{
-        radius = (radius == 110 ? 200 : 110);
-       
-        x = Math.round(width/2 + radius * Math.cos(angle) - 105/2);
-        y = Math.round(height/2 + radius * Math.sin(angle) - 105/2);
-
-        area =  {x: x, y: y, width: 105, height: 105};
-        
-        }while(checkOverlap(area));
-        
-        console.log(radius);
-
-        positions.push(area);
-
-        $(this).css({
-            left: x + 'px',
-            top: y + 'px'
-        });
-        angle += step;
-    });
-};
-
-getLargePos();
-getMedPos();
-getSmallPos();
-};
-
- **/

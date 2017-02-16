@@ -9,10 +9,9 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var neo4j = require('node-neo4j');
 var app = express();
+var request = require('request');
 
 var httpUrlForTransaction = 'http://localhost:7474/db/data/transaction/commit';
-
-db = new neo4j('http://neo4j:mackie@localhost:7474');
 
 
 app.use(express.static('artist-network'));
