@@ -100,27 +100,13 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
-function removeElementsByClass(className) {
-    var elements = document.getElementsByClassName(className);
-    alert("amount to remove is " + elements.length);
-    while (elements.length > 0) {
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-}
-
-
 function getExtraData(arr) {
 
     for (var i = 0; i < arr.length; i++) {
 
         const user = arr[i];
 
-        var indlikes = [];
-        var indfollowings = [];
-        var indlikesUsers = [];
-        var newArtists = [];
         user.artists = [];
-        var tempData = [];
 
         getNewTracks(user, function (tracks) {
             getNewFollowings(user, function (followings) {
@@ -129,7 +115,11 @@ function getExtraData(arr) {
                         newUnique(final, function (uniques) {
                             newRemoveIfTooMany(uniques, function (final60) {
                                 concat(final60, user, function (result) {
-                                    return result;
+                                  generateQuery(result,function(query){
+                                    runCypherQueryMatch(query, function (result){
+                                      return result;
+                                    });
+                                  });
                                 });
                             });
                         });
@@ -138,17 +128,7 @@ function getExtraData(arr) {
             });
         });
     }
-    /**
-     function concat(arr,final,callback){
-        var data=[];
-        for(var k=0; k<final.length; k++) {
-            for(var p=0; p<arr.length; p++) {
-                data = (final[k].artists[p] = arr[p]);
-            }
-        }
-        callback(data);
-    }
-     **/
+
 }
 
 
@@ -166,53 +146,3 @@ function ShowData(user) {
     removeIfTooMany(usersList);
 
 }
-
-/**
-
-    function splitAndPosition() {
-
-//var active = false;
-
-        function splitAll() {
-
-            splitArrays(small, smallXtra, 500, 80);
-            splitArrays(med, medXtra, 400, 93);
-            splitArrays(large, largeXtra, 100, 105);
-
-            // active = true;
-        };
-// getSound();
-        /**
-    <div id="container">
-            <div id="crosshair-x"></div>
-            <div id="crosshair-y"></div>
-
-            <div id="artinfo" width="300px" height="150px" style="position:center"></div>
-
-        function positionElem() {
-
-            if (active = false) {
-                setTimeout(positionElem, 200);
-            } else {
-                posE(small, 620, 620, 80);
-                posE(smallXtra, 440, 540, 80);
-                posE(med, 380, 500, 93);
-                posE(medXtra, 750, 750, 93);
-                posE(large, 110, 110, 105);
-                posE(largeXtra, 200, 300, 105);
-                console.log(smallXtra.length);
-                console.log(medXtra.length);
-            }
-        }
-
-        splitAll();
-        positionElem();
-    }
-
-
-    splitAndPosition();
-
-
-**/
-
-

@@ -102,7 +102,7 @@ function removeIfTooMany(arr){
     arr.sort(sortOn("ranking"));
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
-    while(newData.length > 60){
+    while(usersList.length > 60){
         arr.splice(1,1);
     }
 }

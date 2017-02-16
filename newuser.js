@@ -89,21 +89,36 @@ function concat(arr, final, callback) {
     callback(data);
 }
 
-function getNewUserData(index, ShowData) {
-    removeElementsByClass('pos');
-    alert(index);
+function runCreateNode(user){
 
-    getNewUser(index, newData);
+    db.insertNode({
+      id: user.id,
+      username: user.username
+    },function(err,node){
+      if(err) throw err;
 
-    
-    (function() {
-        SC.get('"/' + newUser + '"');
+      console.log(node.data);
     });
+}
 
-    alert(newUser.username);
-    clearArrays();
-    getNewTracks(newUser);
-    getNewFollowings(newUser);
-    ShowData(newUser);
+function generateQuery(arr, callback){
+    var query = []
+    console.log(arr[i].id);
+    for(var i=0; i < arr.length; i++){
+      query[i] = "CREATE User (user:User {id:" + arr[i].id + "," + " username: " + arr[i].username + "})";
+    }
+    callback(query);
+}
 
-};
+function runCypherQueryMatch(arr, callback) {
+
+  for(var i =0; i < arr.length; i++){
+        request.post({
+                uri: httpUrlForTransaction,
+                json: {statements: [{statement: arr[i]}]}
+            },
+            function (err, res, body) {
+                callback(err, body);
+            })
+          }
+}

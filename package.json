@@ -4,11 +4,16 @@
   "description": "This README would normally document whatever steps are necessary to get your application up and running.",
   "main": "app.js",
   "dependencies": {
-    "neo4j": "^2.0.0-RC2",
-    "neo4j-driver": "^1.0.5",
     "body-parser": "latest",
     "express": "latest",
-    "morgan": "latest"
+    "graphdracula": "^1.1.1",
+    "mongo": "latest",
+    "mongoose": "^4.8.2",
+    "morgan": "latest",
+    "neo4j": "^2.0.0-RC2",
+    "neo4j-driver": "^1.0.5",
+    "node-restful": "^0.2.6",
+    "raphael": "^2.2.7"
   },
   "devDependencies": {},
   "scripts": {
