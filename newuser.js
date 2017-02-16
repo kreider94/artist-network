@@ -70,12 +70,12 @@ function removeIfTooMany(arr, callback){
 }
 
 function concat(arr, final, callback) {
-    var data = [];
+    //var data = [];
 
     for (var p = 0; p < arr.length; p++) {
-        data = (final.artists[p] = arr[p]);
+        final.artists[p] = arr[p];
     }
-    callback(data);
+    callback(final.artists);
 }
 
 function assignArray(b, callback){
@@ -86,7 +86,6 @@ function assignArray(b, callback){
 }
 
 function runCreateNode(user){
-
     db.insertNode({
       id: user.id,
       username: user.username
@@ -98,26 +97,23 @@ function runCreateNode(user){
 }
 
 function generateQuery(arr, callback){
-    var query = []
-
-    console.log(arr[i].id);
+    var query = [];
 
     for(var i=0; i < arr.length; i++){
       query[i] = "CREATE (u:User {id:" + arr[i].id + "}) RETURN u";
-      console.log(query[i]);
     }
-
     callback(query);
 }
 
 function runCypherQueryMatch(arr, params,callback) {
-
+/**
   var cb = function(err,data) {
     console.log(JSON.stringify(arr))
   }
-
+**/
   for(var i = 0; i < arr.length; i++){
         var query = arr[i];
+        console.log(query);
         var params = {limit: 60};
         request.post({
                 uri: httpUrlForTransaction,

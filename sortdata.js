@@ -1,17 +1,4 @@
-var cityArr = [];
 
-
-function likesToUsers(arr, likesUsr) {
-    for (var i = 0; i < arr.length; i++) {
-        likesUsr.push(arr[i].user);
-    }
-}
-
-function getFinalData(a, b, callback) {
-  var data = [];
-    data = a.concat(b).sort(sortOn("username"));
-  callback(data);
-}
 
 function setRanking(arr, callback) {
   var data = [];
@@ -31,26 +18,6 @@ function sortOn(property) {
             return 0;
         }
     };
-}
-
-function unique(arr, returnArr) {
-    var origLen = arr.length,
-        found, x, y;
-
-    for (x = 0; x < origLen; x++) {
-        found = undefined;
-        for (y = 0; y < returnArr.length; y++) {
-            if (arr[x].username === returnArr[y].username) {
-                returnArr[y].ranking++;
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            returnArr.push(arr[x]);
-        }
-    }
-    returnArr;
 }
 
 function increaseRanking(arr){
@@ -99,16 +66,4 @@ function removeLowTrackCount(array, callback) {
         }
     }
     callback(array);
-}
-
-function removeIfTooMany(arr, callback){
-  var data = [];
-    arr.sort(sortOn("ranking"));
-    arr.sort(sortOn("followers_count"));
-    arr.sort(sortOn("reposts_count"));
-    while(arr.length > 60){
-        data = (arr.splice(1,1));
-    }
-    callback(data);
-
 }

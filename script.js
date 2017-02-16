@@ -130,7 +130,6 @@ function getExtraData(arr) {
             });
         });
     }
-
 }
 
 
