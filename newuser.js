@@ -1,4 +1,4 @@
-var httpUrlForTransaction = 'http://localhost:7474/db/data/transaction/commit';
+
 
 function getTracks(newUser, callback){
     var data=[];
@@ -79,49 +79,9 @@ function concat(arr, final, callback) {
 }
 
 function assignArray(b, callback){
+  usersList = [];
   for(var i = 0; i < b.length; i++){
     usersList[i] = b[i];
   }
   callback(usersList);
-}
-
-function runCreateNode(user){
-    db.insertNode({
-      id: user.id,
-      username: user.username
-    },function(err,node){
-      if(err) throw err;
-
-      console.log(node.data);
-    });
-}
-
-function generateQuery(arr, callback){
-    var query = [];
-
-    for(var i=0; i < arr.length; i++){
-      query[i] = "CREATE (u:User {id:" + arr[i].id + "}) RETURN u";
-    }
-    callback(query);
-}
-
-function runCypherQueryMatch(arr, params,callback) {
-/**
-  var cb = function(err,data) {
-    console.log(JSON.stringify(arr))
-  }
-**/
-  for(var i = 0; i < arr.length; i++){
-        var query = arr[i];
-        console.log(query);
-        var params = {limit: 60};
-        request.post({
-                uri: httpUrlForTransaction,
-                json: {statements: [{statement: query, parameters:params}]}
-            },
-            function (err, res) {
-                cb(err, res.body);
-                console.log(res.body);
-            })
-          }
 }

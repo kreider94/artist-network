@@ -67,3 +67,12 @@ function removeLowTrackCount(array, callback) {
     }
     callback(array);
 }
+/**
+function executeQueries(arr){
+      generateQuery(arr, function(result){
+        runCypherQuery(result, function(finalresult){
+          return finalresult;
+      })
+    })
+}
+**/
