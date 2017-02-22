@@ -130,7 +130,8 @@ function getExtraData(arr) {
                             removeIfTooMany(uniques, function(final60) {
                                 concat(final60, user, function(result) {
                                     comparray(result,function(finals){
-                                      runCypherQuery(finals);
+                                        runCypherQuery(finals);
+                                      });
                                     });
                                 });
                             });
@@ -138,20 +139,44 @@ function getExtraData(arr) {
                     });
                 });
             });
-        });
     };
 }
 
+function deleteNodes(){
+
+      var delnodes = {
+        statements:[{
+          statement: "MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r"
+        }]
+      }
+
+      var datadel = JSON.stringify(delnodes);
+
+      $.ajax({
+          type: 'POST',
+          url: 'http://localhost:7474/db/data/transaction/commit',
+          headers: {
+              "Authorization": "Basic bmVvNGo6cGxleGlz",
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          url: 'http://localhost:7474/db/data/transaction/commit',
+          data: datadel
+      }, function(err, res, body) {
+          console.log(body);
+          console.log(res);
+          console.log(err);
+      })
+}
+
 function requery(query) {
-    // console.log('i am running');
-    // var FullQuery;
-    // for (var i = 0; i < query.length; i++) {
-      console.log(query);
+
       var que = {
         statements:[{
           statement: query
         }]
       }
+
       var datastr = JSON.stringify(que);
 
         $.ajax({
@@ -174,6 +199,7 @@ function requery(query) {
 function comparray(arr, callback){
 
   var results = [];
+  console.log(arr);
     for (var i = 0, j = arr.length; !found && i < j; i++) {
             if (usersList.indexOf(arr[i]) > -1) {
                 results.push(arr[i]);
@@ -184,12 +210,11 @@ function comparray(arr, callback){
   }
 
 function runCypherQuery(arr) {
-
+    deleteNodes();
     var query = [];
 
     for (var i = 0; i < arr.length; i++) {
         query[i] = "CREATE (u {id:" + arr[i].id + "})";
-        //console.log(query);
         requery(query[i]);
       }
 }
