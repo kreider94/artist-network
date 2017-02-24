@@ -14,28 +14,42 @@ var app = express();
 var url = "http://neo4j:plexis@www.neo4j.com";
 var httpUrlForTransaction = 'http://localhost:7474/db/data/transaction/commit';
 var usersList = [];
-
-app.use(express.static('artist-network'));
+/**
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.get('/', function(req, res, next) {
-    res.send('/index.html');
+http.createServer(app).listen(app.get('port'),
+  function(){
+    console.log("Express server listening on port " + app.get('port'));
 });
 
-app.post('http://localhost/', function (req, res) {
-  var data = req.body.data;
-  console.log('post request!!');
-  // postTest();
-})
+app.get('/', function(req, res, next) {
+    res.sendFile(path.join(__dirname, '../public', '/index.html'));
+});
+
+app.set('port', process.env.PORT);
 
 
-function listening() {
-    console.log("listening...");
-}
+app.listen(app.get('port'));
 
-app.listen(listening);
 module.exports = request;
 module.exports = app;
+**/
+
+"use strict";
+var express = require('express')
+var serveStatic = require('serve-static')
+
+app.get('/', function (req, res) {
+  res.render('index', {});
+});
+
+var staticBasePath = './';
+
+var app = express()
+
+app.use(serveStatic(staticBasePath, {'index': false}))
+app.listen(8080);

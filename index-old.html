@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--
+    <script src="jquery-3.1.0.js"></script>
+    <script src="audio/audio.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" href="styles/codemirror.css">
+<link rel="stylesheet" href="styles/codemirror-neo.css">
+<link rel="stylesheet" href="styles/cy2neo.css">
+<link rel="stylesheet" href="styles/neod3.css">
+<link rel="stylesheet" href="styles/datatable.css">
+<link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+<!-- <link rel="stylesheet" href="styles/sweet-alert.css">
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="mainuser.js"></script>
+    <script type="text/javascript" src="sortdata.js"></script>
+    <script type="text/javascript" src="positions.js"></script>
+    <script type="text/javascript" src="newuser.js"></script>
+    <script type="text/javascript" src="search.js"></script>
+    <title>The-Artist-Network</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://w.soundcloud.com/player/api.js"></script>
+    <script src="scripts/d3.min.js"></script>
+        <script src="scripts/codemirror.js"></script>
+        <script src="scripts/codemirror-cypher.js"></script>
+        <script src="scripts/vendor.js"></script>
+        <script src="scripts/sweet-alert.min.js"></script>
+        <script src="scripts/neod3.js"></script>
+        <script src="scripts/neod3-visualization.js"></script>
+        <script src="scripts/neo4d3.js"></script>
+        <script src="scripts/cy2neod3.js"></script>
+        <script src="scripts/jquery.dataTables.min.js"></script>
+        <script src="scripts/cypher.datatable.js"></script> --> -->
+
+        <link rel="stylesheet" href="styles/codemirror.css">
+        <link rel="stylesheet" href="styles/codemirror-neo.css">
+        <link rel="stylesheet" href="styles/cy2neo.css">
+        <link rel="stylesheet" href="styles/neod3.css">
+        <link rel="stylesheet" href="styles/datatable.css">
+        <link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+        <link rel="stylesheet" href="styles/sweet-alert.css">
+        <link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+        <script src="scripts/codemirror.js"></script>
+        <script src="scripts/codemirror-cypher.js"></script>
+        <script src="scripts/vendor.js"></script>
+        <script src="scripts/sweet-alert.min.js"></script>
+        <script src="scripts/neod3.js"></script>
+        <script src="scripts/neod3-visualization.js"></script>
+        <script src="scripts/neo4d3.js"></script>
+        <script src="scripts/cy2neod3.js"></script>
+        <script src="scripts/jquery.dataTables.min.js"></script>
+        <script src="scripts/cypher.datatable.js"></script>
+        <script type="text/javascript" src="public/jquery-3.1.0.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="mainuser.js"></script>
+        <script type="text/javascript" src="sortdata.js"></script>
+        <script type="text/javascript" src="positions.js"></script>
+        <script type="text/javascript" src="newuser.js"></script>
+        <script type="text/javascript" src="search.js"></script>
+          <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<img id="login-sc" onclick="javascript:WaitForSoundcloud();" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
+<button id="show-artists" onclick="ShowData(mainuser)">SHOW YOUR FAVOURITE ARTISTS</button>
+<span onclick="openNav()">open</span>
+<div id="mainuser"></div>
+
+  <form id="searchsc" class="my-form">
+      <input id="searchval" type="search" name="searchbar">
+      <input id="submit" type="button" onclick="javascript:search()" value="search">
+  </form>
+
+<!--
+<div id="artist-box" style="display:none">
+    <div id="artist-artwork"></div>
+    <img id="close" src="http://res.freestockphotos.biz/pictures/15/15106-illustration-of-a-red-close-button-pv.png"/>
+    <a id="artist-name"></a>
+    <a id="track-title"></a>
+    <audio id="audio" preload="auto"/>
+</div> -->
+
+<div id="sideNav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
+    <div class="userinfo">
+        <div id="username"></div>
+        <div id="description"></div>
+        <div id="newuser"></div>
+
+        <div class="infoTable">
+            <tr>
+                <td>Followers</td>
+                <td>Following</td>
+                <td>Tracks</td>
+            </tr>
+            <td>
+                <div id="followers"></div>
+                <div id="following"></div>
+                <div id="tracks"></div>
+            </td>
+        </div>
+    </div>
+  </div>
+
+      <div>
+
+      <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
+      MATCH (n) return n
+      </textarea>
+      <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
+      </div>
+
+  </head>
+  <body>
+    <div role="tabpanel" width="100%" height="100%">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist" style="hidden:true">
+        <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
+        <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="graph">
+        	<div class="tab-pane active" id="graph">&nbsp;</div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+    		//todo dynamic configuration
+    		var config = {}
+    	    var connection = function() { return {url:"http://localhost:7474", user:"neo4j",pass:"plexis"}; }
+    		new Cy2NeoD3(config,"graph","datatable","cypher","execute", connection , true);
+    	});
+      </script>
+    </body>
+    </html>
+<!DOCTYPE html>

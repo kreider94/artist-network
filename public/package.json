@@ -1,27 +1,26 @@
 {
   "name": "artist-network",
   "version": "1.0.0",
-  "description": "An artist network for portraying influences in music using the Soundcloud API",
-  "main": "api.js",
+  "description": "This README would normally document whatever steps are necessary to get your application up and running.",
+  "main": "app.js",
   "dependencies": {
-    "body-parser": "^1.16.0",
+    "body-parser": "latest",
+    "express": "latest",
     "graphdracula": "^1.1.1",
-    "http": "^0.0.0",
-    "mongo": "^0.1.0",
+    "mongo": "latest",
     "mongoose": "^4.8.2",
-    "morgan": "^1.8.0",
+    "morgan": "latest",
     "neo4j": "^2.0.0-RC2",
     "neo4j-driver": "^1.0.5",
-    "node-neo4j": "^2.0.3",
     "node-restful": "^0.2.6",
-    "nodemon": "^1.11.0",
-    "opencpu": "^1.0.0",
-    "r-script": "^0.0.3",
     "raphael": "^2.2.7",
-    "request": "^2.79.0",
-    "simple-neo4j": "^4.3.0"
+    "request": "latest",
+    "simple-neo4j": "latest",
   },
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kreider94/artist-network.git"

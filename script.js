@@ -10,6 +10,9 @@ var usersList = [];
 var userDP;
 var newUser;
 var hidden = false;
+var count = 0;
+var viz;
+var reslt;
 
 function WaitForSoundcloud() {
 
@@ -34,13 +37,14 @@ function WaitForSoundcloud() {
 
             function getUserData(usr, like, usrs) {
                 user = usr;
-                SC.get("/users/" + user.id + "/favorites").then(function(tracks) {
+
+                SC.get("/users/" + me.id + "/favorites").then(function(tracks) {
                     for (var i = 0; i < tracks.length; i++) {
                         like.push(tracks[i]);
                     }
                 });
 
-                SC.get("/users/" + user.id + "/followings", {
+                SC.get("/users/" + me.id + "/followings", {
                     limit: 200,
                     linked_partitioning: 1
                 }).then(function(users) {
@@ -93,29 +97,35 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 
-function ShowData(user) {
 
+function ShowData(user) {
+deleteNodes();
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {
                 removeLowFollowing(uniques, function(lowfol) {
-                    removeLowTrackCount(lowfol, function(lowtrack) {
-                        removeIfTooMany(lowtrack, function(final60) {
+                    removeLowFollowers(lowfol, function(lowtrack) {
+                      removeLowReposts(lowtrack, function(lowrep){
+                        removeLowTrackCount(lowrep, function(lowtra){
+                        removeIfTooMany(lowtra, function(final60) {
                             assignArray(final60, function(finaldata) {
-                                runCypherQuery(finaldata);
-                                getExtraData(finaldata);
+                                runCypherQuery(finaldata, function(queries){
+                                    getExtraData(queries);
+                                });
+
                             });
+                          });
                         });
+                      });
                     })
                 })
             });
         });
     });
 }
-
 function getExtraData(arr) {
 
-    for (var i = 0; i < arr.lengcth; i++) {
+    for (var i = 0; i < arr.length; i++) {
         const user = arr[i];
         user.artists = [];
         var params = {
@@ -129,8 +139,8 @@ function getExtraData(arr) {
                         unique(final, function(uniques) {
                             removeIfTooMany(uniques, function(final60) {
                                 concat(final60, user, function(result) {
-                                    comparray(result,function(finals){
-                                        runCypherQuery(finals);
+                                    comparray(user, result,function(finals){
+                                        createRelationships(finals, user);
                                       });
                                     });
                                 });
@@ -140,7 +150,62 @@ function getExtraData(arr) {
                 });
             });
     };
+
 }
+
+function returnGraph(){
+
+  var resgraph = {statements:[{
+    statement: "MATCH path = (n)-[r]->(m) RETURN path",
+                  "resultDataContents":["graph"]
+                }]
+              }
+
+
+    var resg = JSON.stringify(resgraph);
+  function testAjax(handleData){
+   $.ajax({
+      type: 'POST',
+      url: 'http://localhost:7474/db/data/transaction/commit',
+      headers: {
+          "Authorization": "Basic bmVvNGo6cGxleGlz",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      url: 'http://localhost:7474/db/data/transaction/commit',
+      data: resg,
+      success:function(data){
+        handleData(data);
+          }
+      });
+    }
+
+    testAjax(function(output){
+      console.log(output);
+      reslt = output
+    });
+
+    function idIndex(a,id) {
+      for (var i=0;i<a.length;i++) {
+        if (a[i].id == id) return i;}
+      return null;
+    }
+
+    var nodes=[], links=[];
+
+    reslt.results[0].data.forEach(function (row) {
+       row.graph.nodes.forEach(function (n) {
+         if (idIndex(nodes,n.id) == null)
+           nodes.push({id:n.id,label:n.labels[0],title:n.properties.name});
+       });
+       links = links.concat( row.graph.relationships.map(function(r) {
+         return {start:idIndex(nodes,r.startNode),end:idIndex(nodes,r.endNode),type:r.type};
+       }));
+
+    });
+    viz = {nodes:nodes, links:links};
+};
+
 
 function deleteNodes(){
 
@@ -196,40 +261,53 @@ function requery(query) {
         })
 }
 
-function comparray(arr, callback){
+function common(user, arr, callback) {
+    var origLen = arr.length,
+        found, x, y;
 
-  var results = [];
-  console.log(arr);
-    for (var i = 0, j = arr.length; !found && i < j; i++) {
-            if (usersList.indexOf(arr[i]) > -1) {
-                results.push(arr[i]);
-                console.log(results);
+    var data = [];
+    for (x = 0; x < usersList.length; x++) {
+        found = undefined;
+        for (y = 0; y < arr.length; y++) {
+            if (usersList[x].id === arr[y].id) {
+                found = true;
+                data.push(arr[y]);
             }
+        }
     }
-    callback(results);
+    console.log(user.username);
+    console.log(data);
+    callback(data);
+}
+
+function comparray(user, arr, callback){
+    var results = [];
+
+    common(user,arr,function(results){
+      callback(results);
+    })
   }
 
-function runCypherQuery(arr) {
-    deleteNodes();
+function runCypherQuery(arr, callback) {
+    var data = arr;
     var query = [];
 
     for (var i = 0; i < arr.length; i++) {
-        query[i] = "CREATE (u {id:" + arr[i].id + "})";
+        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "' })";
         requery(query[i]);
       }
+      callback(data);
 }
 
-
-
-/**
-    likesToUsers(likes, likesUsers);
-    getFinalData(likesUsers, followingList, usersList);
-    setRanking(usersList);
-    mainData.sort(sortOn("username"));
-    unique(mainData, usersList);
-    removeLowFollowers(usersList);
-    removeLowTrackCount(usersList);
-    removeLowReposts(usersList);
-    increaseRanking(usersList);
-    removeIfTooMany(usersList);
-**/
+function createRelationships(arr,user){
+  // match user with every element in array where element exists in database
+  var query = []
+  for (var i = 0; i < arr.length; i++) {
+    if(user.id != arr[i].id){
+        query[i] = "MATCH (a:User {id: " + user.id + " } ),(b:User {id: "+ arr[i].id +" }) CREATE (a)-[:LIKES]->(b)";
+        console.log(query[i]);
+        requery(query[i]);
+        count++;
+    }
+  }
+}

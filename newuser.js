@@ -30,7 +30,7 @@ function likesToUsers(arr, callback) {
 
 function getFinalData(a, b, callback) {
   var data = [];
-    data = a.concat(b).sort(sortOn("username"));
+    data = a.concat(b);
   callback(data);
 }
 
@@ -63,7 +63,7 @@ function unique(arr, callback) {
 function removeIfTooMany(arr, callback){
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
-    while(arr.length > 60){
+    while(arr.length > 70){
         arr.splice(1,1);
     }
     callback(arr);
@@ -83,5 +83,6 @@ function assignArray(b, callback){
   for(var i = 0; i < b.length; i++){
     usersList[i] = b[i];
   }
+  usersList.sort(sortOn("username"));
   callback(usersList);
 }

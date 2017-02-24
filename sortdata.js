@@ -1,15 +1,12 @@
-
-
 function setRanking(arr, callback) {
-  var data = [];
     for (var i = 0; i < arr.length; i++) {
-         data = (arr[i].ranking = 0);
+        arr[i].ranking = 0;
     }
-    callback(data);
+    callback(arr);
 }
 
 function sortOn(property) {
-    return function (a, b) {
+    return function(a, b) {
         if (a[property] < b[property]) {
             return -1;
         } else if (a[property] > b[property]) {
@@ -20,59 +17,50 @@ function sortOn(property) {
     };
 }
 
-function increaseRanking(arr){
-    for(i=0; i < arr.length; i++){
-        if(arr[i].followers_count > 10000){
-           arr[i].ranking++;
-         }
+function increaseRanking(arr, callback) {
+    for (i = 0; i < arr.length; i++) {
+        if (arr[i].followers_count > 10000) {
+            arr[i].ranking++;
+        }
     }
+    callback(arr);
 }
 
 //remove users with low following count
 function removeLowFollowers(array, callback) {
-  var data = [];
     for (var i = 0; i < array.length; i++) {
         if (array[i].followers_count < array[i].followings_count || array[i].followers_count === 0) {
-             data = (array.splice(i, 1));
+            array.splice(i, 1);
         }
     }
-    callback(data);
+    callback(array);
 }
 
-function removeLowFollowing(array, callback){
+function removeLowFollowing(array, callback) {
     for (var i = 0; i < array.length; i++) {
-       if(array[i].followings_count < 10){
-             array.splice(i,1);
-       }
+        if (array[i].followings_count < 10) {
+            array.splice(i, 1);
+        }
     }
     callback(array);
 }
 
 //decrease if ranking is 0
 function removeLowReposts(array, callback) {
-  var data = [];
     for (var i = 0; i < array.length; i++) {
         if (array[i].reposts_count === 0) {
-            data = (array.splice(i, 1));
-        }
-    }
-    callback(data);
-}
-
-function removeLowTrackCount(array, callback) {
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].track_count < 15) {
             array.splice(i, 1);
         }
     }
     callback(array);
 }
-/**
-function executeQueries(arr){
-      generateQuery(arr, function(result){
-        runCypherQuery(result, function(finalresult){
-          return finalresult;
-      })
-    })
+
+function removeLowTrackCount(array, callback) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].track_count === 0) {
+            array.splice(i, 1);
+        }
+        console.log(array.length);
+    }
+    callback(array);
 }
-**/

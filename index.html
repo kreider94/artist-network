@@ -1,105 +1,105 @@
-<!doctype html>
-<html class="no-js" lang="">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="main.css">
-    <script src="jquery-3.1.0.js"></script>
-    <script src="audio/audio.min.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="http://cdn.graphalchemist.com/alchemy.min.js"></script>
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
-    <script src="//cdn.opencpu.org/opencpu-0.4.js"></script>
-        <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="mainuser.js"></script>
-    <script type="text/javascript" src="sortdata.js"></script>
-    <script type="text/javascript" src="positions.js"></script>
-    <script type="text/javascript" src="newuser.js"></script>
-    <script type="text/javascript" src="search.js"></script>
-    <title>The-Artist-Network</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="http://w.soundcloud.com/player/api.js"></script>
+<link rel="stylesheet" href="styles/codemirror.css">
+<link rel="stylesheet" href="styles/codemirror-neo.css">
+<link rel="stylesheet" href="styles/cy2neo.css">
+<link rel="stylesheet" href="styles/neod3.css">
+<link rel="stylesheet" href="styles/datatable.css">
+<link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+<link rel="stylesheet" href="styles/sweet-alert.css">
+<link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+<script src="jquery-3.1.0.js"></script>
+<script src="scripts/codemirror.js"></script>
+<script src="scripts/codemirror-cypher.js"></script>
+<script src="scripts/vendor.js"></script>
+<script src="scripts/sweet-alert.min.js"></script>
+<script src="scripts/neod3.js"></script>
+<script src="scripts/neod3-visualization.js"></script>
+<script src="scripts/neo4d3.js"></script>
+<script src="scripts/cy2neod3.js"></script>
+<script src="scripts/jquery.dataTables.min.js"></script>
+<script src="scripts/cypher.datatable.js"></script>
+<script type="text/javascript" src="public/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="mainuser.js"></script>
+<script type="text/javascript" src="sortdata.js"></script>
+<script type="text/javascript" src="positions.js"></script>
+<script type="text/javascript" src="newuser.js"></script>
+<script type="text/javascript" src="search.js"></script>
+  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 
 </head>
 <body>
 
-<script src="http://cdn.graphalchemist.com/alchemy.min.js"></script>
-<script type="text/javascript">
-    alchemy.begin({
-        dataSource: "users.json",
-        nodeCaption: 'name',
-        nodeMouseOver: 'name',
-        cluster: true,
-        clusterColours: ["#1B9E77","#D95F02","#7570B3","#E7298A","#66A61E","#E6AB02"]})
-</script>
+  <div id="sideNav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
+      <div class="userinfo">
+          <div id="username"></div>
+          <div id="description"></div>
+          <div id="newuser"></div>
 
-    <script>
-        var svgContainer = d3.select("body").append("svg");
+          <div class="infoTable">
+              <tr>
+                  <td>Followers</td>
+                  <td>Following</td>
+                  <td>Tracks</td>
+              </tr>
+              <td>
+                  <div id="followers"></div>
+                  <div id="following"></div>
+                  <div id="tracks"></div>
+              </td>
+          </div>
+      </div>
+    </div>
+  <div>
 
-        //Draw the Rectangle
-        var rectangle = svgContainer.append("rect")
-            .attr("x", 10)
-            .attr("y", 10)
-            .attr("width", 70)
-            .attr("height", 70)
-            .attr("id","svg");
-    </script>
+  <textarea name="cypher" id="cypher" style="display:none" data-lang="cypher" class="code form-control">
+  MATCH (n)
+  RETURN n
+  </textarea>
+  <a title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
+  </div>
 
-<img id="login-sc" onclick="javascript:WaitForSoundcloud();ShowData(mainuser)" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
-<button id="show-artists" onclick="ShowData(mainuser)" style="top:50% left:50%">SHOW YOUR FAVOURITE ARTISTS</button>
-<span onclick="openNav()">open</span>
-<div id="mainuser"></div>
+  <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
+  <button id="show-artists" onclick="ShowData(mainuser)" style="top:50% left:50%">SHOW YOUR FAVOURITE ARTISTS</button>
+  <button id="return-graph" onclick="javascript:returnGraph()" style="top:50% left:50%">RETURN GRAPH</button>
+  <span onclick="openNav()">open</span>
+  <div id="mainuser"></div>
 
-<div id="container" style="width:800px height:800px">
+    <form id="searchsc" class="my-form">
+        <input id="searchval" type="search" name="searchbar">
+        <input id="submit" type="button" onclick="javascript:search()" value="search">
+    </form>
 
-  <form id="searchsc" class="my-form">
-      <input id="searchval" type="search" name="searchbar">
-      <input id="submit" type="button" onclick="javascript:search()" value="search">
-  </form>
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <!-- <ul class="nav nav-tabs" role="tablist" style="hidden:true">
+    <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
+    <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+  </ul> -->
 
-
-<div id="artist-box" style="display:none">
-    <div id="artist-artwork"></div>
-    <img id="close" src="http://res.freestockphotos.biz/pictures/15/15106-illustration-of-a-red-close-button-pv.png"/>
-    <a id="artist-name"></a>
-    <a id="track-title"></a>
-    <audio id="audio" preload="auto"/>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="graph">
+    	<div class="tab-pane active" id="graph">&nbsp;</div>
+    </div>
+  </div>
 </div>
 
 
-<script>
-    audiojs.events.ready(function () {
-        var as = audiojs.createAll();
-    });
+
+<script type="text/javascript">
+    $(document).ready(function() {
+		//todo dynamic configuration
+		var config = {}
+	    var connection = function() { return {url:"http://localhost:7474", user:"neo4j",pass:"plexis"}; }
+		new Cy2NeoD3(config,"graph","datatable","cypher","execute", connection , true);
+	});
 </script>
-
-<div id="sideNav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
-    <div class="userinfo">
-        <div id="username"></div>
-        <div id="description"></div>
-        <div id="newuser"></div>
-
-        <div class="infoTable">
-            <tr>
-                <td>Followers</td>
-                <td>Following</td>
-                <td>Tracks</td>
-            </tr>
-            <td>
-                <div id="followers"></div>
-                <div id="following"></div>
-                <div id="tracks"></div>
-            </td>
-        </div>
-    </div>
-
 </body>
 </html>
-<!DOCTYPE html>
