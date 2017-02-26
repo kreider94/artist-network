@@ -60,7 +60,6 @@ function removeLowTrackCount(array, callback) {
         if (array[i].track_count === 0) {
             array.splice(i, 1);
         }
-        console.log(array.length);
     }
     callback(array);
 }

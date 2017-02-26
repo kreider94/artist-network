@@ -13,6 +13,7 @@ var hidden = false;
 var count = 0;
 var viz;
 var reslt;
+var data;
 
 function WaitForSoundcloud() {
 
@@ -20,9 +21,9 @@ function WaitForSoundcloud() {
         setTimeout(WaitForSoundcloud, 500);
     } else {
         SC.initialize({
-            client_id: "235BeLHSHTyBwKe6AfUVBZT6kBleLCYY",
-            client_secret: "AwXJaNToU9Oq5fG65fuOkaJVxhIreAxI",
-            redirect_uri: "http://localhost/artist-network/callback.html"
+            client_id: "m3kCd053xVXYtaEYQZ2e87SWSSuYnunA",
+            client_secret: "Ur0s170Mz0aorJO700TOSY7qwdTWbv6i",
+            redirect_uri: "http://plexis.org/callback.html"
         });
 
         var surl;
@@ -99,30 +100,31 @@ function closeNav() {
 
 
 function ShowData(user) {
-deleteNodes();
+    deleteNodes();
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {
                 removeLowFollowing(uniques, function(lowfol) {
                     removeLowFollowers(lowfol, function(lowtrack) {
-                      removeLowReposts(lowtrack, function(lowrep){
-                        removeLowTrackCount(lowrep, function(lowtra){
-                        removeIfTooMany(lowtra, function(final60) {
-                            assignArray(final60, function(finaldata) {
-                                runCypherQuery(finaldata, function(queries){
-                                    getExtraData(queries);
-                                });
+                        removeLowReposts(lowtrack, function(lowrep) {
+                            removeLowTrackCount(lowrep, function(lowtra) {
+                                removeIfTooMany(lowtra, function(final60) {
+                                    assignArray(final60, function(finaldata) {
+                                        runCypherQuery(finaldata, function(queries) {
+                                            getExtraData(queries);
+                                        });
 
+                                    });
+                                });
                             });
-                          });
                         });
-                      });
                     })
                 })
             });
         });
     });
 }
+
 function getExtraData(arr) {
 
     for (var i = 0; i < arr.length; i++) {
@@ -139,9 +141,8 @@ function getExtraData(arr) {
                         unique(final, function(uniques) {
                             removeIfTooMany(uniques, function(final60) {
                                 concat(final60, user, function(result) {
-                                    comparray(user, result,function(finals){
+                                    comparray(user, result, function(finals) {
                                         createRelationships(finals, user);
-                                      });
                                     });
                                 });
                             });
@@ -149,116 +150,199 @@ function getExtraData(arr) {
                     });
                 });
             });
+        });
     };
 
 }
 
-function returnGraph(){
+function returnGraph() {
 
-  var resgraph = {statements:[{
-    statement: "MATCH path = (n)-[r]->(m) RETURN path",
-                  "resultDataContents":["graph"]
-                }]
-              }
-
+    var resgraph = {
+        statements: [{
+            statement: "MATCH path = (n)-[r]->(m) RETURN path",
+            "resultDataContents": ["graph"]
+        }]
+    }
 
     var resg = JSON.stringify(resgraph);
-  function testAjax(handleData){
-   $.ajax({
-      type: 'POST',
-      url: 'http://localhost:7474/db/data/transaction/commit',
-      headers: {
-          "Authorization": "Basic bmVvNGo6cGxleGlz",
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      url: 'http://localhost:7474/db/data/transaction/commit',
-      data: resg,
-      success:function(data){
-        handleData(data);
-          }
-      });
-    }
 
-    testAjax(function(output){
-      console.log(output);
-      reslt = output
-    });
-
-    function idIndex(a,id) {
-      for (var i=0;i<a.length;i++) {
-        if (a[i].id == id) return i;}
-      return null;
-    }
-
-    var nodes=[], links=[];
-
-    reslt.results[0].data.forEach(function (row) {
-       row.graph.nodes.forEach(function (n) {
-         if (idIndex(nodes,n.id) == null)
-           nodes.push({id:n.id,label:n.labels[0],title:n.properties.name});
-       });
-       links = links.concat( row.graph.relationships.map(function(r) {
-         return {start:idIndex(nodes,r.startNode),end:idIndex(nodes,r.endNode),type:r.type};
-       }));
-
-    });
-    viz = {nodes:nodes, links:links};
-};
-
-
-function deleteNodes(){
-
-      var delnodes = {
-        statements:[{
-          statement: "MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r"
-        }]
-      }
-
-      var datadel = JSON.stringify(delnodes);
-
-      $.ajax({
-          type: 'POST',
-          url: 'http://localhost:7474/db/data/transaction/commit',
-          headers: {
-              "Authorization": "Basic bmVvNGo6cGxleGlz",
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          url: 'http://localhost:7474/db/data/transaction/commit',
-          data: datadel
-      }, function(err, res, body) {
-          console.log(body);
-          console.log(res);
-          console.log(err);
-      })
-}
-
-function requery(query) {
-
-      var que = {
-        statements:[{
-          statement: query
-        }]
-      }
-
-      var datastr = JSON.stringify(que);
-
+    function testAjax(handleData) {
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:7474/db/data/transaction/commit',
+            url: 'http://plexis.org:7474/db/data/transaction/commit',
             headers: {
                 "Authorization": "Basic bmVvNGo6cGxleGlz",
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            url: 'http://localhost:7474/db/data/transaction/commit',
-            data: datastr
-        }, function(err, res, body) {
-            //console.log(body);
-            //console.log(res);
-            //console.log(err);
-        })
+            data: resg,
+            success: function(data) {
+                handleData(data);
+            }
+        });
+    }
+
+    testAjax(function(output) {
+        reslt = output
+    });
+     //get links and nodes from results
+    function idIndex(a, id) {
+        for (var i = 0; i < a.length; i++) {
+            if (a[i].id == id) return i;
+        }
+        return null;
+    }
+
+    var nodes = [],
+        links = [];
+    reslt.results[0].data.forEach(function(row) {
+        row.graph.nodes.forEach(function(n) {
+            if (idIndex(nodes, n.id) == null)
+                nodes.push({
+                    id: n.id,
+                    label: n.labels[0],
+                    title: n.properties.username,
+                    avatar: n.properties.avatar
+                });
+        });
+        links = links.concat(row.graph.relationships.map(function(r) {
+            return {
+                source: idIndex(nodes, r.startNode),
+                target: idIndex(nodes, r.endNode),
+                type: r.type,
+                weight: 2
+            };
+        }));
+    });
+    viz = {
+        nodes: nodes,
+        links: links
+    };
+
+    data = JSON.stringify(viz);
+    makeNetwork(viz);
+};
+//
+// function returnGraph(){
+//
+//     var resgraph = {
+//         statements: [{
+//             statement: "MATCH path = (n)-[r]->(m) RETURN path",
+//             "resultDataContents": ["graph"]
+//         }]
+//     }
+//
+//     var resg = JSON.stringify(resgraph);
+//
+//     function testAjax(handledata){
+//         $.ajax({
+//             type: 'POST',
+//             url: 'http://plexis.org:7474/db/data/transaction/commit',
+//             headers: {
+//                 "Authorization": "Basic bmVvNGo6cGxleGlz",
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             },
+//             data: resg,
+//             success: function(obj) {
+//               handledata(obj);
+//             }
+//         });
+//       }
+//       testAjax(function(output){
+//         data = output;
+//       });
+//
+//       var graph = neo4j2d3(data.results[0].data);
+//       console.log(graph);
+//       makeNetwork(graph);
+//     }
+//
+//
+//      //get links and nodes from results
+// function neo4j2d3(o){
+//     function idIndex(a, id) {
+//         for (var i = 0; i < a.length; i++) {
+//             if (a[i].id == id) return i;
+//         }
+//         return null;
+//     }
+//
+//     var nodes = [],
+//         links = [];
+//     o.forEach(function(row) {
+//         row.graph.nodes.forEach(function(n) {
+//             if (idIndex(nodes, n.id) == null)
+//                 nodes.push({
+//                     id: n.id,
+//                     label: n.labels[0],
+//                     title: n.properties.username
+//                 });
+//         });
+//         links = links.concat(row.graph.relationships.map(function(r) {
+//             return {
+//                 start: idIndex(nodes, r.startNode),
+//                 end: idIndex(nodes, r.endNode),
+//                 type: r.type,
+//             };
+//         }));
+//     });
+//     return ({nodes: nodes, links: links});
+// };
+//
+
+function deleteNodes() {
+
+    var delnodes = {
+        statements: [{
+            statement: "MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r"
+        }]
+    }
+
+    var datadel = JSON.stringify(delnodes);
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://plexis.org:7474/db/data/transaction/commit',
+        headers: {
+            "Authorization": "Basic bmVvNGo6cGxleGlz",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        url: 'http://plexis.org:7474/db/data/transaction/commit',
+        data: datadel
+    }, function(err, res, body) {
+        console.log(body);
+        console.log(res);
+        console.log(err);
+    })
+}
+
+function requery(query) {
+
+    var que = {
+        statements: [{
+            statement: query
+        }]
+    }
+
+    var datastr = JSON.stringify(que);
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://plexis.org:7474/db/data/transaction/commit',
+        headers: {
+            "Authorization": "Basic bmVvNGo6cGxleGlz",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        url: 'http://plexis.org:7474/db/data/transaction/commit',
+        data: datastr
+    }, function(err, res, body) {
+        //console.log(body);
+        //console.log(res);
+        //console.log(err);
+    })
 }
 
 function common(user, arr, callback) {
@@ -275,39 +359,37 @@ function common(user, arr, callback) {
             }
         }
     }
-    console.log(user.username);
-    console.log(data);
     callback(data);
 }
 
-function comparray(user, arr, callback){
+function comparray(user, arr, callback) {
     var results = [];
 
-    common(user,arr,function(results){
-      callback(results);
+    common(user, arr, function(results) {
+        callback(results);
     })
-  }
+}
 
 function runCypherQuery(arr, callback) {
     var data = arr;
     var query = [];
 
     for (var i = 0; i < arr.length; i++) {
-        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "' })";
+        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', avatar: '" + arr[i].avatar_url + "' })";
         requery(query[i]);
-      }
-      callback(data);
+    }
+    callback(data);
 }
 
-function createRelationships(arr,user){
-  // match user with every element in array where element exists in database
-  var query = []
-  for (var i = 0; i < arr.length; i++) {
-    if(user.id != arr[i].id){
-        query[i] = "MATCH (a:User {id: " + user.id + " } ),(b:User {id: "+ arr[i].id +" }) CREATE (a)-[:LIKES]->(b)";
-        console.log(query[i]);
-        requery(query[i]);
-        count++;
+function createRelationships(arr, user) {
+    // match user with every element in array where element exists in database
+    var query = []
+    for (var i = 0; i < arr.length; i++) {
+        if (user.id != arr[i].id) {
+            query[i] = "MATCH (a:User {id: " + user.id + " } ),(b:User {id: " + arr[i].id + " }) CREATE (a)-[r:LIKES{weight:2}]->(b) RETURN a,r,b";
+            console.log(query[i]);
+            requery(query[i]);
+            count++;
+        }
     }
-  }
 }

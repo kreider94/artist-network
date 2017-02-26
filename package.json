@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "An artist network for portraying influences in music using the Soundcloud API",
   "main": "api.js",
+  "start": "node app.js",
   "dependencies": {
+    "d3": "3",
     "body-parser": "^1.16.0",
     "graphdracula": "^1.1.1",
     "http": "^0.0.0",
@@ -31,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/kreider94/artist-network/issues"
   },
-  "homepage": "https://github.com/kreider94/artist-network#readme"
+  "homepage": "https://github.com/kreider94/artist-network#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

@@ -1,105 +1,195 @@
 <html>
+
 <head>
-<link rel="stylesheet" href="styles/codemirror.css">
-<link rel="stylesheet" href="styles/codemirror-neo.css">
-<link rel="stylesheet" href="styles/cy2neo.css">
-<link rel="stylesheet" href="styles/neod3.css">
-<link rel="stylesheet" href="styles/datatable.css">
-<link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
-<link rel="stylesheet" href="styles/sweet-alert.css">
-<link rel="stylesheet" href="styles/gh-fork-ribbon.css">
-<script src="jquery-3.1.0.js"></script>
-<script src="scripts/codemirror.js"></script>
-<script src="scripts/codemirror-cypher.js"></script>
-<script src="scripts/vendor.js"></script>
-<script src="scripts/sweet-alert.min.js"></script>
-<script src="scripts/neod3.js"></script>
-<script src="scripts/neod3-visualization.js"></script>
-<script src="scripts/neo4d3.js"></script>
-<script src="scripts/cy2neod3.js"></script>
-<script src="scripts/jquery.dataTables.min.js"></script>
-<script src="scripts/cypher.datatable.js"></script>
-<script type="text/javascript" src="public/jquery-3.1.0.js"></script>
-<script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="mainuser.js"></script>
-<script type="text/javascript" src="sortdata.js"></script>
-<script type="text/javascript" src="positions.js"></script>
-<script type="text/javascript" src="newuser.js"></script>
-<script type="text/javascript" src="search.js"></script>
-  <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="main.css"></script>
+    <script type="text/javascript" src="jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="mainuser.js"></script>
+    <script type="text/javascript" src="sortdata.js"></script>
+    <script type="text/javascript" src="positions.js"></script>
+    <script type="text/javascript" src="newuser.js"></script>
+    <script type="text/javascript" src="search.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="d3.v3.min.js"></script>
+
+    <meta charset="utf-8">
+    <style>
+        .links line {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
 
 
+
+
+        .nodes circle {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+    </style>
 </head>
+
 <body>
 
-  <div id="sideNav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
-      <div class="userinfo">
-          <div id="username"></div>
-          <div id="description"></div>
-          <div id="newuser"></div>
+    <div id="sideNav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
+        <div class="userinfo">
+            <div id="username"></div>
+            <div id="description"></div>
+            <div id="newuser"></div>
 
-          <div class="infoTable">
-              <tr>
-                  <td>Followers</td>
-                  <td>Following</td>
-                  <td>Tracks</td>
-              </tr>
-              <td>
-                  <div id="followers"></div>
-                  <div id="following"></div>
-                  <div id="tracks"></div>
-              </td>
-          </div>
-      </div>
+            <div class="infoTable">
+                <tr>
+                    <td>Followers</td>
+                    <td>Following</td>
+                    <td>Tracks</td>
+                </tr>
+                <td>
+                    <div id="followers"></div>
+                    <div id="following"></div>
+                    <div id="tracks"></div>
+                </td>
+            </div>
+        </div>
     </div>
-  <div>
+    <div>
 
-  <textarea name="cypher" id="cypher" style="display:none" data-lang="cypher" class="code form-control">
-  MATCH (n)
-  RETURN n
-  </textarea>
-  <a title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
-  </div>
+        <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
+        <button id="show-artists" onclick="ShowData(mainuser)" style="top:50% left:50%">SHOW YOUR FAVOURITE ARTISTS</button>
+        <button id="return-graph" onclick="javascript:returnGraph()" style="top:50% left:50%">RETURN GRAPH</button>
+        <span onclick="openNav()">open</span>
+        <div id="mainuser"></div>
 
-  <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
-  <button id="show-artists" onclick="ShowData(mainuser)" style="top:50% left:50%">SHOW YOUR FAVOURITE ARTISTS</button>
-  <button id="return-graph" onclick="javascript:returnGraph()" style="top:50% left:50%">RETURN GRAPH</button>
-  <span onclick="openNav()">open</span>
-  <div id="mainuser"></div>
+        <form id="searchsc" class="my-form">
+            <input id="searchval" type="search" name="searchbar">
+            <input id="submit" type="button" onclick="javascript:search()" value="search">
+        </form>
 
-    <form id="searchsc" class="my-form">
-        <input id="searchval" type="search" name="searchbar">
-        <input id="submit" type="button" onclick="javascript:search()" value="search">
-    </form>
+        <script type="text/javascript">
+            function makeNetwork(graph) {
+                var width = 800,
+                    height = 800;
 
-<div role="tabpanel">
-  <!-- Nav tabs -->
-  <!-- <ul class="nav nav-tabs" role="tablist" style="hidden:true">
-    <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
-    <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
-  </ul> -->
+                var color = d3.scale.category20();
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="graph">
-    	<div class="tab-pane active" id="graph">&nbsp;</div>
-    </div>
-  </div>
-</div>
+                var force = d3.layout.force()
+                    .charge(-300)
+                    .linkDistance(100)
+                    .size([width, height]);
+
+                var svg = d3.select("body").append("svg")
+                    .attr("width", "100%")
+                    .attr("height", "100%");
+
+                var nodes = graph.nodes;
+                var links = graph.links;
+                console.log(nodes);
+                console.log(links);
+                force
+                    .nodes(nodes)
+                    .links(links)
+                    .start();
+
+                var link = svg.selectAll(".link")
+                    .data(links)
+                    .enter().append("line")
+                    .attr("class", "link")
+                    .style("stroke-width", function(d) {
+                        console.log(d.target);
+                        return d.target;
+                    })
+                    .style("stroke", function(d) {
+                        return color(d.value)
+                    });;
+
+                var gnodes = svg.selectAll('g.gnode') //('g.gnode')
+                    .data(nodes)
+                    .enter()
+                    .append('g')
+                    .classed('gnode', true)
 
 
+                // var node = gnodes.append("circle")
+                //     .attr('x', -9)
+                //     .attr('y', -19)
+                //     .attr("r", 10)
+                //     .attr("xlink:href", function(d) {
+                //         return d.avatar;
+                //     })
+                //     .on("mouseover", function(d) {
+                //         d3.select(labels[0][d.index]).style("visibility", "visible")
+                //     })
+                //     .on("mouseout", function(d) {
+                //         d3.select(labels[0][d.index]).style("visibility", "hidden")
+                //     })
+                // .call(force.drag);
 
-<script type="text/javascript">
-    $(document).ready(function() {
-		//todo dynamic configuration
-		var config = {}
-	    var connection = function() { return {url:"http://localhost:7474", user:"neo4j",pass:"plexis"}; }
-		new Cy2NeoD3(config,"graph","datatable","cypher","execute", connection , true);
-	});
-</script>
-</body>
+                var labels = gnodes.append("text")
+                    .text(function(d) {
+                        return d.username;
+                    });
+
+                var defs = gnodes.append("defs").attr("id", "imgdefs")
+
+                var image = gnodes.append("pattern")
+                    .attr("id", "image")
+                    .attr("height", 30)
+                    .attr("width", 30)
+                    .attr("x", "0")
+                    .attr("y", "0")
+                image.append("image")
+                    .attr("height", 30)
+                    .attr("width", 30)
+                    .attr("xlink:href", function(d) {
+                        return d.avatar;
+                    });
+
+                var node = gnodes.append("circle")
+                    .attr("r", 15)
+                    .attr("fill", "url(#image)").call(force.drag);
+
+                force.on("tick", function() {
+                    link.attr("x1", function(d) {
+                            return d.source.x;
+                        })
+                        .attr("y1", function(d) {
+                            return d.source.y;
+                        })
+                        .attr("x2", function(d) {
+                            return d.target.x;
+                        })
+                        .attr("y2", function(d) {
+                            return d.target.y;
+                        });
+
+                    gnodes.attr("transform", function(d) {
+                        return 'translate(' + [d.x, d.y] + ')';
+                    });
+                });
+
+                function dragstarted(d) {
+                    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                    d.fx = d.x;
+                    d.fy = d.y;
+                }
+
+                function dragged(d) {
+                    d.fx = d3.event.x;
+                    d.fy = d3.event.y;
+                }
+
+                function dragended(d) {
+                    if (!d3.event.active) simulation.alphaTarget(0);
+                    d.fx = null;
+                    d.fy = null;
+                }
+
+            }
+        </script>
+
 </html>
+</body>
