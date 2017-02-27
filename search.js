@@ -10,7 +10,7 @@ function search() {
 
     function getForm(data, callback) {
         SC.get('/resolve', {
-            client_id: '235BeLHSHTyBwKe6AfUVBZT6kBleLCYY',
+            client_id: 'm3kCd053xVXYtaEYQZ2e87SWSSuYnunA',
             url: 'https://soundcloud.com/' + data
         }).then(function(user) {
             searchUser = user;

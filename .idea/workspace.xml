@@ -2,81 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea3995f-8cef-4d6f-8743-985943c847c1" name="Default" comment="Implemented Cy2neo, shows graph nodes well but no relationships shown. Need to figure out how to change content in circles. Managed to return graph type from neo4j, viz variable containing nodes and links so can use D3">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/.coveralls.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/.eslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/src/browser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/src/debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/src/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/body-parser/node_modules/debug/src/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/.coveralls.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/.eslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/src/browser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/src/debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/src/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/debug/src/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/finalhandler/HISTORY.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/finalhandler/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/finalhandler/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/finalhandler/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/node_modules/finalhandler/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/connect/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/.coveralls.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/.eslintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/.npmignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/src/browser.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/src/debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/src/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/morgan/node_modules/debug/src/node.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/.babelrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/gulpfile.babel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/get-servers-util.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/rediscovery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/round-robin-array.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/routing-table.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/routing-driver.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j/examples/basic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j/examples/deadlocks._coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/temp-index.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/temp-index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/temp-index.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/strip-json-comments/index.js" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/.npmignore" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/.travis.yml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/ISSUE_TEMPLATE.md" afterPath="" />
@@ -91,6 +16,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/build/gyp-mac-tool" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.cc" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/install.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/lib/binding/Release/node-v11-darwin-x64/fse.node" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/lib/binding/Release/node-v46-darwin-x64/fse.node" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/lib/binding/Release/node-v47-darwin-x64/fse.node" afterPath="" />
@@ -828,7 +754,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/.eslintignore" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/.eslintrc" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/CONTRIBUTING.md" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/LICENSE" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/README.md" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/qs/dist/qs.js" afterPath="" />
@@ -1000,12 +925,10 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-ansi/license" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-ansi/package.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-ansi/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/cli.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/index.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/license" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/package.json" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/strip-json-comments/strip-json-comments.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/supports-color/cli.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/supports-color/index.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/supports-color/license" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/node_modules/supports-color/package.json" afterPath="" />
@@ -1172,100 +1095,19 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/src/methods.cc" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/src/storage.cc" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fsevents/src/thread.cc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/.coveralls.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/.eslintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/TESTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/THIRD-PARTY-NOTICES" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/conf.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/connect_test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/gssapi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/mongocr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/plain.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/scram.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/sspi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/auth/x509.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/command_result.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/commands.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/connection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/logger.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/pool.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/connection/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/cursor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/error.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/tools/smoke_plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/mongos.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/read_preference.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/replset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/replset_state.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/topologies/shared.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/wireprotocol/2_4_support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/wireprotocol/2_6_support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/wireprotocol/3_2_support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/wireprotocol/commands.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/lib/wireprotocol/shared.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/simple_2_document_limit_toArray.dat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/test1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/test_bug.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb-core/yarn.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/.coveralls.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/.eslintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/HISTORY.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/THIRD-PARTY-NOTICES" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/boot_auth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/conf.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/insert_bench.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/admin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/aggregation_cursor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/apm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/bulk/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/bulk/ordered.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/bulk/unordered.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/command_cursor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/cursor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/db.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/gridfs-stream/download.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/gridfs-stream/index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/gridfs-stream/upload.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/gridfs/chunk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/gridfs/grid_store.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/metadata.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongo_client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongos.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/read_preference.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/replset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/topology_base.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/url_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/yarn.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/coffeelint.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Constraint.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Constraint.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Constraint.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Index.coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Index.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Index.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/_auth._coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/constraints._coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/indexes._coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/util/helpers._coffee" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/strip-json-comments/cli.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/strip-json-comments/strip-json-comments.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/Procfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/codemirror-cypher.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/codemirror.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/cy2neod3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/cypher.datatable.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/neo4d3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/neod3-visualization.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/neod3.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/sweet-alert.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/scripts/vendor.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/styles/codemirror-neo.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/styles/codemirror.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/styles/cy2neo.css" afterPath="" />
@@ -1283,7 +1125,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.css" afterPath="$PROJECT_DIR$/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newuser.js" afterPath="$PROJECT_DIR$/newuser.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/abbrev/package.json" afterPath="$PROJECT_DIR$/node_modules/abbrev/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/anymatch/package.json" afterPath="$PROJECT_DIR$/node_modules/anymatch/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/arr-diff/package.json" afterPath="$PROJECT_DIR$/node_modules/arr-diff/package.json" />
@@ -1293,21 +1135,19 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/async-each/package.json" afterPath="$PROJECT_DIR$/node_modules/async-each/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/balanced-match/package.json" afterPath="$PROJECT_DIR$/node_modules/balanced-match/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/binary-extensions/package.json" afterPath="$PROJECT_DIR$/node_modules/binary-extensions/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" afterPath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" afterPath="$PROJECT_DIR$/node_modules/body-parser/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/brace-expansion/package.json" afterPath="$PROJECT_DIR$/node_modules/brace-expansion/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/braces/package.json" afterPath="$PROJECT_DIR$/node_modules/braces/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/chokidar/package.json" afterPath="$PROJECT_DIR$/node_modules/chokidar/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/concat-map/package.json" afterPath="$PROJECT_DIR$/node_modules/concat-map/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/configstore/node_modules/uuid/package.json" afterPath="$PROJECT_DIR$/node_modules/configstore/node_modules/uuid/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/configstore/package.json" afterPath="$PROJECT_DIR$/node_modules/configstore/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/connect/package.json" afterPath="$PROJECT_DIR$/node_modules/connect/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/duplexer/package.json" afterPath="$PROJECT_DIR$/node_modules/duplexer/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/duplexify/package.json" afterPath="$PROJECT_DIR$/node_modules/duplexify/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/end-of-stream/package.json" afterPath="$PROJECT_DIR$/node_modules/end-of-stream/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/event-stream/package.json" afterPath="$PROJECT_DIR$/node_modules/event-stream/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/expand-brackets/package.json" afterPath="$PROJECT_DIR$/node_modules/expand-brackets/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/expand-range/package.json" afterPath="$PROJECT_DIR$/node_modules/expand-range/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/express/package.json" afterPath="$PROJECT_DIR$/node_modules/express/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/extglob/package.json" afterPath="$PROJECT_DIR$/node_modules/extglob/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/filename-regex/package.json" afterPath="$PROJECT_DIR$/node_modules/filename-regex/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/fill-range/package.json" afterPath="$PROJECT_DIR$/node_modules/fill-range/package.json" />
@@ -1319,12 +1159,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/got/node_modules/object-assign/package.json" afterPath="$PROJECT_DIR$/node_modules/got/node_modules/object-assign/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/got/package.json" afterPath="$PROJECT_DIR$/node_modules/got/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" afterPath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/README.md" afterPath="$PROJECT_DIR$/node_modules/graphdracula/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/dist/dracula.dev.js" afterPath="$PROJECT_DIR$/node_modules/graphdracula/dist/dracula.dev.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/dist/dracula.min.js" afterPath="$PROJECT_DIR$/node_modules/graphdracula/dist/dracula.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/lib/renderer/renderer.js" afterPath="$PROJECT_DIR$/node_modules/graphdracula/lib/renderer/renderer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/lib/renderer/renderer.spec.js" afterPath="$PROJECT_DIR$/node_modules/graphdracula/lib/renderer/renderer.spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graphdracula/package.json" afterPath="$PROJECT_DIR$/node_modules/graphdracula/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/ignore-by-default/package.json" afterPath="$PROJECT_DIR$/node_modules/ignore-by-default/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/imurmurhash/package.json" afterPath="$PROJECT_DIR$/node_modules/imurmurhash/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/infinity-agent/package.json" afterPath="$PROJECT_DIR$/node_modules/infinity-agent/package.json" />
@@ -1364,74 +1198,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/minimatch/package.json" afterPath="$PROJECT_DIR$/node_modules/minimatch/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/minimist/package.json" afterPath="$PROJECT_DIR$/node_modules/minimist/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mkdirp/package.json" afterPath="$PROJECT_DIR$/node_modules/mkdirp/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/History.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/browserDocument.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/browserDocument.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/queryhelpers.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/queryhelpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/embedded.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/embedded.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/services/model/discriminator.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/services/model/discriminator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/morgan/HISTORY.md" afterPath="$PROJECT_DIR$/node_modules/morgan/HISTORY.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/morgan/package.json" afterPath="$PROJECT_DIR$/node_modules/morgan/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nan/package.json" afterPath="$PROJECT_DIR$/node_modules/nan/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/README.md" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/examples/node.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/examples/node.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/browser/neo4j-web.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/browser/neo4j-web.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/browser/neo4j-web.min.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/browser/neo4j-web.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/external/es6-promise.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/external/es6-promise.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/driver.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/driver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/error.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/error.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/graph-types.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/graph-types.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/index.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/integer.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/integer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/buf.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/buf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-dummy.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-dummy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-node.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-node.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-websocket.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/ch-websocket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/chunking.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/chunking.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/connector.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/connector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/features.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/features.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/log.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/log.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/packstream.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/packstream.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/pool.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/pool.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/stream-observer.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/stream-observer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/utf8.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/utf8.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/util.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/internal/util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/record.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/record.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/result-summary.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/result-summary.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/result.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/result.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/session.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/session.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/transaction.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/v1/transaction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/version.js" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/lib/version.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j-driver/package.json" afterPath="$PROJECT_DIR$/node_modules/neo4j-driver/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/neo4j/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/API_v2.md" afterPath="$PROJECT_DIR$/node_modules/neo4j/API_v2.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/README.md" afterPath="$PROJECT_DIR$/node_modules/neo4j/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.js" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.js.map" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/GraphDatabase.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.js" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.js.map" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/Transaction.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.js" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.js.map" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/errors.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.js" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.js.map" afterPath="$PROJECT_DIR$/node_modules/neo4j/lib-new/exports.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/package.json" afterPath="$PROJECT_DIR$/node_modules/neo4j/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/constructor._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/constructor._coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/cypher._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/cypher._coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/fixtures/index._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/fixtures/index._coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/http._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/http._coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/schema._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/schema._coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/neo4j/test-new/transactions._coffee" afterPath="$PROJECT_DIR$/node_modules/neo4j/test-new/transactions._coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nested-error-stacks/package.json" afterPath="$PROJECT_DIR$/node_modules/nested-error-stacks/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemon/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemon/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nopt/package.json" afterPath="$PROJECT_DIR$/node_modules/nopt/package.json" />
@@ -1469,7 +1236,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/stream-shift/package.json" afterPath="$PROJECT_DIR$/node_modules/stream-shift/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/string-length/package.json" afterPath="$PROJECT_DIR$/node_modules/string-length/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/strip-json-comments/package.json" afterPath="$PROJECT_DIR$/node_modules/strip-json-comments/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/strip-json-comments/readme.md" afterPath="$PROJECT_DIR$/node_modules/strip-json-comments/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/timed-out/package.json" afterPath="$PROJECT_DIR$/node_modules/timed-out/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/touch/package.json" afterPath="$PROJECT_DIR$/node_modules/touch/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/undefsafe/package.json" afterPath="$PROJECT_DIR$/node_modules/undefsafe/package.json" />
@@ -1477,11 +1243,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/wrappy/package.json" afterPath="$PROJECT_DIR$/node_modules/wrappy/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/write-file-atomic/package.json" afterPath="$PROJECT_DIR$/node_modules/write-file-atomic/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/xdg-basedir/package.json" afterPath="$PROJECT_DIR$/node_modules/xdg-basedir/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="$PROJECT_DIR$/npm-debug.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script.js" afterPath="$PROJECT_DIR$/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortdata.js" afterPath="$PROJECT_DIR$/sortdata.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web.config" afterPath="$PROJECT_DIR$/web.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search.js" afterPath="$PROJECT_DIR$/search.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -1505,10 +1268,17 @@
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
-              <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+            <state relative-caret-position="2385">
+              <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
               <folding>
-                <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+                <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -1518,8 +1288,10 @@
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1538,7 +1310,7 @@
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+              <caret line="164" column="0" lean-forward="false" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1558,7 +1330,7 @@
         <entry file="file://$PROJECT_DIR$/newuser.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1305">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1623,8 +1395,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1250" />
-    <option name="height" value="722" />
+    <option name="width" value="1220" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1836,7 +1608,8 @@
       <workItem from="1487885813027" duration="3590000" />
       <workItem from="1487895054624" duration="663000" />
       <workItem from="1487898757000" duration="446000" />
-      <workItem from="1488069917757" duration="24000" />
+      <workItem from="1488069917757" duration="135000" />
+      <workItem from="1488200895605" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="Change redirect URI">
       <created>1485450942418</created>
@@ -2055,11 +1828,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487895297249</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Got D3 working, added avatar images to nodes for display.">
+      <created>1488070038228</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1488070038228</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122792000" />
+    <option name="totallyTimeSpent" value="122915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2071,14 +1851,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1250" height="722" extended-state="0" />
+    <frame x="0" y="23" width="1220" height="1092" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0049668876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12996688" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0050933785" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13497454" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.218716" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2134,7 +1914,8 @@
     <MESSAGE value="Queries passed to function, still not passing to neo4j" />
     <MESSAGE value="Implemented Cy2neo, shows graph nodes well but no relationships shown. Need to figure out how to change content in circles." />
     <MESSAGE value="Implemented Cy2neo, shows graph nodes well but no relationships shown. Need to figure out how to change content in circles. Managed to return graph type from neo4j, viz variable containing nodes and links so can use D3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Cy2neo, shows graph nodes well but no relationships shown. Need to figure out how to change content in circles. Managed to return graph type from neo4j, viz variable containing nodes and links so can use D3" />
+    <MESSAGE value="Got D3 working, added avatar images to nodes for display." />
+    <option name="LAST_COMMIT_MESSAGE" value="Got D3 working, added avatar images to nodes for display." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2147,7 +1928,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2188,7 +1971,14 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2197,7 +1987,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="70" lean-forward="true" selection-start-line="23" selection-start-column="70" selection-end-line="23" selection-end-column="70" />
-          <folding />
+          <folding>
+            <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2238,7 +2030,14 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2247,7 +2046,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="34" lean-forward="true" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding />
+          <folding>
+            <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2303,7 +2104,14 @@
         <state relative-caret-position="2370">
           <caret line="158" column="27" lean-forward="true" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2312,7 +2120,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="21" lean-forward="true" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
+          <folding>
+            <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2375,7 +2185,14 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2416,7 +2233,14 @@
         <state relative-caret-position="465">
           <caret line="31" column="48" lean-forward="false" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2498,15 +2322,17 @@
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <marker date="1488075668000" expanded="true" signature="759:797" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newuser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1305">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2521,10 +2347,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2370">
-          <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        <state relative-caret-position="2385">
+          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
           <folding>
-            <marker date="1488066610000" expanded="true" signature="11736:11739" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3393:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3459:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3505:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3568:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3636:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3706:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3781:3893" ph="{...}" />
+            <marker date="1488168516000" expanded="true" signature="3857:3893" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2540,7 +2373,7 @@
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <caret line="164" column="0" lean-forward="false" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding />
         </state>
       </provider>

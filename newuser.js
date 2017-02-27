@@ -31,6 +31,9 @@ function likesToUsers(arr, callback) {
 function getFinalData(a, b, callback) {
   var data = [];
     data = a.concat(b);
+    for (var i = 0; i < data.length; i++) {
+      data[i].ranking = 1;
+    }
   callback(data);
 }
 
@@ -49,6 +52,7 @@ function unique(arr, callback) {
         found = undefined;
         for (y = 0; y < data.length; y++) {
             if (arr[x].username === data[y].username) {
+                data[y].ranking++;
                 found = true;
                 break;
             }

@@ -109,7 +109,8 @@ function ShowData(user) {
                         removeLowReposts(lowtrack, function(lowrep) {
                             removeLowTrackCount(lowrep, function(lowtra) {
                                 removeIfTooMany(lowtra, function(final60) {
-                                    assignArray(final60, function(finaldata) {
+                                  increaseRanking(final60, function(ranking){
+                                      assignArray(ranking, function(finaldata) {
                                         runCypherQuery(finaldata, function(queries) {
                                             getExtraData(queries);
                                         });
@@ -123,6 +124,7 @@ function ShowData(user) {
             });
         });
     });
+});
 }
 
 function getExtraData(arr) {
@@ -152,144 +154,23 @@ function getExtraData(arr) {
             });
         });
     };
-
 }
 
-function returnGraph() {
-
-    var resgraph = {
-        statements: [{
-            statement: "MATCH path = (n)-[r]->(m) RETURN path",
-            "resultDataContents": ["graph"]
-        }]
-    }
-
-    var resg = JSON.stringify(resgraph);
-
-    function testAjax(handleData) {
-        $.ajax({
-            type: 'POST',
-            url: 'http://plexis.org:7474/db/data/transaction/commit',
-            headers: {
-                "Authorization": "Basic bmVvNGo6cGxleGlz",
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: resg,
-            success: function(data) {
-                handleData(data);
-            }
-        });
-    }
-
-    testAjax(function(output) {
-        reslt = output
-    });
-     //get links and nodes from results
-    function idIndex(a, id) {
-        for (var i = 0; i < a.length; i++) {
-            if (a[i].id == id) return i;
+function runAjax(query, callback) {
+    $.ajax({
+        type: 'POST',
+        url: 'http://plexis.org:7474/db/data/transaction/commit',
+        headers: {
+            "Authorization": "Basic bmVvNGo6cGxleGlz",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        data: query,
+        success: function(data) {
+            callback(data);
         }
-        return null;
-    }
-
-    var nodes = [],
-        links = [];
-    reslt.results[0].data.forEach(function(row) {
-        row.graph.nodes.forEach(function(n) {
-            if (idIndex(nodes, n.id) == null)
-                nodes.push({
-                    id: n.id,
-                    label: n.labels[0],
-                    title: n.properties.username,
-                    avatar: n.properties.avatar
-                });
-        });
-        links = links.concat(row.graph.relationships.map(function(r) {
-            return {
-                source: idIndex(nodes, r.startNode),
-                target: idIndex(nodes, r.endNode),
-                type: r.type,
-                weight: 2
-            };
-        }));
     });
-    viz = {
-        nodes: nodes,
-        links: links
-    };
-
-    data = JSON.stringify(viz);
-    makeNetwork(viz);
-};
-//
-// function returnGraph(){
-//
-//     var resgraph = {
-//         statements: [{
-//             statement: "MATCH path = (n)-[r]->(m) RETURN path",
-//             "resultDataContents": ["graph"]
-//         }]
-//     }
-//
-//     var resg = JSON.stringify(resgraph);
-//
-//     function testAjax(handledata){
-//         $.ajax({
-//             type: 'POST',
-//             url: 'http://plexis.org:7474/db/data/transaction/commit',
-//             headers: {
-//                 "Authorization": "Basic bmVvNGo6cGxleGlz",
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             },
-//             data: resg,
-//             success: function(obj) {
-//               handledata(obj);
-//             }
-//         });
-//       }
-//       testAjax(function(output){
-//         data = output;
-//       });
-//
-//       var graph = neo4j2d3(data.results[0].data);
-//       console.log(graph);
-//       makeNetwork(graph);
-//     }
-//
-//
-//      //get links and nodes from results
-// function neo4j2d3(o){
-//     function idIndex(a, id) {
-//         for (var i = 0; i < a.length; i++) {
-//             if (a[i].id == id) return i;
-//         }
-//         return null;
-//     }
-//
-//     var nodes = [],
-//         links = [];
-//     o.forEach(function(row) {
-//         row.graph.nodes.forEach(function(n) {
-//             if (idIndex(nodes, n.id) == null)
-//                 nodes.push({
-//                     id: n.id,
-//                     label: n.labels[0],
-//                     title: n.properties.username
-//                 });
-//         });
-//         links = links.concat(row.graph.relationships.map(function(r) {
-//             return {
-//                 start: idIndex(nodes, r.startNode),
-//                 end: idIndex(nodes, r.endNode),
-//                 type: r.type,
-//             };
-//         }));
-//     });
-//     return ({nodes: nodes, links: links});
-// };
-//
+}
 
 function deleteNodes() {
 
@@ -301,21 +182,15 @@ function deleteNodes() {
 
     var datadel = JSON.stringify(delnodes);
 
-    $.ajax({
-        type: 'POST',
-        url: 'http://plexis.org:7474/db/data/transaction/commit',
-        headers: {
-            "Authorization": "Basic bmVvNGo6cGxleGlz",
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        url: 'http://plexis.org:7474/db/data/transaction/commit',
-        data: datadel
-    }, function(err, res, body) {
-        console.log(body);
-        console.log(res);
-        console.log(err);
-    })
+    function callbackTester(callback) {
+        callback();
+    };
+
+    callbackTester (function(){
+      runAjax(datadel,function(output){
+        return output;
+      })
+    });
 }
 
 function requery(query) {
@@ -328,21 +203,15 @@ function requery(query) {
 
     var datastr = JSON.stringify(que);
 
-    $.ajax({
-        type: 'POST',
-        url: 'http://plexis.org:7474/db/data/transaction/commit',
-        headers: {
-            "Authorization": "Basic bmVvNGo6cGxleGlz",
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        url: 'http://plexis.org:7474/db/data/transaction/commit',
-        data: datastr
-    }, function(err, res, body) {
-        //console.log(body);
-        //console.log(res);
-        //console.log(err);
-    })
+    function callbackTester(callback) {
+        callback();
+    };
+
+    callbackTester (function(){
+      runAjax(datastr,function(output){
+        return output;
+      })
+    });
 }
 
 function common(user, arr, callback) {
@@ -375,7 +244,7 @@ function runCypherQuery(arr, callback) {
     var query = [];
 
     for (var i = 0; i < arr.length; i++) {
-        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', avatar: '" + arr[i].avatar_url + "' })";
+        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', permalink: '" + arr[i].permalink + "', avatar: '" + arr[i].avatar_url + "', ranking: " + arr[i].ranking + " })";
         requery(query[i]);
     }
     callback(data);
@@ -384,12 +253,105 @@ function runCypherQuery(arr, callback) {
 function createRelationships(arr, user) {
     // match user with every element in array where element exists in database
     var query = []
+    count = 0;
     for (var i = 0; i < arr.length; i++) {
         if (user.id != arr[i].id) {
             query[i] = "MATCH (a:User {id: " + user.id + " } ),(b:User {id: " + arr[i].id + " }) CREATE (a)-[r:LIKES{weight:2}]->(b) RETURN a,r,b";
             console.log(query[i]);
             requery(query[i]);
-            count++;
+            count++
         }
     }
+    if(count != arr.length){
+      setTimeout(checkNeo(count), 100);
+    }
 }
+
+function checkNeo(arr){
+
+  var getrelcount = {
+      statements: [{
+          statement: "MATCH (a)-[r:LIKES]->(b) WITH count(b) as rels RETURN rels"
+      }]
+  }
+  var check = JSON.stringify(getrelcount);
+  var num;
+
+  function callbackTester(callback) {
+      callback();
+  };
+  console.log(arr.length);
+  console.log("function runninggg")
+  callbackTester (function(){
+    runAjax(check,function(output){
+      return num = output.results[0];
+      console.log(num);
+    })
+  });
+
+  if(num != arr.length){
+    setTimeout(callbackTester,100);
+  }else{
+    returnGraph();
+  }
+}
+
+function returnGraph() {
+
+    var resgraph = {
+        statements: [{
+            statement: "MATCH path = (n)-[r]->(m) RETURN path",
+            "resultDataContents": ["graph"]
+        }]
+    }
+
+    var resg = JSON.stringify(resgraph);
+
+    function callbackTester(callback) {
+        callback();
+    };
+
+    callbackTester (function(){
+      runAjax(resg,function(output){
+        return reslt = output;
+      })
+    });
+
+     //get links and nodes from results
+    function idIndex(a, id) {
+        for (var i = 0; i < a.length; i++) {
+            if (a[i].id == id) return i;
+        }
+        return null;
+    }
+
+    var nodes = [],
+        links = [];
+    reslt.results[0].data.forEach(function(row) {
+        row.graph.nodes.forEach(function(n) {
+            if (idIndex(nodes, n.id) == null)
+                nodes.push({
+                    id: n.id,
+                    label: n.labels[0],
+                    title: n.properties.username,
+                    avatar: n.properties.avatar,
+                    ranking: n.properties.ranking,
+                    permalink: n.properties.permalink
+                });
+        });
+        links = links.concat(row.graph.relationships.map(function(r) {
+            return {
+                source: idIndex(nodes, r.startNode),
+                target: idIndex(nodes, r.endNode),
+                type: r.type,
+                weight: 2
+            };
+        }));
+    });
+    viz = {
+        nodes: nodes,
+        links: links
+    };
+    data = JSON.stringify(viz);
+    makeNetwork(viz);
+};

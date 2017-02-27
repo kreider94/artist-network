@@ -11,6 +11,7 @@ var request = require('request');
 var Neo4j = require('simple-neo4j');
 var http = require('http');
 var nodemon = require('nodemon');
+var d3force = require('d3-force');
 var app = express();
 var url = "http://neo4j:plexis@www.neo4j.com";
 var httpUrlForTransaction = 'http://localhost:7474/db/data/transaction/commit';

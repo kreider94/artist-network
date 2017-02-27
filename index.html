@@ -1,3 +1,4 @@
+ <!DOCTYPE>
 <html>
 
 <head>
@@ -21,18 +22,60 @@
             stroke: #999;
             stroke-opacity: 0.6;
         }
-
-
-
-
         .nodes circle {
             stroke: #fff;
             stroke-width: 1.5px;
         }
+
+        .artbox {
+            position: relative;
+            border: 1px solid black;
+            width: 200px;
+            height: 50px;
+            text-align: right;
+            padding: 3px;
+            background-color: white;
+            text-transform: capitalize;
+            border-radius: 4px;
+            padding: 5px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+            -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+            box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+        }
+
+        div > a {
+          text-transform: capitalize;
+          background-color: black;
+          color: white;
+          padding: 3px;
+          border-radius: 3px;
+          font-family: "Trebuchet MS", Helvetica, sans-serif;
+          font-weight: bold;
+        }
+
+        div > img {
+          text-align: center;
+          bottom: 3px;
+        }
+
+        #play {
+          position: absolute;
+          left: 5%;
+          bottom: 5%;
+        }
+
+
     </style>
 </head>
 
 <body>
+
+    <div class="artbox" id="artbox" width="200px" height="100px" border="1px">
+      <a id="artname">ARTISTSNAME</a>
+      <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
+      <img id="play" width="30px" height="30px" src="https://img.clipartfest.com/7d0af8798bf3f8e67bc76e81976bf444_play-button-clip-art-play-button-clipart_1000-1000.svg"></img>
+    </div>
 
     <div id="sideNav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -70,18 +113,27 @@
         </form>
 
         <script type="text/javascript">
+
+        var w  = window,
+            d  = w.document,
+            de = d.documentElement,
+            db = d.body || d.getElementsByTagName('body')[0],
+            x  = w.innerWidth || de.clientWidth || db.clientWidth,
+            y  = w.innerHeight|| de.clientHeight|| db.clientHeight;
+
             function makeNetwork(graph) {
-                var width = 800,
-                    height = 800;
-
+              $("svg").remove()
+                var width = x,
+                    height = y;
                 var color = d3.scale.category20();
-
                 var force = d3.layout.force()
-                    .charge(-300)
+                    .charge(-400)
                     .linkDistance(100)
-                    .size([width, height]);
+                    .size([width, height])
+                    .on("tick",tick);
 
                 var svg = d3.select("body").append("svg")
+                    .attr("id", "svg")
                     .attr("width", "100%")
                     .attr("height", "100%");
 
@@ -93,7 +145,6 @@
                     .nodes(nodes)
                     .links(links)
                     .start();
-
                 var link = svg.selectAll(".link")
                     .data(links)
                     .enter().append("line")
@@ -105,36 +156,13 @@
                     .style("stroke", function(d) {
                         return color(d.value)
                     });;
-
                 var gnodes = svg.selectAll('g.gnode') //('g.gnode')
                     .data(nodes)
                     .enter()
                     .append('g')
                     .classed('gnode', true)
 
-
-                // var node = gnodes.append("circle")
-                //     .attr('x', -9)
-                //     .attr('y', -19)
-                //     .attr("r", 10)
-                //     .attr("xlink:href", function(d) {
-                //         return d.avatar;
-                //     })
-                //     .on("mouseover", function(d) {
-                //         d3.select(labels[0][d.index]).style("visibility", "visible")
-                //     })
-                //     .on("mouseout", function(d) {
-                //         d3.select(labels[0][d.index]).style("visibility", "hidden")
-                //     })
-                // .call(force.drag);
-
-                var labels = gnodes.append("text")
-                    .text(function(d) {
-                        return d.username;
-                    });
-
                 var defs = gnodes.append("defs").attr("id", "imgdefs")
-
                 var image = gnodes.append("pattern")
                     .attr("id", "image")
                     .attr("height", 30)
@@ -142,17 +170,41 @@
                     .attr("x", "0")
                     .attr("y", "0")
                 image.append("image")
-                    .attr("height", 30)
-                    .attr("width", 30)
+                    .attr("height", function(n){
+                      return n.ranking * 30})
+                    .attr("width",  function(n){
+                      return n.ranking * 30})
                     .attr("xlink:href", function(d) {
                         return d.avatar;
                     });
-
+                var coordinates = [0, 0];
+                var clickUser;
                 var node = gnodes.append("circle")
-                    .attr("r", 15)
-                    .attr("fill", "url(#image)").call(force.drag);
+                    .attr("r", function(d){
+                      return d.ranking * 15
+                    })
+                    .attr("fill", "url(#image)")
+                    .call(force.drag)
+                    .on("click", function(user) {
+                      document.getElementById('artbox').style.visibility = "visible";
+                      coordinates = d3.mouse(svg.node());
+                      var x = coordinates[0];
+                      var y = coordinates[1];
+                      var a = document.getElementById("artbox");
+                      a.style.position = "absolute";
+                      a.style.left = x+'px';
+                      a.style.top = y+'px';
+                      document.getElementById("artname").innerHTML = user.title;
+                      document.getElementById('artname').onclick = function () {
+                        document.getElementById("searchval").value = user.permalink;
+                        search();
+                      }
+                      document.getElementById('exit').onclick = function () {
+                          document.getElementById('artbox').style.visibility = "hidden";
+                      };
+                    });
 
-                force.on("tick", function() {
+                function tick() {
                     link.attr("x1", function(d) {
                             return d.source.x;
                         })
@@ -165,31 +217,26 @@
                         .attr("y2", function(d) {
                             return d.target.y;
                         });
-
                     gnodes.attr("transform", function(d) {
                         return 'translate(' + [d.x, d.y] + ')';
                     });
-                });
+                };
 
                 function dragstarted(d) {
                     if (!d3.event.active) simulation.alphaTarget(0.3).restart();
                     d.fx = d.x;
                     d.fy = d.y;
                 }
-
                 function dragged(d) {
                     d.fx = d3.event.x;
                     d.fy = d3.event.y;
                 }
-
                 function dragended(d) {
                     if (!d3.event.active) simulation.alphaTarget(0);
                     d.fx = null;
                     d.fy = null;
                 }
-
             }
         </script>
-
 </html>
 </body>
