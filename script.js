@@ -101,6 +101,8 @@ function closeNav() {
 
 function ShowData(user) {
     deleteNodes();
+    var avatar = user.avatar_url;
+    currUserInfo(avatar);
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {

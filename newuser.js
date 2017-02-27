@@ -1,4 +1,8 @@
 
+function currUserInfo(avatar){
+  var pic = document.getElementById('curruser');
+  pic.style.backgroundImage = "url('" + avatar + "')";
+}
 
 function getTracks(newUser, callback){
     var data=[];

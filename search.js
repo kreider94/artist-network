@@ -4,9 +4,12 @@ var localUser;
 function search() {
     // get the search form value
 
-    var formData = document.getElementById("searchval").value;
+  var formData = document.getElementById("searchval").value;
 
     var id;
+
+    var tracklength;
+    var followlength;
 
     function getForm(data, callback) {
         SC.get('/resolve', {
@@ -22,6 +25,7 @@ function search() {
         likes = [];
         followingList = [];
         SC.get("/users/" + user.id + "/favorites").then(function(tracks) {
+          tracklength = tracks.length;
             for (var i = 0; i < tracks.length; i++) {
                 likes.push(tracks[i]);
             }
@@ -31,6 +35,7 @@ function search() {
             limit: 200,
             linked_partitioning: 1
         }).then(function(users) {
+          followlength = users.collection.length;
             for (var u = 0; u < users.collection.length; u++) {
                 followingList.push(users.collection[u]);
             }
@@ -38,9 +43,17 @@ function search() {
         callback(user);
     }
 
+    function checkArrs(){
+      if(tracklength != likes.length || followlength != followingList.length){
+        setTimeout(checkArrs,100);
+      }else{
+        ShowData(searchUser);
+      }
+    }
+
     getForm(formData, function(user) {
         getNewUserInfo(user, function(final) {
-            ShowData(final);
+          checkArrs();
         });
     });
 }
