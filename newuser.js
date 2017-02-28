@@ -1,7 +1,9 @@
 
 function currUserInfo(avatar){
   var pic = document.getElementById('curruser');
-  pic.style.backgroundImage = "url('" + avatar + "')";
+  var largeavatar = avatar.replace("large", "t500x500");
+  console.log(largeavatar);
+  pic.style.backgroundImage = "url('" + largeavatar + "')";
 }
 
 function getTracks(newUser, callback){

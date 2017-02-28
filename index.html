@@ -1,4 +1,4 @@
- <!DOCTYPE>
+<!DOCTYPE>
 <html>
 
 <head>
@@ -9,11 +9,13 @@
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="mainuser.js"></script>
     <script type="text/javascript" src="sortdata.js"></script>
-    <script type="text/javascript" src="positions.js"></script>
+    <script type="text/javascript" src="graph.js"></script>
     <script type="text/javascript" src="newuser.js"></script>
     <script type="text/javascript" src="search.js"></script>
+    <link rel="stylesheet" href="animated-search-box-pure-css/css/style.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="soundcloud.player.api.js"></script>
     <script src="d3.v3.min.js"></script>
 
     <meta charset="utf-8">
@@ -22,13 +24,18 @@
             stroke: #999;
             stroke-opacity: 0.6;
         }
+
+
         .nodes circle {
             stroke: #fff;
             stroke-width: 1.5px;
         }
 
+
+
         .artbox {
-            position: relative;
+            position: absolute;
+            visibility: hidden;
             border: 1px solid black;
             width: 200px;
             height: 50px;
@@ -38,104 +45,133 @@
             text-transform: capitalize;
             border-radius: 4px;
             padding: 5px;
+            bottom: 0px;
+            left: 0px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
             -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
-        div > a {
-          text-transform: capitalize;
-          background-color: black;
-          color: white;
-          padding: 3px;
-          border-radius: 3px;
-          font-family: "Trebuchet MS", Helvetica, sans-serif;
-          font-weight: bold;
+
+
+        div>a {
+            text-transform: capitalize;
+            background-color: black;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif;
+            font-weight: bold;
         }
+
+
 
         #play {
-          position: absolute;
-          left: 5%;
-          bottom: 5%;
+            position: absolute;
+            left: 5%;
+            bottom: 5%;
         }
+
+
 
         .curruser {
-          position: absolute;
-          width: 150px;
-          height: 150px;
-          background-repeat: no-repeat;
-          background-size: cover;
-          top: 15px;
-          right: 15px;
-          border: 1px solid black;
-          text-transform: capitalize;
-          border-radius: 4px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-          -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-          box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            top: 15px;
+            right: 15px;
+            border: 1px solid black;
+            text-transform: capitalize;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+            -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
+            box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
+
+
+        body {
+            background: -moz-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13efa9', endColorstr='#095377', GradientType=0);
+            /* IE6-9 */
+            copy
+        }
     </style>
 </head>
 
 <body>
 
     <div class="artbox" id="artbox" width="200px" height="100px" border="1px">
-      <a id="artname">ARTISTSNAME</a>
-      <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
-      <img id="play" width="30px" height="30px" src="https://img.clipartfest.com/7d0af8798bf3f8e67bc76e81976bf444_play-button-clip-art-play-button-clipart_1000-1000.svg"></img>
+        <a id="artname">ARTISTSNAME</a>
+        <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
+        <img id="play" width="30px" height="30px" src="https://img.clipartfest.com/7d0af8798bf3f8e67bc76e81976bf444_play-button-clip-art-play-button-clipart_1000-1000.svg"></img>
     </div>
 
     <div class="curruser" id="curruser"></div>
 
-    <div id="sideNav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="sidebar-image" id="dp" width="100%" height="100%"></div>
-        <div class="userinfo">
-            <div id="username"></div>
-            <div id="description"></div>
-            <div id="newuser"></div>
-
-            <div class="infoTable">
-                <tr>
-                    <td>Followers</td>
-                    <td>Following</td>
-                    <td>Tracks</td>
-                </tr>
-                <td>
-                    <div id="followers"></div>
-                    <div id="following"></div>
-                    <div id="tracks"></div>
-                </td>
-            </div>
-        </div>
-    </div>
     <div>
 
         <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
-        <button id="show-artists" onclick="ShowData(mainuser)" style="top:50% left:50%">SHOW YOUR FAVOURITE ARTISTS</button>
-        <button id="return-graph" onclick="javascript:returnGraph()" style="top:50% left:50%">RETURN GRAPH</button>
-        <span onclick="openNav()">open</span>
-        <div id="mainuser"></div>
-
         <form id="searchsc" class="my-form">
+            <div align="center">
+                <input class="button" id="searchbar" placeholder="Search..." value="" onclick="search()">
+                <script src='http://use.edgefonts.net/amaranth.js'></script>
+                <!--
             <input id="searchval" type="search" name="searchbar"></input>
-            <input id="submit" type="button" value="search" onclick="search()"></input>
+            <input id="submit" type="button" value="search" onclick="search()"></input> -->
         </form>
 
-        <script type="text/javascript">
+        </script>
+<!--
+<object height="81" width="100%" id="yourPlayerId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+  <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&amp;enable_api=true&amp;object_id=74258373"></param>
+  <param name="allowscriptaccess" value="always"></param>
+  <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&amp;enable_api=true&amp;object_id=74258373" type="application/x-shockwave-flash" width="100%" name="yourPlayerId"></embed>
+</object> -->
 
-        var w  = window,
-            d  = w.document,
-            de = d.documentElement,
-            db = d.body || d.getElementsByTagName('body')[0],
-            x  = w.innerWidth || de.clientWidth || db.clientWidth,
-            y  = w.innerHeight|| de.clientHeight|| db.clientHeight;
+<!-- <script>
+    soundcloud.addEventListener('onPlayerReady', function(flashId, data) {
+      // please refer to the documentation for the full list of available methods
+      // btw, here the flash can be accessed too as 'this' like in 'this.api_play()'
+      soundcloud.getPlayer(flashId).api_play();
+
+      var flashvars = {
+        enable_api: true,
+        object_id: "74258373",
+        url: "http://soundcloud.com/kirstin-reid"
+      };
+      var params = {
+        allowscriptaccess: "always"
+      };
+      var attributes = {
+        id: "74258373",
+        name: "myPlayer"
+      };
+      swfobject.embedSWF("http://player.soundcloud.com/player.swf", "myContent", "81", "100%", "9.0.0","expressInstall.swf", flashvars, params, attributes);
+
+    });
+</script> -->
+
+
+        <script type="text/javascript">
+            var w = window,
+                d = w.document,
+                de = d.documentElement,
+                db = d.body || d.getElementsByTagName('body')[0],
+                x = w.innerWidth || de.clientWidth || db.clientWidth,
+                y = w.innerHeight || de.clientHeight || db.clientHeight;
 
             function makeNetwork(graph) {
-              $("svg").remove()
+                $("svg").remove()
                 var width = x,
                     height = y;
                 var color = d3.scale.category20();
@@ -143,7 +179,7 @@
                     .charge(-400)
                     .linkDistance(100)
                     .size([width, height])
-                    .on("tick",tick);
+                    .on("tick", tick);
 
                 var svg = d3.select("body").append("svg")
                     .attr("id", "svg")
@@ -168,7 +204,7 @@
                     })
                     .style("stroke", function(d) {
                         return color(d.value)
-                    });;
+                    });
                 var gnodes = svg.selectAll('g.gnode') //('g.gnode')
                     .data(nodes)
                     .enter()
@@ -183,38 +219,45 @@
                     .attr("x", "0")
                     .attr("y", "0")
                 image.append("image")
-                    .attr("height", function(n){
-                      return n.ranking * 30})
-                    .attr("width",  function(n){
-                      return n.ranking * 30})
+                    .attr("height", function(n) {
+                        return n.ranking * 30
+                    })
+                    .attr("width", function(n) {
+                        return n.ranking * 30
+                    })
                     .attr("xlink:href", function(d) {
-                        return d.avatar;
+                      var largeavatar = d.avatar.replace("large", "t500x500");
+                        return largeavatar;
                     });
                 var coordinates = [0, 0];
                 var clickUser;
                 var node = gnodes.append("circle")
-                    .attr("r", function(d){
-                      return d.ranking * 15
+                    .attr("r", function(d) {
+                        return d.ranking / 2 * 30;
                     })
                     .attr("fill", "url(#image)")
                     .call(force.drag)
                     .on("click", function(user) {
-                      document.getElementById('artbox').style.visibility = "visible";
-                      coordinates = d3.mouse(svg.node());
-                      var x = coordinates[0];
-                      var y = coordinates[1];
-                      var a = document.getElementById("artbox");
-                      a.style.position = "absolute";
-                      a.style.left = x+'px';
-                      a.style.top = y+'px';
-                      document.getElementById("artname").innerHTML = user.title;
-                      document.getElementById('artname').onclick = function () {
-                        document.getElementById("searchval").value = user.permalink;
-                        search();
-                      }
-                      document.getElementById('exit').onclick = function () {
-                          document.getElementById('artbox').style.visibility = "hidden";
-                      };
+                        document.getElementById('artbox').style.visibility = "visible";
+                        coordinates = d3.mouse(svg.node());
+                        var x = coordinates[0];
+                        var y = coordinates[1];
+                        var a = document.getElementById("artbox");ß
+                        a.style.position = "absolute";
+                        a.style.left = x + 'px';
+                        a.style.top = y + 'px';
+                        document.getElementById("artname").innerHTML = user.title;
+                        document.getElementById('artname').onclick = function() {
+                            document.getElementById("searchbar").value = user.permalink;
+                            document.getElementById('artbox').style.visibility = "hidden"
+                            search();
+                            document.getElementById('svg').onclick = function() {
+                                document.getElementById('artbox').style.visibility = "hidden";
+                            };
+                        }
+                        document.getElementById('exit').onclick = function() {
+                            document.getElementById('artbox').style.visibility = "hidden";
+                        };
                     });
 
                 function tick() {
@@ -231,7 +274,7 @@
                             return d.target.y;
                         });
                     gnodes.attr("transform", function(d) {
-                        return 'translate(' + [d.x, d.y] + ')';
+                        return 'translate(' + [d.x, d.y] + ')';ß
                     });
                 };
 
@@ -240,10 +283,12 @@
                     d.fx = d.x;
                     d.fy = d.y;
                 }
+
                 function dragged(d) {
                     d.fx = d3.event.x;
                     d.fy = d3.event.y;
                 }
+
                 function dragended(d) {
                     if (!d3.event.active) simulation.alphaTarget(0);
                     d.fx = null;
@@ -251,5 +296,6 @@
                 }
             }
         </script>
+
 </html>
 </body>

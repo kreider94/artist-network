@@ -4,7 +4,7 @@ var localUser;
 function search() {
     // get the search form value
 
-  var formData = document.getElementById("searchval").value;
+  var formData = document.getElementById("searchbar").value;
 
     var id;
 
