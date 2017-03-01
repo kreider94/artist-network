@@ -37,6 +37,11 @@ function WaitForSoundcloud() {
             var followlength
             var tracklength;
 
+            var track_url = 'http://soundcloud.com/forss/flickermood';
+            SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+              console.log('oEmbed response: ', oEmbed);
+            });
+
             function getUserData(usr, like, usrs) {
                 user = usr;
 

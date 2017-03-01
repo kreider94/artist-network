@@ -26,10 +26,12 @@
         }
 
 
+
         .nodes circle {
             stroke: #fff;
             stroke-width: 1.5px;
         }
+
 
 
 
@@ -55,6 +57,7 @@
 
 
 
+
         div>a {
             text-transform: capitalize;
             background-color: black;
@@ -67,11 +70,13 @@
 
 
 
+
         #play {
             position: absolute;
             left: 5%;
             bottom: 5%;
         }
+
 
 
 
@@ -91,6 +96,7 @@
             -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
+
 
 
 
@@ -130,37 +136,34 @@
             <input id="submit" type="button" value="search" onclick="search()"></input> -->
         </form>
 
-        </script>
-<!--
-<object height="81" width="100%" id="yourPlayerId" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
-  <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&amp;enable_api=true&amp;object_id=74258373"></param>
-  <param name="allowscriptaccess" value="always"></param>
-  <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&amp;enable_api=true&amp;object_id=74258373" type="application/x-shockwave-flash" width="100%" name="yourPlayerId"></embed>
-</object> -->
+<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 
-<!-- <script>
-    soundcloud.addEventListener('onPlayerReady', function(flashId, data) {
-      // please refer to the documentation for the full list of available methods
-      // btw, here the flash can be accessed too as 'this' like in 'this.api_play()'
-      soundcloud.getPlayer(flashId).api_play();
+<iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" src=""></iframe>
+<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
+<script type="text/javascript">
 
-      var flashvars = {
-        enable_api: true,
-        object_id: "74258373",
-        url: "http://soundcloud.com/kirstin-reid"
-      };
-      var params = {
-        allowscriptaccess: "always"
-      };
-      var attributes = {
-        id: "74258373",
-        name: "myPlayer"
-      };
-      swfobject.embedSWF("http://player.soundcloud.com/player.swf", "myContent", "81", "100%", "9.0.0","expressInstall.swf", flashvars, params, attributes);
+var newSoundUrl;
 
+function changeSound(newSoundUrl){
+
+
+  (function(){
+    var widgetIframe = document.getElementById('sc-widget'),
+        widget       = SC.Widget(widgetIframe);
+
+        console.log(newSoundUrl);
+    widget.bind(SC.Widget.Events.READY, function() {
+      // load new widget
+      widget.bind(SC.Widget.Events.FINISH, function() {
+        widget.load(newSoundUrl, {
+          show_artwork: false
+        });
+      });
     });
-</script> -->
 
+  }());
+};
+</script>
 
         <script type="text/javascript">
             var w = window,
@@ -199,12 +202,9 @@
                     .enter().append("line")
                     .attr("class", "link")
                     .style("stroke-width", function(d) {
-                        console.log(d.target);
                         return d.target;
                     })
-                    .style("stroke", function(d) {
-                        return color(d.value)
-                    });
+                    .style("stroke", "white");
                 var gnodes = svg.selectAll('g.gnode') //('g.gnode')
                     .data(nodes)
                     .enter()
@@ -226,7 +226,7 @@
                         return n.ranking * 30
                     })
                     .attr("xlink:href", function(d) {
-                      var largeavatar = d.avatar.replace("large", "t500x500");
+                        var largeavatar = d.avatar.replace("large", "t500x500");
                         return largeavatar;
                     });
                 var coordinates = [0, 0];
@@ -242,10 +242,11 @@
                         coordinates = d3.mouse(svg.node());
                         var x = coordinates[0];
                         var y = coordinates[1];
-                        var a = document.getElementById("artbox");ß
+                        var a = document.getElementById("artbox");
                         a.style.position = "absolute";
                         a.style.left = x + 'px';
                         a.style.top = y + 'px';
+                        getArtistTrack(user.userid);
                         document.getElementById("artname").innerHTML = user.title;
                         document.getElementById('artname').onclick = function() {
                             document.getElementById("searchbar").value = user.permalink;
@@ -274,7 +275,7 @@
                             return d.target.y;
                         });
                     gnodes.attr("transform", function(d) {
-                        return 'translate(' + [d.x, d.y] + ')';ß
+                        return 'translate(' + [d.x, d.y] + ')';
                     });
                 };
 

@@ -96,3 +96,14 @@ function assignArray(b, callback){
   usersList.sort(sortOn("username"));
   callback(usersList);
 }
+
+function getArtistTrack(id){
+  var topTrack;
+  SC.get("/users/" + id + "/tracks").then(function (tracks) {
+      topTrack = tracks[0].uri
+      document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + tracks[0].id;
+      console.log(topTrack.user);
+    })
+    changeSound(topTrack);
+
+}

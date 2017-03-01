@@ -175,6 +175,7 @@ function returnGraph() {
             if (idIndex(nodes, n.id) == null)
                 nodes.push({
                     id: n.id,
+                    userid: n.properties.id,
                     label: n.labels[0],
                     title: n.properties.username,
                     avatar: n.properties.avatar,
