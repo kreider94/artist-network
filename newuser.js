@@ -100,10 +100,15 @@ function assignArray(b, callback){
 function getArtistTrack(id){
   var topTrack;
   SC.get("/users/" + id + "/tracks").then(function (tracks) {
+    for (var i = 0; i < tracks.length; i++) {
+      if(tracks[i].sharing = "public"){
+        topTrack = tracks[i].uri;
+        console.log(tracks[i].sharing)
+        break;
+      }
+    }
       topTrack = tracks[0].uri
       document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + tracks[0].id;
-      console.log(topTrack.user);
     })
     changeSound(topTrack);
-
 }

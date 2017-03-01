@@ -55,9 +55,6 @@
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
-
-
-
         div>a {
             text-transform: capitalize;
             background-color: black;
@@ -68,17 +65,11 @@
             font-weight: bold;
         }
 
-
-
-
         #play {
             position: absolute;
             left: 5%;
             bottom: 5%;
         }
-
-
-
 
         .curruser {
             position: absolute;
@@ -97,8 +88,11 @@
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
-
-
+        #sc-widget {
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+        }
 
         body {
             background: -moz-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
@@ -116,10 +110,9 @@
 
 <body>
 
-    <div class="artbox" id="artbox" width="200px" height="100px" border="1px">
+    <div class="artbox" id="artbox" width="100px" height="50px" border="1px">
         <a id="artname">ARTISTSNAME</a>
         <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
-        <img id="play" width="30px" height="30px" src="https://img.clipartfest.com/7d0af8798bf3f8e67bc76e81976bf444_play-button-clip-art-play-button-clipart_1000-1000.svg"></img>
     </div>
 
     <div class="curruser" id="curruser"></div>
@@ -187,7 +180,7 @@ function changeSound(newSoundUrl){
                 var svg = d3.select("body").append("svg")
                     .attr("id", "svg")
                     .attr("width", "100%")
-                    .attr("height", "100%");
+                    .attr("height", "80%");
 
                 var nodes = graph.nodes;
                 var links = graph.links;

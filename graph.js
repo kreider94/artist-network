@@ -100,7 +100,6 @@ function createRelationships(arr, user) {
     for (var i = 0; i < arr.length; i++) {
         if (user.id != arr[i].id) {
             query[i] = "MATCH (a:User {id: " + user.id + " } ),(b:User {id: " + arr[i].id + " }) CREATE (a)-[r:LIKES{weight:2}]->(b) RETURN a,r,b";
-            console.log(query[i]);
             requery(query[i]);
             count++
         }
@@ -123,12 +122,9 @@ function checkNeo(arr){
   function callbackTester(callback) {
       callback();
   };
-  console.log(arr.length);
-  console.log("function runninggg")
   callbackTester (function(){
     runAjax(check,function(output){
       return num = output.results[0];
-      console.log(num);
     })
   });
 
