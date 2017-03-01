@@ -43,6 +43,7 @@ function search() {
         callback(user);
     }
 
+
     function checkArrs(){
       if(tracklength != likes.length || followlength != followingList.length){
         setTimeout(checkArrs,100);

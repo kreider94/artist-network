@@ -100,15 +100,68 @@ function assignArray(b, callback){
 function getArtistTrack(id){
   var topTrack;
   SC.get("/users/" + id + "/tracks").then(function (tracks) {
-    for (var i = 0; i < tracks.length; i++) {
-      if(tracks[i].sharing = "public"){
-        topTrack = tracks[i].uri;
-        console.log(tracks[i].sharing)
-        break;
-      }
-    }
       topTrack = tracks[0].uri
       document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + tracks[0].id;
     })
     changeSound(topTrack);
 }
+
+function checkIfFollowing(user,curr){
+      for (var u = 0; u < alreadyfollowing.length; u++) {
+          if(curr.id === alreadyfollowing[u].id){
+            document.getElementById("followbtn").src = "following.png";
+            console.log("already following user");
+            following = true;
+            break;
+          }
+      }
+}
+
+function followUnfollowUser(user,curr){
+  var me = mainuser
+
+      if(following = true){
+        unfollowUser();
+      }
+
+      if(following = false){
+        followUser();
+      }
+
+      function unfollowUser(){
+        SC.connect().then(function() {
+          SC.put('/me/followings/' + curr.id).then(function(){
+            following = false;
+            return SC.delete('/me/followings/' + curr.id)
+          }).then(function(user){
+              console.log('You unfollowed ' + user.username);
+            }).catch(function(error){
+              alert('Error: ' + error.message);
+            });
+        });
+        document.getElementById('followbtn').src = "follow.png";
+      }
+
+      function followUser(){
+        SC.connect().then(function() {
+          following = true;
+          return SC.put('/me/followings/' + curr.id);
+        }).then(function(user){
+            alert('You are now following ' + user.username);
+          }).catch(function(error){
+            alert('Error: ' + error.message);
+          });
+        document.getElementById('followbtn').src = "unfollow.png";
+      }
+    }
+  //
+  // if(following = false){
+  // SC.connect().then(function(){
+  //     following = true;
+  //      SC.put('/me/followings/' + curr.id);
+  //   }).then(function(user){
+  //     console.log('You are now following user');
+  //   }).catch(function(error){
+  //     alert('Error: ' + error.message);
+  //   });
+  // }

@@ -25,25 +25,20 @@
             stroke-opacity: 0.6;
         }
 
-
-
         .nodes circle {
             stroke: #fff;
             stroke-width: 1.5px;
         }
 
-
-
-
         .artbox {
             position: absolute;
             visibility: hidden;
             border: 1px solid black;
-            width: 200px;
-            height: 50px;
-            text-align: right;
+            width: auto;
+            height: 22px;
+            text-align: center;
             padding: 3px;
-            background-color: white;
+            background-color: black;
             text-transform: capitalize;
             border-radius: 4px;
             padding: 5px;
@@ -88,10 +83,25 @@
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
+        #followbtn {
+            position: absolute;
+            right: 15px;
+            top: 173px;
+            border-radius: 4px;
+        }
+
         #sc-widget {
           position: absolute;
           bottom: 0px;
           left: 0px;
+        }
+
+        #homebtn {
+          position: absolute;
+          left: 15px;
+          top: 15px;
+          height: 25px;
+          width: 25px;
         }
 
         body {
@@ -110,13 +120,14 @@
 
 <body>
 
-    <div class="artbox" id="artbox" width="100px" height="50px" border="1px">
+    <div class="artbox" id="artbox" width="100px" height="25px" border="1px">
         <a id="artname">ARTISTSNAME</a>
         <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
     </div>
 
+    <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
     <div class="curruser" id="curruser"></div>
-
+    <img id="followbtn" src="follow.png" onclick="javascript:followUnfollowUser(mainuser,current)">
     <div>
 
         <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
@@ -124,9 +135,6 @@
             <div align="center">
                 <input class="button" id="searchbar" placeholder="Search..." value="" onclick="search()">
                 <script src='http://use.edgefonts.net/amaranth.js'></script>
-                <!--
-            <input id="searchval" type="search" name="searchbar"></input>
-            <input id="submit" type="button" value="search" onclick="search()"></input> -->
         </form>
 
 <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
@@ -138,8 +146,6 @@
 var newSoundUrl;
 
 function changeSound(newSoundUrl){
-
-
   (function(){
     var widgetIframe = document.getElementById('sc-widget'),
         widget       = SC.Widget(widgetIframe);
@@ -184,8 +190,6 @@ function changeSound(newSoundUrl){
 
                 var nodes = graph.nodes;
                 var links = graph.links;
-                console.log(nodes);
-                console.log(links);
                 force
                     .nodes(nodes)
                     .links(links)

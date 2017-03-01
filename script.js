@@ -14,6 +14,9 @@ var count = 0;
 var viz;
 var reslt;
 var data;
+var current;
+var alreadyfollowing = [];
+var following = false;
 
 function WaitForSoundcloud() {
 
@@ -76,7 +79,7 @@ function WaitForSoundcloud() {
             getUserData(mainuser, likes, followingList);
             checkArrs();
 
-
+            alreadyfollowing = followingList;
             document.getElementById('login-sc').style.visibility = 'hidden';
             hidden = !hidden;
             if (hidden) {
@@ -104,9 +107,11 @@ function closeNav() {
 
 
 function ShowData(user) {
+    current = user;
     deleteNodes();
     var avatar = user.avatar_url;
     currUserInfo(avatar);
+    checkIfFollowing(mainuser,user);
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {
