@@ -12,11 +12,15 @@
     <script type="text/javascript" src="graph.js"></script>
     <script type="text/javascript" src="newuser.js"></script>
     <script type="text/javascript" src="search.js"></script>
+    <script type="text/javascript" src="positions.js"></script>
     <link rel="stylesheet" href="animated-search-box-pure-css/css/style.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="soundcloud.player.api.js"></script>
     <script src="d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3-random.v1.min.js"></script>
+    <script src="d3.hexbin.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <meta charset="utf-8">
     <style>
@@ -25,10 +29,12 @@
             stroke-opacity: 0.6;
         }
 
+
         .nodes circle {
             stroke: #fff;
             stroke-width: 1.5px;
         }
+
 
         .artbox {
             position: absolute;
@@ -50,6 +56,7 @@
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
+
         div>a {
             text-transform: capitalize;
             background-color: black;
@@ -60,11 +67,13 @@
             font-weight: bold;
         }
 
+
         #play {
             position: absolute;
             left: 5%;
             bottom: 5%;
         }
+
 
         .curruser {
             position: absolute;
@@ -72,7 +81,7 @@
             height: 150px;
             background-repeat: no-repeat;
             background-size: cover;
-            top: 15px;
+            top: 45px;
             right: 15px;
             border: 1px solid black;
             text-transform: capitalize;
@@ -83,26 +92,41 @@
             box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
         }
 
+
         #followbtn {
             position: absolute;
             right: 15px;
-            top: 173px;
+            top: 203px;
             border-radius: 4px;
         }
 
-        #sc-widget {
-          position: absolute;
-          bottom: 0px;
-          left: 0px;
+
+        #currname {
+            font-size: 22px;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            width: auto;
+            height: 25px;
+            z-index: 100;
         }
 
-        #homebtn {
-          position: absolute;
-          left: 15px;
-          top: 15px;
-          height: 25px;
-          width: 25px;
+
+        #sc-widget {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
         }
+
+
+        #homebtn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            height: 25px;
+            width: 25px;
+        }
+
 
         body {
             background: -moz-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
@@ -115,19 +139,42 @@
             /* IE6-9 */
             copy
         }
+
+
+
+        .axis text {
+            font: 10px sans-serif;
+        }
+
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+
+        .hexagon {
+            fill: none;
+            stroke: #000;
+            stroke-width: .5px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="artbox" id="artbox" width="100px" height="25px" border="1px">
-        <a id="artname">ARTISTSNAME</a>
-        <img id="exit" width="10px" height="10px" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Close_delete_remove_exit_cross_x_button_error.png"></img>
+        <a class="name" id="artname">ARTISTSNAME</a>
     </div>
 
     <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
-    <div class="curruser" id="curruser"></div>
-    <img id="followbtn" src="follow.png" onclick="javascript:followUnfollowUser(mainuser,current)">
+    <div id="currentuser">
+        <a id="currname"></a>
+        <div class="curruser" id="curruser"></div>
+        <img id="followbtn" src="follow.png" onclick="javascript:followUnfollowUser(mainuser,current)">
+    </div>
     <div>
 
         <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
@@ -137,129 +184,98 @@
                 <script src='http://use.edgefonts.net/amaranth.js'></script>
         </form>
 
-<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
+        <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 
-<iframe id="sc-widget" width="100%" height="166" scrolling="no" frameborder="no" src=""></iframe>
-<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
-<script type="text/javascript">
+        <iframe id="sc-widget" width="100%" height="166" scrolling="no" auto="true" frameborder="no" src=""></iframe>
+        <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var newSoundUrl;
 
-var newSoundUrl;
+            function changeSound(newSoundUrl) {
+                (function() {
+                    var widgetIframe = document.getElementById('sc-widget'),
+                        widget = SC.Widget(widgetIframe);
 
-function changeSound(newSoundUrl){
-  (function(){
-    var widgetIframe = document.getElementById('sc-widget'),
-        widget       = SC.Widget(widgetIframe);
+                    console.log(newSoundUrl);
+                    widget.bind(SC.Widget.Events.READY, function() {
+                        // load new widget
+                        widget.bind(SC.Widget.Events.FINISH, function() {
+                            widget.load(newSoundUrl, {
+                                show_artwork: false
+                            });
+                        });
+                    });
 
-        console.log(newSoundUrl);
-    widget.bind(SC.Widget.Events.READY, function() {
-      // load new widget
-      widget.bind(SC.Widget.Events.FINISH, function() {
-        widget.load(newSoundUrl, {
-          show_artwork: false
-        });
-      });
-    });
-
-  }());
-};
-</script>
+                }());
+            };
+        </script>
 
         <script type="text/javascript">
-            var w = window,
-                d = w.document,
-                de = d.documentElement,
-                db = d.body || d.getElementsByTagName('body')[0],
-                x = w.innerWidth || de.clientWidth || db.clientWidth,
-                y = w.innerHeight || de.clientHeight || db.clientHeight;
+
 
             function makeNetwork(graph) {
+
+                var w = window,
+                    d = w.document,
+                    de = d.documentElement,
+                    db = d.body || d.getElementsByTagName('body')[0],
+                    // x = w.innerWidth || de.clientWidth || db.clientWidth,
+                    // y = w.innerHeight || de.clientHeight || db.clientHeight;
+                    x = screen.width,
+                    y = screen.height * 0.83;
+
                 $("svg").remove()
                 var width = x,
                     height = y;
-                var color = d3.scale.category20();
-                var force = d3.layout.force()
-                    .charge(-400)
-                    .linkDistance(100)
-                    .size([width, height])
-                    .on("tick", tick);
 
                 var svg = d3.select("body").append("svg")
                     .attr("id", "svg")
-                    .attr("width", "100%")
-                    .attr("height", "80%");
+                    .attr("width", x)
+                    .attr("height", y),
+                    width = x,
+                    height = y,
+                    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-                var nodes = graph.nodes;
-                var links = graph.links;
-                force
-                    .nodes(nodes)
-                    .links(links)
-                    .start();
-                var link = svg.selectAll(".link")
-                    .data(links)
-                    .enter().append("line")
-                    .attr("class", "link")
-                    .style("stroke-width", function(d) {
-                        return d.target;
-                    })
-                    .style("stroke", "white");
-                var gnodes = svg.selectAll('g.gnode') //('g.gnode')
-                    .data(nodes)
-                    .enter()
-                    .append('g')
-                    .classed('gnode', true)
-
-                var defs = gnodes.append("defs").attr("id", "imgdefs")
-                var image = gnodes.append("pattern")
-                    .attr("id", "image")
-                    .attr("height", 30)
-                    .attr("width", 30)
-                    .attr("x", "0")
-                    .attr("y", "0")
-                image.append("image")
-                    .attr("height", function(n) {
-                        return n.ranking * 30
-                    })
-                    .attr("width", function(n) {
-                        return n.ranking * 30
-                    })
-                    .attr("xlink:href", function(d) {
-                        var largeavatar = d.avatar.replace("large", "t500x500");
-                        return largeavatar;
-                    });
-                var coordinates = [0, 0];
-                var clickUser;
-                var node = gnodes.append("circle")
-                    .attr("r", function(d) {
-                        return d.ranking / 2 * 30;
-                    })
-                    .attr("fill", "url(#image)")
-                    .call(force.drag)
-                    .on("click", function(user) {
-                        document.getElementById('artbox').style.visibility = "visible";
-                        coordinates = d3.mouse(svg.node());
-                        var x = coordinates[0];
-                        var y = coordinates[1];
-                        var a = document.getElementById("artbox");
-                        a.style.position = "absolute";
-                        a.style.left = x + 'px';
-                        a.style.top = y + 'px';
-                        getArtistTrack(user.userid);
-                        document.getElementById("artname").innerHTML = user.title;
-                        document.getElementById('artname').onclick = function() {
-                            document.getElementById("searchbar").value = user.permalink;
-                            document.getElementById('artbox').style.visibility = "hidden"
-                            search();
-                            document.getElementById('svg').onclick = function() {
-                                document.getElementById('artbox').style.visibility = "hidden";
-                            };
-                        }
-                        document.getElementById('exit').onclick = function() {
-                            document.getElementById('artbox').style.visibility = "hidden";
+                var nodes = d3.range(nodelength).map(function(i) {
+                        return {
+                            id: i
                         };
-                    });
+                    }),
+                    links = graph.links;
 
-                function tick() {
-                    link.attr("x1", function(d) {
+                var simulation = d3.forceSimulation(graph.nodes)
+                    .force("charge", d3.forceManyBody().strength(-400))
+                    .force('collision', d3.forceCollide().radius(50))
+                    .force("link", d3.forceLink(links).distance(function(d) {
+                            return 100 - (5 * d.size);
+                        })
+                        .strength(0.1).iterations(10))
+                    .force("x", d3.forceX())
+                    .force("y", d3.forceY())
+                    .stop();
+
+                var loading = svg.append("text")
+                    .attr("dy", "0.35em")
+                    .attr("text-anchor", "middle")
+                    .attr("font-family", "sans-serif")
+                    .attr("font-size", 10)
+                    .text("Simulating. One moment please…");
+
+
+                d3.timeout(function() {
+                    loading.remove();
+                    // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+                    for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
+                        simulation.tick();
+                    }
+
+                    var link = g.append("g")
+                        .attr("stroke", "#000")
+                        .attr("stroke-width", 0)
+                        .selectAll("line")
+                        .data(links)
+                        .enter().append("line")
+                        .attr("x1", function(d) {
                             return d.source.x;
                         })
                         .attr("y1", function(d) {
@@ -271,28 +287,85 @@ function changeSound(newSoundUrl){
                         .attr("y2", function(d) {
                             return d.target.y;
                         });
-                    gnodes.attr("transform", function(d) {
-                        return 'translate(' + [d.x, d.y] + ')';
-                    });
-                };
 
-                function dragstarted(d) {
-                    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-                    d.fx = d.x;
-                    d.fy = d.y;
-                }
+                    var node = g.selectAll('g.gnode')
+                        .data(graph.nodes)
+                        .enter()
+                        .append('g')
+                        .classed('gnode', true)
 
-                function dragged(d) {
-                    d.fx = d3.event.x;
-                    d.fy = d3.event.y;
-                }
+                    var defs = node.append("defs").attr("id", "imgdefs")
+                    var image = node.append("pattern")
+                        .data(graph.nodes)
+                        .attr("id", "image")
+                        .attr("height", 35)
+                        .attr("width", 35)
+                    image.append("image")
+                        .attr("height", function(n) {
+                            return n.ranking * 35
+                        })
+                        .attr("width", function(n) {
+                            return n.ranking * 35
+                        })
+                        .attr("xlink:href", function(d) {
+                            return d.avatar;
+                        })
+                    var circ = node.append("circle")
+                        .attr("id", function(d){
+                          return "id" + d.index;
+                        })
+                        .attr("r", function(d) {
+                          if(d.ranking < 4){
+                            return d.ranking / 2 * 35;
+                          }else{
+                            return d.ranking * 5;
+                          }
+                          })
+                        .attr("cx", function(d) {
+                            return d.x;
+                        })
+                        .attr("cy", function(d) {
+                            return d.y;
+                        })
+                        .attr("fill", "url(#image)")
+                        .on("mouseenter", function(user) {
+                            document.getElementById('artbox').style.visibility = "visible";
+                            coordinates = d3.mouse(svg.node());
+                            var x = coordinates[0];
+                            var y = coordinates[1];
+                            var a = document.getElementById("artbox");
+                            a.style.position = "absolute";
+                            a.style.left = x + 'px';
+                            a.style.top = y + 'px';
+                            document.getElementById("artname").innerHTML = user.title;
+                        }).on("mouseleave", function(user) {
+                            document.getElementById("artbox").visibility = "hidden";
+                        }).on("click", function(user) {
+                            var selected = user.index;
+                            svg.selectAll("line").style("stroke-width", function(d) {
+                                if (d.target.index == selected){
+                                  d3.select("id" + d.source.index).attr("r", 40);
+                                  return "5";
+                                }else if(d.source.index == selected) {
+                                  d3.select("id" + d.target.index).attr("r", 40);
+                                  return "5";
+                                } else {
+                                    return "0";
+                                }
+                            });
 
-                function dragended(d) {
-                    if (!d3.event.active) simulation.alphaTarget(0);
-                    d.fx = null;
-                    d.fy = null;
-                }
-            }
+                            getArtistTrack(user.userid);
+                            document.getElementById('artname').onclick = function() {
+                                document.getElementById("searchbar").value = user.permalink;
+                                document.getElementById('artbox').style.visibility = "hidden"
+                                search();
+                                document.getElementById('svg').onclick = function() {
+                                    document.getElementById('artbox').style.visibility = "hidden";
+                                };
+                            }
+                        });
+                });
+            };
         </script>
 
 </html>

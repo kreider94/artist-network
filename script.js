@@ -110,7 +110,7 @@ function ShowData(user) {
     current = user;
     deleteNodes();
     var avatar = user.avatar_url;
-    currUserInfo(avatar);
+    currUserInfo(avatar,user.username);
     checkIfFollowing(mainuser,user);
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {

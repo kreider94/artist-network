@@ -1,9 +1,10 @@
 
-function currUserInfo(avatar){
+function currUserInfo(avatar,username){
   var pic = document.getElementById('curruser');
   var largeavatar = avatar.replace("large", "t500x500");
   console.log(largeavatar);
   pic.style.backgroundImage = "url('" + largeavatar + "')";
+  document.getElementById('currname').innerHTML = username;
 }
 
 function getTracks(newUser, callback){
@@ -80,7 +81,6 @@ function removeIfTooMany(arr, callback){
 }
 
 function concat(arr, final, callback) {
-    //var data = [];
 
     for (var p = 0; p < arr.length; p++) {
         final.artists[p] = arr[p];
@@ -100,8 +100,12 @@ function assignArray(b, callback){
 function getArtistTrack(id){
   var topTrack;
   SC.get("/users/" + id + "/tracks").then(function (tracks) {
-      topTrack = tracks[0].uri
-      document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + tracks[0].id;
+     tracks.sort(sortOn("favoritings_count"));
+     tracks.sort(sortOn("comment_count"));
+     tracks.sort(sortOn("reposts_count"));
+     console.log(tracks);
+      topTrack = tracks[tracks.length-1];
+      document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + topTrack.id;
     })
     changeSound(topTrack);
 }
@@ -151,17 +155,6 @@ function followUnfollowUser(user,curr){
           }).catch(function(error){
             alert('Error: ' + error.message);
           });
-        document.getElementById('followbtn').src = "unfollow.png";
+        document.getElementById('followbtn').src = "";
       }
     }
-  //
-  // if(following = false){
-  // SC.connect().then(function(){
-  //     following = true;
-  //      SC.put('/me/followings/' + curr.id);
-  //   }).then(function(user){
-  //     console.log('You are now following user');
-  //   }).catch(function(error){
-  //     alert('Error: ' + error.message);
-  //   });
-  // }

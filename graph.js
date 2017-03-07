@@ -1,3 +1,5 @@
+var nodelength;
+var linklength;
 
 function runAjax(query, callback) {
     $.ajax({
@@ -87,7 +89,7 @@ function runCypherQuery(arr, callback) {
     var query = [];
 
     for (var i = 0; i < arr.length; i++) {
-        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', permalink: '" + arr[i].permalink + "', avatar: '" + arr[i].avatar_url + "', ranking: " + arr[i].ranking + " })";
+        query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', permalink: '" + arr[i].permalink + "', avatar: '" + arr[i].avatar_url + "', ranking: " + arr[i].ranking + "})";
         requery(query[i]);
     }
     callback(data);
@@ -104,6 +106,7 @@ function createRelationships(arr, user) {
             count++
         }
     }
+    requery("match (n) SET n.size = SIZE(()-[:LIKES]->(n)) return n.size");
     if(count != arr.length){
       setTimeout(checkNeo(count), 100);
     }
@@ -116,12 +119,14 @@ function checkNeo(arr){
           statement: "MATCH (a)-[r:LIKES]->(b) WITH count(b) as rels RETURN rels"
       }]
   }
+
   var check = JSON.stringify(getrelcount);
   var num;
 
   function callbackTester(callback) {
       callback();
   };
+
   callbackTester (function(){
     runAjax(check,function(output){
       return num = output.results[0];
@@ -164,6 +169,15 @@ function returnGraph() {
         return null;
     }
 
+    function getNode(a,p){
+      for (var i = 0; i < a.length; i++) {
+        if (a[i].id == p){
+          return a[i].size;
+        }
+      }
+
+    }
+
     var nodes = [],
         links = [];
     reslt.results[0].data.forEach(function(row) {
@@ -176,7 +190,8 @@ function returnGraph() {
                     title: n.properties.username,
                     avatar: n.properties.avatar,
                     ranking: n.properties.ranking,
-                    permalink: n.properties.permalink
+                    permalink: n.properties.permalink,
+                    size: n.properties.size
                 });
         });
         links = links.concat(row.graph.relationships.map(function(r) {
@@ -184,7 +199,8 @@ function returnGraph() {
                 source: idIndex(nodes, r.startNode),
                 target: idIndex(nodes, r.endNode),
                 type: r.type,
-                weight: 2
+                weight: 2,
+                size: getNode(nodes, r.endNode)
             };
         }));
     });
@@ -192,6 +208,7 @@ function returnGraph() {
         nodes: nodes,
         links: links
     };
-    data = JSON.stringify(viz);
+    nodelength = viz.nodes.length;
+    linklength = viz.links.length;
     makeNetwork(viz);
 };
