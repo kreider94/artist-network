@@ -112,7 +112,7 @@ function ShowData(user) {
     var avatar = user.avatar_url;
     currUserInfo(avatar,user.username);
     checkIfFollowing(mainuser,user);
-    getPagePlaylist();
+  //  getPagePlaylist();
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {

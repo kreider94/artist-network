@@ -1,3 +1,0 @@
-Plexis.
-
-A network of artists using the Soundcloud api, linking users together based on influence.

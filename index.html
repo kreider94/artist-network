@@ -3,7 +3,6 @@
 
 <head>
     <script src="jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="main.css"></script>
     <script type="text/javascript" src="jquery-3.1.0.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
@@ -11,7 +10,9 @@
     <script type="text/javascript" src="scripts/graph.js"></script>
     <script type="text/javascript" src="scripts/newuser.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet">
     <link rel="stylesheet" href="animated-search-box-pure-css/css/style.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="soundcloud.player.api.js"></script>
@@ -23,213 +24,17 @@
 
     <meta charset="utf-8">
     <style>
-            #svg {
-            display: block;
-            margin: 0 auto;
-        }
-
-
-        .links line {
-            /*stroke: #999;*/
-            stroke: url(#linear-gradient);
-            fill: none
-            stroke-opacity: 0.6;
-            }
-
-            .nodes circle {
-                stroke: #fff;
-                stroke-width: 1.5px;
-            }
-
-
-            .artbox {
-                position: absolute;
-                visibility: hidden;
-                border: 1px solid black;
-                width: auto;
-                height: 22px;
-                text-align: center;
-                padding: 3px;
-                background-color: black;
-                text-transform: capitalize;
-                border-radius: 4px;
-                padding: 5px;
-                bottom: 0px;
-                left: 0px;
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-                -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-                -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-                box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-            }
-
-
-            div>a {
-                text-transform: capitalize;
-                background-color: black;
-                color: white;
-                padding: 3px;
-                border-radius: 3px;
-                font-family: "Trebuchet MS", Helvetica, sans-serif;
-                font-weight: bold;
-            }
-
-
-            #play {
-                position: absolute;
-                left: 5%;
-                bottom: 5%;
-            }
-
-
-            .curruser {
-                position: absolute;
-                width: 150px;
-                height: 150px;
-                background-repeat: no-repeat;
-                background-size: cover;
-                top: 45px;
-                right: 15px;
-                border: 1px solid black;
-                text-transform: capitalize;
-                border-radius: 4px;
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-                -webkit-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-                -moz-box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-                box-shadow: 1px 3px 60px 17px rgba(140, 133, 140, 0.69);
-            }
-
-
-            #followbtn {
-                position: absolute;
-                right: 15px;
-                top: 203px;
-                border-radius: 4px;
-            }
-
-
-            #currname {
-                font-size: 22px;
-                position: absolute;
-                right: 15px;
-                top: 10px;
-                width: auto;
-                height: 25px;
-                z-index: 100;
-            }
-
-
-            #sc-widget {
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                z-index: 100;
-            }
-
-
-            #homebtn {
-                position: absolute;
-                left: 15px;
-                top: 15px;
-                height: 25px;
-                width: 25px;
-            }
-
-
-            body {
-                background: -moz-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
-                /* FF3.6-15 */
-                background: -webkit-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
-                /* Chrome10-25,Safari5.1-6 */
-                background: linear-gradient(to bottom, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
-                /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13efa9', endColorstr='#095377', GradientType=0);
-                /* IE6-9 */
-                copy width: 100%;
-                height: 100%;
-            }
-            /*.axis text {
-            font: 10px sans-serif;
-        }
-
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }*/
-            /*.spotify-embed {
-          background: #282828;
-          &:not(:last-of-type) {
-            margin-bottom: 5px;
-          }
-
-          iframe {
-            display: block;
-            transition: opacity 0.125s;
-            .js & {
-              opacity: 0;
-
-              &.loaded {
-                opacity: 1;
-              }
-            }
-          }
-        }*/
-
-            #middle {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-            }
-
-            .pathdash {
-                stroke-dasharray: 800;
-                animation: draw 2s ease-in;
-                animation-duration: 2s;
-            }
-
-            @keyframes draw {
-                from {
-                    stroke-dashoffset: 1400;
-                }
-                to {
-                    stroke-dashoffset: 2000;
-                }
-            }
-
-            .hoverdash {
-                stroke-dasharray: 20;
-                animation: draw 4s linear;
-                animation-duration: 5s;
-                size: 110%;
-            }
-
-            @keyframes draw {
-                from {
-                    stroke-dashoffset: 1400;
-                }
-                to {
-                    stroke-dashoffset: 2000;
-                }
-            }
-            #deezer-widget {
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                width: 100%;
-            }
 
     </style>
 </head>
 
 <body>
-
+    <div id="logo">Plexis.</div>
     <div id="middle"></div>
     <div class="artbox" id="artbox" width="100px" height="25px" border="1px">
         <a class="name" id="artname">ARTISTSNAME</a>
     </div>
 
-    <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
     <div id="currentuser">
         <a id="currname"></a>
         <div class="curruser" id="curruser"></div>
@@ -237,11 +42,19 @@
     </div>
     <div>
 
+    <div class="artbox" id="artist-go" width="100px" height="25px" border="1px" onclick="javascript:ShowData(clickedArtist)">
+      <a class="name" id="artist-go-name">GO TO ARTIST</a>
+    </div>
+
+
         <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
+
         <form id="searchsc" class="my-form">
             <div align="center">
+              <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
                 <input class="button" id="searchbar" placeholder="Search..." value="" onkeypress="handle(event)">
                 <script src='http://use.edgefonts.net/amaranth.js'></script>
+              </div>
         </form>
 
         <marker id="end-mark" viewBox="-1 -1 2 2" markerWidth="2.5" markerHeight="2.5" orient='auto'>
@@ -282,22 +95,25 @@
                     }());
                 };
 
-                // $(window).on('load resize', function() {
-                //   $('iframe[src*="embed.spotify.com"]').each( function() {
-                //     $(this).css('width', $(this).parent().css('width'));
-                //     $(this).attr('src', $(this).attr('src'));
-                //     $(this).removeClass('loaded');
-                //
-                //     $(this).on('load', function(){
-                //       $(this).addClass('loaded');
-                //     });
-                //   });
-                // });
             </script>
 
             <iframe id="deezer-widget" scrolling="no" autoplay="true" frameborder="0" allowTransparency="true" src="" width="100%" height="115"></iframe>
 
             <script type="text/javascript">
+
+
+            var clickedArtist;
+
+            function resolveArtist(data){
+              SC.get('/resolve', {
+                  client_id: 'm3kCd053xVXYtaEYQZ2e87SWSSuYnunA',
+                  url: 'https://soundcloud.com/' + data
+              }).then(function(user) {
+                  clickedArtist = user;
+                  callback(user);
+              });
+            }
+
                 function makeNetwork(graph) {
 
                     var w = window,
@@ -406,6 +222,21 @@
                             .attr("xlink:href", function(d) {
                                 return d.avatar;
                             })
+                        var visitedimage = node.append("pattern")
+                                .data(graph.nodes)
+                                .attr("id", "visimage")
+                                .attr("height", 3.5 + "em")
+                                .attr("width", 3.5 + "em")
+                        visitedimage.append("image")
+                                .attr("height", function(n) {
+                                    return n.ranking * 1.1 + "em"
+                                })
+                                .attr("width", function(n) {
+                                    return n.ranking * 1.1 + "em"
+                                })
+                                .attr("xlink:href", "http://db743fb57071f8e05cb3-4d10287819954fd6d08ae459de19af00.r20.cf1.rackcdn.com/global/imagelib/uncategorized/iip_600x600_checkdark-63f464723ca1a113c1a0a22acf62cd3ad4c59149.png")
+                                .style("visibility","visible");
+
                         var circ = node.append("circle")
                             .attr("class", "circc")
                             .attr("id", function(d) {
@@ -465,6 +296,10 @@
                             }).on("mousedown",function(user){
                               svg.selectAll("line").classed("hoverdash", false);
                             }).on("click", function(user) {
+                              var circid = $(this)[0].id;
+                              svg.select('#'+circid).attr("fill","url(#visimage)");
+                              //return $(this)[0].id = "http://www.clipartbest.com/cliparts/Rcd/6X7/Rcd6X7ngi.png";
+                                resolveArtist(user.permalink);
                                 var selected = user.index;
                                 svg.selectAll("line").style("stroke-width", function(d) {
                                     if (d.target.index == selected || d.source.index == selected) {
@@ -482,6 +317,12 @@
                                 })
                                 console.log(user);
                                 getArtistTrack(user);
+                                $('#artist-go').css("visibility", "visible");
+                                $('#artist-go').click(function(){
+                                  $("#searchbar").val(user.permalink);
+                                  $("#artist-go").css("visibility", "visible");
+                                  search();
+                                });
                                 document.getElementById('artname').onclick = function() {
                                     document.getElementById("searchbar").value = user.permalink;
                                     document.getElementById('artbox').style.visibility = "hidden"
@@ -490,14 +331,9 @@
                                         document.getElementById('artbox').style.visibility = "hidden";
                                     };
                                 }
-                            }).on("mouseout", function(user) {
-                                var find = $(this)[0].id;
-                                return document.getElementById(find).href = "http://www.clipartbest.com/cliparts/Rcd/6X7/Rcd6X7ngi.png";
-                                // return user.append("svg:image").attr("xlink:href","http://www.clipartbest.com/cliparts/Rcd/6X7/Rcd6X7ngi.png")
                             })
                     });
                 };
             </script>
-
 </html>
 </body>

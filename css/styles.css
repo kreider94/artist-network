@@ -52,6 +52,7 @@ table {
 */
 body{
 	background-color: #0B4C63;
+    padding-top: 100px;
 }
 /*
     State hidden
@@ -69,7 +70,7 @@ div#top-header{
     border-top-right-radius: 5px;
     width: 370px;
     height: 40px;
-    left: 0px;
+    margin: auto;
     text-align: center;
     line-height: 20px;
     padding-top: 10px;
@@ -84,7 +85,7 @@ div#top-header{
 div#visualization{
     width: 370px;
     height: 370px;
-    left: 0px;
+    margin: auto;
     z-index: 0;
     background-color: #000;
     border-radius: 5px;
@@ -102,7 +103,6 @@ div#visualization img{
 div#amplitude-visualization{
     width: 370px;
     height: 370px;
-    left: 0px;
 }
 
 /*
@@ -113,7 +113,7 @@ div#small-player{
 	height: 45px;
 	background-color: #f2f2f2;
 	border-radius: 5px;
-    left: 0px;
+    margin: auto;
     z-index: 99999;
     position: relative;
 }
@@ -420,7 +420,7 @@ span.time-duration{
 div#small-player-playlist{
     width: 370px;
     height: 40px;
-    left: 0px;
+    margin: auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     background-color: #f4f4f4;

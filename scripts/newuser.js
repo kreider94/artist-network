@@ -104,23 +104,11 @@ function getPagePlaylist(){
        tracks.sort(sortOn("favoritings_count"));
        tracks.sort(sortOn("comment_count"));
        tracks.sort(sortOn("reposts_count"));
-       pagePlaylist.push(tracks[tracks.length-1].id);
+       pagePlaylist.push(tracks[tracks.length-1]);
       });
     }
 
-  //console.log(pagePlaylist);
-
-      var playtracks = pagePlaylist.map(function(id) { return { id: id }} );
-
-
-    console.log(playtracks);
-SC.connect(function() {
-        SC.post('/playlists', {
-          playlist: { title: 'My Playlist', tracks: playtracks }, function(response){
-            console.log(response);
-        		}
-          })
-      });
+  //  populatePlaylist(pagePlaylist);
 }
 
 function getArtistTrack(user){
