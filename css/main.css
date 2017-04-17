@@ -1,7 +1,8 @@
 #svg {
 display: block;
+float:right;
 margin: 0 auto;
-margin-bottom: 10%;
+margin-bottom: 115px;
 }
 
 
@@ -144,6 +145,7 @@ div>a {
 }
 
 body {
+    position: absolute;
     background: -moz-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
     /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(19, 239, 169, 1) 0%, rgba(18, 219, 163, 1) 13%, rgba(14, 160, 144, 0.79) 51%, rgba(9, 83, 119, 1) 100%);
@@ -152,9 +154,47 @@ body {
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#13efa9', endColorstr='#095377', GradientType=0);
     /* IE6-9 */
-    copy width: 100%;
+    
     height: 100%;
+    width:100%;
 }
+
+.visited{
+  opacity: 0;
+  position:absolute;
+  float: left;
+  width: 200px;
+  top:25%;
+  height: 50%;
+  text-transform: capitalize;
+  color: white;
+  padding: 3px;
+  border-radius: 3px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+
+div.visited li>img {
+  list-style-type: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display:inline-block;
+ vertical-align: middle;
+}
+
+div.visited li{
+  list-style-type: none;
+}
+
+#rollover{
+  display:inline-block;
+  position:relative;
+  opacity:0;
+  w3-animate-left: -10px;
+}
+
 /*.axis text {
 font: 10px sans-serif;
 }

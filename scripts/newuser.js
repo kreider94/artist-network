@@ -150,26 +150,28 @@ function deezerTrack(query) {
 function checkIfFollowing(user,curr){
       for (var u = 0; u < alreadyfollowing.length; u++) {
           if(curr.id === alreadyfollowing[u].id){
-            document.getElementById("followbtn").src = "/images/following.png";
+            $("#followbtn").attr("src","/images/following.png");
             console.log("already following user");
             following = true;
             break;
+          }
+          else{
+            $("#followbtn").attr("src","/images/follow.png");
           }
       }
 }
 
 function followUnfollowUser(user,curr){
-  var me = mainuser
-
       if(following = true){
-        unfollowUser();
+        unfollowUser(user,curr);
       }
 
       if(following = false){
-        followUser();
+        followUser(user,curr);
       }
+  }
 
-      function unfollowUser(){
+      function unfollowUser(user,curr){
         SC.connect().then(function() {
           SC.put('/me/followings/' + curr.id).then(function(){
             following = false;
@@ -180,18 +182,19 @@ function followUnfollowUser(user,curr){
               alert('Error: ' + error.message);
             });
         });
-        document.getElementById('followbtn').src = "/images/follow.png";
+        $("followbtn").attr("src","/images/follow.png");
       }
 
-      function followUser(){
-        SC.connect().then(function() {
-          following = true;
-          return SC.put('/me/followings/' + curr.id);
-        }).then(function(user){
-            alert('You are now following ' + user.username);
-          }).catch(function(error){
-            alert('Error: ' + error.message);
-          });
-        document.getElementById('followbtn').src = "";
-      }
+
+
+    function followUser(user,curr){
+      SC.connect().then(function() {
+        following = true;
+        return SC.put('/me/followings/' + curr.id);
+      }).then(function(user){
+          alert('You are now following ' + user.username);
+        }).catch(function(error){
+          alert('Error: ' + error.message);
+        });
+      $("followbtn").attr("src","/images/following.png");
     }

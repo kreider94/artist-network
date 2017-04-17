@@ -46,6 +46,49 @@
       <a class="name" id="artist-go-name">GO TO ARTIST</a>
     </div>
 
+    <div class="visited" id="visited">
+
+      <script>
+
+        var hoveredname;
+
+        function loadvisited(array){
+            var id = array[array.length-1].permalink;
+            $("#visited").append("<li id=" + array[array.length-1].permalink + "> <img src=" + array[array.length-1].avatar + "></li>").animate({opacity: 1.0})
+
+            // $('#visited > li').each(function () {
+            $('#'+id).append(function(){
+              var roll = '<div id="rollover"> ' + id + '</div>';
+
+              $('#' + id).hover(function(){
+                $('#' + this.id).append(roll).animate({opacity: 1.0}) ;
+                $("#rollover").animate({opacity: 1.0, left:'10px'})
+              },function(){
+                  $('#rollover').remove();
+                });
+
+              $('#' + this.id).click(function(){
+                getArtist(this.id,function(user){
+                  $("#searchbar").val(user.permalink);
+                  search();
+                });
+              });
+            });
+        }
+
+
+
+        function getArtist(data,callback){
+          SC.get('/resolve', {
+              client_id: 'm3kCd053xVXYtaEYQZ2e87SWSSuYnunA',
+              url: 'https://soundcloud.com/' + data
+          }).then(function(user) {
+              callback(user);
+          });
+        }
+
+      </script>
+    </div>
 
         <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
 
@@ -101,7 +144,6 @@
 
             <script type="text/javascript">
 
-
             var clickedArtist;
 
             function resolveArtist(data){
@@ -145,6 +187,12 @@
                         height = y,
                         g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+                    // var visitd = svg.append("foreignObject")
+                    // .attr("id","visited");
+                    //       function loadvisited(array){
+                    //         $("#visited").append("<li>" + array[array.length-1]+ "</li>");
+                    //     }
+
                     var nodes = d3.range(nodelength).map(function(i) {
                             return {
                                 id: i
@@ -158,12 +206,13 @@
                         .force("link", d3.forceLink(links).distance(function(d) {
                                 return 50 - (10 * d.size);
                             })
-                            .strength(0.5).iterations(5))
+                        .strength(0.5).iterations(5))
+                        .force("center", d3.forceCenter())
                         .force("x", d3.forceX())
                         .force("y", d3.forceY())
                         .stop();
 
-                    d3.select("middle").append("svg");
+                  //  d3.select("middle").append("svg");
 
                     var loading = svg.append("text")
                         .attr("dy", "0.35em")
@@ -298,7 +347,7 @@
                             }).on("click", function(user) {
                               var circid = $(this)[0].id;
                               svg.select('#'+circid).attr("fill","url(#visimage)");
-                              //return $(this)[0].id = "http://www.clipartbest.com/cliparts/Rcd/6X7/Rcd6X7ngi.png";
+
                                 resolveArtist(user.permalink);
                                 var selected = user.index;
                                 svg.selectAll("line").style("stroke-width", function(d) {
@@ -315,7 +364,12 @@
                                         return false;
                                     }
                                 })
-                                console.log(user);
+                                //console.log(user);
+
+                                visited.push(user);
+                                loadvisited(visited);
+
+                                $("#visited").css("visibility","visible");
                                 getArtistTrack(user);
                                 $('#artist-go').css("visibility", "visible");
                                 $('#artist-go').click(function(){

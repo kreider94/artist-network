@@ -17,6 +17,8 @@ var data;
 var current;
 var alreadyfollowing = [];
 var following = false;
+var visited = [];
+var delnodes = "MATCH (n) OPTIONAL MATCH (n)-[r]-() DELETE n,r";
 
 function WaitForSoundcloud() {
 
@@ -91,28 +93,12 @@ function WaitForSoundcloud() {
     }
 };
 
-function openNav() {
-    document.getElementById("sideNav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    var titleRow = document.createElement('td');
-    titleRow.innerHTML = mainuser.followers_count;
-    document.body.appendChild(titleRow);
-}
-
-/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-function closeNav() {
-    document.getElementById("sideNav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-}
-
-
 function ShowData(user) {
     current = user;
-    deleteNodes();
+    requery(delnodes);
     var avatar = user.avatar_url;
     currUserInfo(avatar,user.username);
     checkIfFollowing(mainuser,user);
-  //  getPagePlaylist();
     likesToUsers(likes, function(likesUsers) {
         getFinalData(likesUsers, followingList, function(final) {
             unique(final, function(uniques) {
