@@ -68,7 +68,7 @@ function WaitForSoundcloud() {
                 });
             }
 
-            //document.getElementById("id").innerHTML = mainuser.id;
+            $(".front").css("visibility","hidden");
 
             function checkArrs(){
               if(tracklength != likes.length || followlength != followingList.length){

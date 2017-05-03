@@ -8,7 +8,7 @@ function runAjax(query, callback) {
         headers: {
             "Authorization": "Basic bmVvNGo6cGxleGlz",
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         data: query,
         success: function(data) {
@@ -88,7 +88,6 @@ function comparray(user, arr, callback) {
 function runCypherQuery(arr, callback) {
     var data = arr;
     var query = [];
-    getPagePlaylist();
 
     for (var i = 0; i < arr.length; i++) {
         query[i] = "CREATE (u:User {id: " + arr[i].id + ", username: '" + arr[i].username + "', permalink: '" + arr[i].permalink + "', avatar: '" + arr[i].avatar_url + "', ranking: " + arr[i].ranking + "})"
@@ -193,7 +192,7 @@ function returnGraph() {
                     ranking: n.properties.ranking,
                     permalink: n.properties.permalink,
                     size: n.properties.size
-                });
+                });                        
         });
         links = links.concat(row.graph.relationships.map(function(r) {
             return {

@@ -74,6 +74,7 @@ function unique(arr, callback) {
 function removeIfTooMany(arr, callback){
     arr.sort(sortOn("followers_count"));
     arr.sort(sortOn("reposts_count"));
+    arr.sort(sortOn("ranking"));
     while(arr.length > 70){
         arr.splice(1,1);
     }
@@ -112,7 +113,7 @@ function getPagePlaylist(){
 }
 
 function getArtistTrack(user){
-  var topTrack;
+  var topTrack = 0;
   var id = user.userid
   SC.get("/users/" + id + "/tracks").then(function (tracks) {
      tracks.sort(sortOn("favoritings_count"));
@@ -125,17 +126,18 @@ function getArtistTrack(user){
          break;
        }
      }
-      document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + topTrack.id;
-      document.getElementById('sc-widget').style.visibility = "visible";
-      document.getElementById('spotifyframe').style.visibility = "hidden";
-    })
-    deezerTrack(user.title);
-    changeSound(topTrack);
+     if(topTrack != 0){
+       document.getElementById('deezer-widget').src = "";
+       document.getElementById('sc-widget').src = "https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/" + topTrack.id;
+       document.getElementById('sc-widget').style.visibility = "visible";
+    }else{
+        deezerTrack(user.title);
+    }
+  })
 }
 
-function deezerTrack(query) {
-  var accessToken = "3f39ef50c6a04dc2b0a1ee0864e2dfa5";
 
+function deezerTrack(query) {
     $.ajax({
         url: ' http://api.deezer.com/search/autocomplete?q=' + query,
         success: function (response) {
@@ -161,29 +163,29 @@ function checkIfFollowing(user,curr){
       }
 }
 
-function followUnfollowUser(user,curr){
-      if(following = true){
-        unfollowUser(user,curr);
-      }
-
-      if(following = false){
-        followUser(user,curr);
-      }
-  }
-
-      function unfollowUser(user,curr){
-        SC.connect().then(function() {
-          SC.put('/me/followings/' + curr.id).then(function(){
-            following = false;
-            return SC.delete('/me/followings/' + curr.id)
-          }).then(function(user){
-              console.log('You unfollowed ' + user.username);
-            }).catch(function(error){
-              alert('Error: ' + error.message);
-            });
-        });
-        $("followbtn").attr("src","/images/follow.png");
-      }
+// function followUnfollowUser(user,curr){
+//       if(following = true){
+//         unfollowUser(user,curr);
+//       }
+//
+//       if(following = false){
+//         followUser(user,curr);
+//       }
+//   }
+//
+//       function unfollowUser(user,curr){
+//         SC.connect().then(function() {
+//           SC.put('/me/followings/' + curr.id).then(function(){
+//             following = false;
+//             return SC.delete('/me/followings/' + curr.id)
+//           }).then(function(user){
+//               console.log('You unfollowed ' + user.username);
+//             }).catch(function(error){
+//               alert('Error: ' + error.message);
+//             });
+//         });
+//         $("followbtn").attr("src","/images/follow.png");
+//       }
 
 
 

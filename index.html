@@ -2,34 +2,41 @@
 <html>
 
 <head>
-    <script src="jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="scripts/app.js"></script>
+    <script src="libraries/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="libraries/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/sortdata.js"></script>
     <script type="text/javascript" src="scripts/graph.js"></script>
     <script type="text/javascript" src="scripts/newuser.js"></script>
     <script type="text/javascript" src="scripts/search.js"></script>
+    <script type="text/javascript" src="scripts/gradient.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet">
     <link rel="stylesheet" href="animated-search-box-pure-css/css/style.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.1.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="soundcloud.player.api.js"></script>
-    <script src="d3.v3.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="libraries/soundcloud.player.api.js"></script>
+    <script src="libraries/d3.v3.min.js"></script>
     <script src="https://d3js.org/d3-random.v1.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="./amplitudejs-master/js/amplitude.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="css/styles.css" /> -->
 
     <meta charset="utf-8">
-    <style>
 
-    </style>
 </head>
 
 <body>
-    <div id="logo">Plexis.</div>
+
+  <div class="front">
+    <div id="middlelogo">
+      <img id="frontlogo" src="images/Plexis 2.png">
+      <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
+    </div>
+  </div>
+    <img id="logo" src="images/Plexis 2.png"/>
     <div id="middle"></div>
     <div class="artbox" id="artbox" width="100px" height="25px" border="1px">
         <a class="name" id="artname">ARTISTSNAME</a>
@@ -38,9 +45,17 @@
     <div id="currentuser">
         <a id="currname"></a>
         <div class="curruser" id="curruser"></div>
-        <img id="followbtn" src="images/follow.png" onclick="javascript:followUnfollowUser(mainuser,current)">
+        <img id="followbtn" src="images/follow.png" onclick="javascript:followUser(mainuser,current)">
     </div>
     <div>
+
+      <form id="searchsc" class="my-form">
+          <div align="center">
+            <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
+              <input class="button" id="searchbar" placeholder="Search..." value="" onkeypress="handle(event)">
+              <script src='http://use.edgefonts.net/amaranth.js'></script>
+            </div>
+      </form>
 
     <div class="artbox" id="artist-go" width="100px" height="25px" border="1px" onclick="javascript:ShowData(clickedArtist)">
       <a class="name" id="artist-go-name">GO TO ARTIST</a>
@@ -76,8 +91,6 @@
             });
         }
 
-
-
         function getArtist(data,callback){
           SC.get('/resolve', {
               client_id: 'm3kCd053xVXYtaEYQZ2e87SWSSuYnunA',
@@ -89,16 +102,6 @@
 
       </script>
     </div>
-
-        <img id="login-sc" onclick="javascript:WaitForSoundcloud()" src="https://connect.soundcloud.com/2/btn-connect-sc-l.png">
-
-        <form id="searchsc" class="my-form">
-            <div align="center">
-              <img id="homebtn" src="https://lh5.ggpht.com/f5KNdsAdO4QJie311bYhB6BUPtijC32WfyktRFgsuPaj1WI4HnKhpX1TsTl2TYgP43g=w300" onclick="javascript:ShowData(mainuser)">
-                <input class="button" id="searchbar" placeholder="Search..." value="" onkeypress="handle(event)">
-                <script src='http://use.edgefonts.net/amaranth.js'></script>
-              </div>
-        </form>
 
         <marker id="end-mark" viewBox="-1 -1 2 2" markerWidth="2.5" markerHeight="2.5" orient='auto'>
 
@@ -193,18 +196,20 @@
                     //         $("#visited").append("<li>" + array[array.length-1]+ "</li>");
                     //     }
 
-                    var nodes = d3.range(nodelength).map(function(i) {
-                            return {
-                                id: i
-                            };
-                        }),
+                    // var nodes = d3.range(nodelength).map(function(i) {
+                    //         return {
+                    //             id: i
+                    //         };
+                    //     }),
+                    var nodes = graph.nodes;
                         links = graph.links;
-
+                    //
                     var simulation = d3.forceSimulation(graph.nodes)
                         .force("charge", d3.forceManyBody().strength(-200))
-                        .force('collision', d3.forceCollide().radius(35))
+                        .force('collision', d3.forceCollide().radius(40))
                         .force("link", d3.forceLink(links).distance(function(d) {
-                                return 50 - (10 * d.size);
+
+                                return 80 - (10 * d.size);
                             })
                         .strength(0.5).iterations(5))
                         .force("center", d3.forceCenter())
@@ -212,10 +217,8 @@
                         .force("y", d3.forceY())
                         .stop();
 
-                  //  d3.select("middle").append("svg");
-
                     var loading = svg.append("text")
-                        .attr("dy", "0.35em")
+                        .attr("dy", "0.45em")
                         .attr("text-anchor", "middle")
                         .attr("font-family", "sans-serif")
                         .attr("font-size", 10)
@@ -224,7 +227,7 @@
                     d3.timeout(function() {
                         loading.remove();
                         d3.select("middle").append("svg");
-                        // See https://github.com/d3/d3-force/blob/master/README.md#simulation_tick
+
                         for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
                             simulation.tick();
                         }
@@ -250,7 +253,7 @@
                             .classed('pathdash', false)
 
                         var node = g.selectAll('g.gnode')
-                            .data(graph.nodes)
+                            .data(nodes)
                             .enter()
                             .append('g')
                             .classed('gnode', true)
@@ -259,32 +262,101 @@
                         var image = node.append("pattern")
                             .data(graph.nodes)
                             .attr("id", "image")
-                            .attr("height", 3.5 + "em")
-                            .attr("width", 3.5 + "em")
-                        image.append("image")
-                            .attr("height", function(n) {
-                                return n.ranking * 1.1 + "em"
+                            .attr("height", function(d){
+                                if(d.ranking > 8){
+                                  return 2 + "em"
+                                }
+                                if (d.ranking < 4) {
+                                    return d.ranking * 1.2 + "em";
+                                } else {
+                                    return d.ranking * 0.9 + "em";
+                                }
                             })
-                            .attr("width", function(n) {
-                                return n.ranking * 1.1 + "em"
+                            .attr("width", function(d){
+                                if(d.ranking > 8){
+                                  return 2 + "em"
+                                }
+                                if (d.ranking < 4) {
+                                    return d.ranking * 1.2 + "em";
+                                } else {
+                                    return d.ranking * 0.9 + "em";
+                                }
+                            })
+
+                        image.append("image")
+                            .attr("height", function(d){
+                                if(d.ranking > 8){
+                                  return 6 + "em"
+                                }
+                                if (d.ranking < 4) {
+                                    return d.ranking * 1.2 + "em";
+                                } else {
+                                    return d.ranking * 0.9 + "em";
+                                }
+                            })
+                            .attr("width", function(d){
+                                if(d.ranking > 8){
+                                  return 6 + "em"
+                                }
+                                if (d.ranking < 4) {
+                                    return d.ranking * 1.2 + "em";
+                                } else {
+                                    return d.ranking * 0.9 + "em";
+                                }
                             })
                             .attr("xlink:href", function(d) {
                                 return d.avatar;
                             })
+
+
                         var visitedimage = node.append("pattern")
                                 .data(graph.nodes)
                                 .attr("id", "visimage")
-                                .attr("height", 3.5 + "em")
-                                .attr("width", 3.5 + "em")
+                                .attr("height", function(d){
+                                    if(d.ranking > 8){
+                                      return 6 + "em"
+                                    }
+                                    if (d.ranking < 4) {
+                                        return d.ranking * 1.2 + "em";
+                                    } else {
+                                        return d.ranking * 0.9 + "em";
+                                    }
+                                })
+                                .attr("width", function(d){
+                                    if(d.ranking > 8){
+                                      return 6 + "em"
+                                    }
+                                    if (d.ranking < 4) {
+                                        return d.ranking * 1.2 + "em";
+                                    } else {
+                                        return d.ranking * 0.9 + "em";
+                                    }
+                                })
                         visitedimage.append("image")
-                                .attr("height", function(n) {
-                                    return n.ranking * 1.1 + "em"
-                                })
-                                .attr("width", function(n) {
-                                    return n.ranking * 1.1 + "em"
-                                })
                                 .attr("xlink:href", "http://db743fb57071f8e05cb3-4d10287819954fd6d08ae459de19af00.r20.cf1.rackcdn.com/global/imagelib/uncategorized/iip_600x600_checkdark-63f464723ca1a113c1a0a22acf62cd3ad4c59149.png")
-                                .style("visibility","visible");
+                                .style("visibility","visible")
+                                .attr("align","center")
+                                .attr("height", function(d){
+                                    if(d.ranking > 8){
+                                      return 6 + "em"
+                                    }
+                                    if (d.ranking < 4) {
+                                        return d.ranking * 1.2 + "em";
+                                    } else {
+                                        return d.ranking * 0.9 + "em";
+                                    }
+                                })
+                                .attr("width", function(d){
+                                    if(d.ranking > 8){
+                                      return 6 + "em"
+                                    }
+                                    if (d.ranking < 4) {
+                                        return d.ranking * 1.2 + "em";
+                                    } else {
+                                        return d.ranking * 0.9 + "em";
+                                    }
+                                })
+
 
                         var circ = node.append("circle")
                             .attr("class", "circc")
@@ -293,12 +365,12 @@
                             })
                             .attr("r", function(d) {
                                 if(d.ranking > 8){
-                                  return 4 + "em"
+                                  return 3 + "em"
                                 }
                                 if (d.ranking < 4) {
-                                    return d.ranking / 2 * 1.2 + "em";
-                                } else {
                                     return d.ranking * 0.6 + "em";
+                                } else {
+                                    return d.ranking * 0.45 + "em";
                                 }
                             })
                             .attr("cx", function(d) {
@@ -306,9 +378,6 @@
                             })
                             .attr("cy", function(d) {
                                 return d.y;
-                            })
-                            .attr("xlink:href", function(d) {
-                                return d.avatar;
                             })
                             .attr("fill", function(d) {
                                 return "url(#image)";
@@ -331,14 +400,19 @@
                                       return 0.2;
                                     }
                                   });
-                                document.getElementById('artbox').style.visibility = "visible";
+                                $("#artbox").css("visibility","visible");
                                 coordinates = d3.mouse(svg.node());
                                 var x = coordinates[0];
                                 var y = coordinates[1];
+
+                                $('#artbox').css('position', 'absolute');
+                                $('#artbox').css('top', x); //or wherever you want it
+                                $('#artbox').css('left', y); //or wherever you want it
+                                $('#artname').html(user.title);
                                 var a = document.getElementById("artbox");
                                 a.style.position = "absolute";
-                                a.style.left = x + 20 + 'px';
-                                a.style.top = y - 20 + 'px';
+                                a.style.left = x + 300 + 'px';
+                                a.style.top = y + 100 +'px';
                                 document.getElementById("artname").innerHTML = user.title;
                             }).on("mouseleave", function(user) {
                                 document.getElementById("artbox").visibility = "hidden";
@@ -347,7 +421,6 @@
                             }).on("click", function(user) {
                               var circid = $(this)[0].id;
                               svg.select('#'+circid).attr("fill","url(#visimage)");
-
                                 resolveArtist(user.permalink);
                                 var selected = user.index;
                                 svg.selectAll("line").style("stroke-width", function(d) {
@@ -363,7 +436,7 @@
                                     } else {
                                         return false;
                                     }
-                                })
+                                });
                                 //console.log(user);
 
                                 visited.push(user);
@@ -373,19 +446,19 @@
                                 getArtistTrack(user);
                                 $('#artist-go').css("visibility", "visible");
                                 $('#artist-go').click(function(){
-                                  $("#searchbar").val(user.permalink);
-                                  $("#artist-go").css("visibility", "visible");
-                                  search();
-                                });
-                                document.getElementById('artname').onclick = function() {
-                                    document.getElementById("searchbar").value = user.permalink;
-                                    document.getElementById('artbox').style.visibility = "hidden"
+                                    $("#searchbar").val(user.permalink);
                                     search();
-                                    document.getElementById('svg').onclick = function() {
-                                        document.getElementById('artbox').style.visibility = "hidden";
-                                    };
-                                }
-                            })
+                                });
+                                $('#artname').click(function() {
+                                    $("#searchbar").val(user.permalink);
+                                    $("#artbox").css("visibility","hidden");
+                                    search();
+                                    $("#svg").click(function() {
+                                        $('#artbox').css("visibility","hidden");
+                                    });
+                                })
+
+                          });
                     });
                 };
             </script>
